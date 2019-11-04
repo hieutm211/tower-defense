@@ -6,14 +6,14 @@ import android.graphics.Canvas;
 public class MainThread extends Thread {
 
     private SurfaceHolder surfaceHolder;
-    private GameView gameView;
+    private GameField gameField;
     private boolean running;
     public static Canvas canvas;
 
-    public MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
+    public MainThread(SurfaceHolder surfaceHolder, GameField gameField) {
         super();
         this.surfaceHolder = surfaceHolder;
-        this.gameView = gameView;
+        this.gameField = gameField;
     }
 
     @Override
@@ -33,8 +33,8 @@ public class MainThread extends Thread {
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized(surfaceHolder) {
-                    this.gameView.update();
-                    this.gameView.draw(canvas);
+                    this.gameField.update();
+                    this.gameField.draw(canvas);
                 }
             } catch (Exception e) {       }
             finally {
