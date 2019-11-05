@@ -1,6 +1,6 @@
 package com.ligrim.tower_defense;
 
-public interface Tower {
+public interface Tower extends GameEntity {
 
     double getRateOfFire();
     double getRange();

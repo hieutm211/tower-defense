@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        GameStage gameStage = new GameStage("put_folder_link_here");
-        setContentView(new GameField(this, gameStage));
+        //GameStage gameStage = new GameStage("put_folder_link_here"); // loi o day
+        //setContentView(new GameField(this, gameStage));
     }
 }
