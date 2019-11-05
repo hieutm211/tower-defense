@@ -26,6 +26,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private List<GameStage.Round> roundList;
 
     private int gold;
+    private int health;
 
     private double gameTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
@@ -50,6 +51,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         route = roundList.get(currentRound).getRoute();
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = 0.0;
+        this.health = 10;
 
         //get Spawner
         for (GameTile tile: tileList) {
@@ -95,9 +97,23 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     //update game state here
     public void update() {
+
+        //update Enemy status
         updateEnemyPosition();
         addEnemy();
         checkEnemyReachTarget();
+
+        //check Build Tower request isTowerRequested()
+            //create new Tower buildNewTower() with type and initial position depend on mouse click
+            // check if position of the new created Tower overlap with any previous towers
+            // check if position of the newly created Tower overlap with the Road
+            // if there is no problem addTower()
+        // end of build Tower code
+
+
+
+
+
         gameTick += dt;
     }
 
@@ -120,6 +136,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (distance(enemyList.get(i).getPosition(), route.get(route.size() - 1)) <= enemyList.get(i).getSpeed()) {
                 enemyList.remove(i);
                 i--;
+                health--;
             }
         }
     }
@@ -130,16 +147,16 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             // if distance between enemy and checkpoint is smaller than the speed of Enemy, then change direction.
             for (int i = 0; i < route.size(); i++) {
                 if (distance(enemy.getPosition(), route.get(i)) <= enemy.getSpeed() && i != route.size() - 1) {
-                    double dx = route.get(i + 1).getX() - enemy.getPosition().getX();
-                    double dy = route.get(i + 1).getY() - enemy.getPosition().getY();
+                    float dx = route.get(i + 1).getX() - enemy.getPosition().getX();
+                    float dy = route.get(i + 1).getY() - enemy.getPosition().getY();
                     // turn dx and dy to unit vector
                     dx /= distance(enemy.getPosition(), route.get(i + 1));
                     dy /= distance(enemy.getPosition(), route.get(i + 1));
                     enemy.setDirection(dx, dy);
                 }
             }
-            double newEnemyPositionX = enemy.getPosition().getX() + enemy.getDirectionX() * enemy.getSpeed();
-            double newEnemyPositionY = enemy.getPosition().getY() + enemy.getDirectionY() * enemy.getSpeed();
+            float newEnemyPositionX = enemy.getPosition().getX() + enemy.getDirectionX() * enemy.getSpeed();
+            float newEnemyPositionY = enemy.getPosition().getY() + enemy.getDirectionY() * enemy.getSpeed();
             enemy.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
 
         }
@@ -147,10 +164,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     //set up Tower
+    public boolean isTowerRequested() {
+        return true;
+    }
     public boolean isTowerTowerOverlap(Tower experimentalTower) {
         if (towerList.size() == 0) return false;
-        double widthExperimentalTower = experimentalTower.getWidth();
-        double lengthExperimentalTower = experimentalTower.getHeight();
+        float widthExperimentalTower = experimentalTower.getWidth();
+        float lengthExperimentalTower = experimentalTower.getHeight();
         // get Position of 4 vertex
         Position point1 = experimentalTower.getPosition();
         Position point2 = new Position(point1.getX() + widthExperimentalTower, point1.getY());
@@ -164,6 +184,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return true;
     }
 
+    public void addTower(Tower tower) {
+        towerList.add(tower);
+    }
+
     private boolean inside(Position position, Tower tower) {
         double x = tower.getPosition().getX();
         double y = tower.getPosition().getY();
@@ -173,10 +197,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     }
 
 
-
-
-
-
+    // operation with Health
+    public boolean isDead() {
+        return health == 0;
+    }
 
     // general distance
     private double distance(Position position, Position pos) {
