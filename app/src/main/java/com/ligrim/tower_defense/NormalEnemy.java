@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 
 public class NormalEnemy implements Enemy {
     private int health;
-    private double speed;
+    private float speed;
     private int armor;
     private int prize;
     private float directionX;
@@ -15,7 +15,7 @@ public class NormalEnemy implements Enemy {
 
     public NormalEnemy(Position position) {
         this.health = 3;
-        this.speed = 2d / 60;
+        this.speed = 2f / 60;
         this.armor = 1;
         this.prize = 3;
         this.position = position;
@@ -29,7 +29,7 @@ public class NormalEnemy implements Enemy {
     }
 
     @Override
-    public double getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 
