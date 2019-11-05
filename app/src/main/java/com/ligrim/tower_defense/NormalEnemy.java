@@ -12,6 +12,7 @@ public class NormalEnemy implements Enemy {
     private Position position;
     private int width;
     private int height;
+    private float angle;
 
     public NormalEnemy(Position position) {
         this.health = 3;
@@ -21,6 +22,9 @@ public class NormalEnemy implements Enemy {
         this.position = position;
         width = 64;
         height = 64;
+        directionX = 0;
+        directionY = 0;
+        angle = (float) (Math.PI / 2);
     }
 
     @Override
@@ -78,7 +82,9 @@ public class NormalEnemy implements Enemy {
 
     @Override
     public void update() {
-
+        float newEnemyPositionX = this.getPosition().getX() + this.getDirectionX() * this.getSpeed();
+        float newEnemyPositionY = this.getPosition().getY() + this.getDirectionY() * this.getSpeed();
+        this.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
     }
 
     @Override
@@ -95,4 +101,29 @@ public class NormalEnemy implements Enemy {
     public int getHeight() {
         return height;
     }
+
+
+
+
+    public void setAngle() {
+        if (directionX == 0 && directionY == 0) {
+            angle = -90;
+            return;
+        }
+        float newAngle = (float) Math.atan(Math.abs(directionY/directionX)) * 180 / (float) Math.PI;
+
+        if (directionX == 0 && directionY > 0) angle = 180;
+        else if (directionX == 0  && directionY < 0) angle = 0;
+        else if (directionX > 0 && directionY == 0) angle = 90;
+        else if (directionX < 0 && directionY == 0) angle = -90;
+        else if (directionX > 0 && directionY > 0) angle = newAngle + 90;
+        else if (directionX > 0 && directionY < 0) angle = newAngle;
+        else if (directionX < 0 && directionY > 0) angle = -90 - newAngle;
+        else if (directionX < 0 && directionY < 0) angle = -angle;
+    }
+
+    public float getAngle() {
+        return angle;
+    }
+
 }

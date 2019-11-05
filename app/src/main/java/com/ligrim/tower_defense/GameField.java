@@ -99,9 +99,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
 
         //update Enemy status
-        updateEnemyPosition();
+        updateEnemyDirection();
+        for (Enemy enemy: enemyList) {
+            enemy.update();
+        }
         addEnemy();
         checkEnemyReachTarget();
+
 
         //check Build Tower request isTowerRequested()
             //create new Tower buildNewTower() with type and initial position depend on mouse click
@@ -141,7 +145,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    public void updateEnemyPosition() {
+    public void updateEnemyDirection() {
         if (enemyList.size() == 0) return;
         for (Enemy enemy: enemyList) {
             // if distance between enemy and checkpoint is smaller than the speed of Enemy, then change direction.
@@ -155,9 +159,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
                     enemy.setDirection(dx, dy);
                 }
             }
-            float newEnemyPositionX = enemy.getPosition().getX() + enemy.getDirectionX() * enemy.getSpeed();
-            float newEnemyPositionY = enemy.getPosition().getY() + enemy.getDirectionY() * enemy.getSpeed();
-            enemy.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
+
 
         }
 
