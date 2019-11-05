@@ -304,7 +304,7 @@ public class GameStage {
     }
 
     private boolean isRoad(int i, int j) {
-        if (i >= mapData.length || j > mapData[0].length) return false;
+        if (i >= mapData.length || j >= mapData[0].length) return false;
         for (int k = 0; k < roadID.length; ++k) {
             if (mapData[i][j] == roadID[k]) return true;
         }
