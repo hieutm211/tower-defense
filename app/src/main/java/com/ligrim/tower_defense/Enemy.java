@@ -10,5 +10,6 @@ public interface Enemy extends GameEntity {
     void setDirection(double dx, double dy); // dx and dy is unit vector
     double getDirectionX();
     double getDirectionY();
+    
 
 }

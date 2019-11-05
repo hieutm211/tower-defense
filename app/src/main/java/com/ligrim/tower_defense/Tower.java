@@ -5,4 +5,5 @@ public interface Tower extends GameTile {
     double getRateOfFire();
     double getRange();
     double getDamage();
+
 }
