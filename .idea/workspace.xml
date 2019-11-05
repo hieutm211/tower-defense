@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ee7fa57-3f14-4d84-8149-4ec10e25a7ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Tower.java" afterDir="false" />
-    </list>
+    <list default="true" id="0ee7fa57-3f14-4d84-8149-4ec10e25a7ac" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +20,17 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="tower-defense" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -51,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -337,7 +344,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="761" y="-7" width="782" height="838" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info content_ui="combo" id="Project" sideWeight="0.4957806" weight="0.32825485" />
@@ -355,11 +361,11 @@
       <window_info anchor="bottom" id="Build" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Logcat" order="0" />
       <window_info anchor="bottom" id="Android Profiler" order="1" show_stripe_button="false" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Gradle" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
+      <window_info active="true" anchor="right" id="Gradle" order="4" visible="true" weight="0.32963988" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,7 +419,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
