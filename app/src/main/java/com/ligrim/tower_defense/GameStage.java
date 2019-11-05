@@ -20,7 +20,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class GameStage {
 
-    // this class is for encapsulating type, amount and order of enemy to be generated
+    // this class is for wrapping type, amount and order of enemy to be generated
     public static class Round {
         private final int roundNumber;
         private List<EnemyType> enemy;
