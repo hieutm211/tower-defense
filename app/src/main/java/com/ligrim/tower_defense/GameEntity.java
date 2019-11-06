@@ -9,6 +9,4 @@ public interface GameEntity {
     boolean collision(GameEntity other);
     void update();
     void draw(Canvas canvas);
-    int getWidth();
-    int getHeight();
 }
