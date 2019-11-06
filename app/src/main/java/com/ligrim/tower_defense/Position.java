@@ -2,15 +2,15 @@ package com.ligrim.tower_defense;
 
 public class Position {
 
-    private float x;
-    private float y;
+    private double x;
+    private double y;
 
-    public Position(float x, float y) {
+    public Position(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public void set(float x, float y) {
+    public void set(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -20,11 +20,11 @@ public class Position {
         this.y = position.y;
     }
 
-    public float getX() {
+    public double getX() {
         return x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 }
