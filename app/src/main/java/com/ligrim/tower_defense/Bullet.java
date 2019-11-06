@@ -6,7 +6,7 @@ public class Bullet implements GameEntity {
 
     private final float speed;
     private final float range;
-    private final float damage;
+    private final int damage;
     private Position position;
     private final int width = 64;
     private final int height = 64;
@@ -36,7 +36,7 @@ public class Bullet implements GameEntity {
     float getRange() {
         return range;
     }
-    float getDamage() {
+    int getDamage() {
         return damage;
     }
 
@@ -65,8 +65,8 @@ public class Bullet implements GameEntity {
 
     @Override
     public void update() {
-        directionX = this.enemyTarget.getDirectionX() - this.enemyTarget.getDirectionX(); // set vector
-        directionY = this.enemyTarget.getDirectionY() - this.enemyTarget.getDirectionY(); // set vector
+        directionX = this.enemyTarget.getDirectionX() - this.directionX; // set vector
+        directionY = this.enemyTarget.getDirectionY() - this.directionY; // set vector
         float length = directionX * directionX + directionY * directionY;
         directionX /= length; //set to unit length
         directionY /= length; //set to unit length;

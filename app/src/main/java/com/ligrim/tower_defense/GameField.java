@@ -29,6 +29,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private double gameTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
     private final double timeToAddEnemy = 1.0;
+    private final double shootTime = 0.5;
 
 
 
@@ -104,14 +105,37 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
         checkEnemyReachTarget();
 
-
-        //check Build Tower request isTowerRequested()
-        //create new Tower buildNewTower() with type and initial position depend on mouse click
-        // check if position of the new created Tower overlap with any previous towers
-        // check if position of the newly created Tower overlap with the Road
-        // if there is no problem addTower()
+        //check if can put tower here canPutTower(tower)
+            // if there is no problem addTower()
         // end of build Tower code
 
+
+        // battlefield update
+        updateTowersTarget();
+        updateNextShoot();
+        updateCollisionBulletEnemy();
+        updatePrize();
+        updateListEnemy();
+
+        for (Tower tower: towerList) {
+            tower.update();
+        }
+
+        for (Bullet bullet: bulletList) {
+            bullet.update();
+        }
+
+        for (Enemy enemy: enemyList) {
+            enemy.update();
+        }
+
+        if (isDead()) return;
+        else if (!stage.hasNextEnemy()) {
+            if (!stage.hasNextRound()) return;
+            else {
+                stage.nextRound();
+            }
+        }
 
 
         gameTick += dt;
@@ -133,7 +157,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void checkEnemyReachTarget() {
         for (int i = 0; i < enemyList.size(); i++) {
             // if distance of enemy and target smaller than the enemy speed, then delete enemy
-            if (distance(enemyList.get(i).getPosition(), route.get(route.size() - 1)) <= enemyList.get(i).getSpeed()) {
+            if (Position.distance(enemyList.get(i).getPosition(), route.get(route.size() - 1)) <= enemyList.get(i).getSpeed()) {
                 enemyList.get(i).disappear();
                 enemyList.remove(i);
                 i--;
@@ -147,12 +171,12 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         for (Enemy enemy: enemyList) {
             // if distance between enemy and checkpoint is smaller than the speed of Enemy, then change direction.
             for (int i = 0; i < route.size(); i++) {
-                if (distance(enemy.getPosition(), route.get(i)) <= enemy.getSpeed() && i != route.size() - 1) {
+                if (Position.distance(enemy.getPosition(), route.get(i)) <= enemy.getSpeed() && i != route.size() - 1) {
                     float dx = route.get(i + 1).getX() - enemy.getPosition().getX();
                     float dy = route.get(i + 1).getY() - enemy.getPosition().getY();
                     // turn dx and dy to unit vector
-                    dx /= distance(enemy.getPosition(), route.get(i + 1));
-                    dy /= distance(enemy.getPosition(), route.get(i + 1));
+                    dx /= Position.distance(enemy.getPosition(), route.get(i + 1));
+                    dy /= Position.distance(enemy.getPosition(), route.get(i + 1));
                     enemy.setDirection(dx, dy);
                 }
             }
@@ -161,8 +185,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     //set up Tower
-    public boolean isTowerRequested() {
-        return true;
+    public boolean canSetTower(Tower tower) {
+        return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower);
     }
     public boolean isTowerTowerOverlap(Tower experimentalTower) {
         if (towerList.size() == 0) return false;
@@ -182,11 +206,58 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return health == 0;
     }
 
-    // general distance
-    private double distance(Position position, Position pos) {
-        double xDistance = position.getX() - pos.getX();
-        double yDistance = position.getY() - pos.getY();
-        return Math.sqrt(xDistance * xDistance + yDistance * yDistance);
+    //add more targets for tower
+    public void updateTowersTarget() {
+        for(Tower tower: towerList) {
+            for (Enemy enemy: enemyList) {
+                if (Position.distance(tower.getPosition(), enemy.getPosition()) <= tower.getRange()) {
+                    tower.addEnemyTarget(enemy);
+                }
+            }
+        }
     }
+
+    //update Next Shoot of each tower
+    public void updateNextShoot() {
+        for (Tower tower: towerList) {
+            if (gameTick - tower.getTickOfLastShot() > shootTime) {
+                bulletList.add(new Bullet(tower, tower.chooseEnemyTarget()));
+                tower.setTickOfLastShot(gameTick);
+            }
+        }
+    }
+
+    //update collision between bullet and enemy
+    public void updateCollisionBulletEnemy() {
+        for (int i = 0; i < bulletList.size(); i++) {
+            for (Enemy enemy: enemyList) {
+                if (bulletList.get(i).collision(enemy)) {
+                    enemy.reduceHealth(bulletList.get(i).getDamage());
+                    bulletList.remove(i);
+                    i--;
+                }
+            }
+        }
+    }
+
+    // update Prize
+    public void updatePrize() {
+        for (Enemy enemy: enemyList) {
+            if (enemy.getHealth() <= 0) {
+                this.gold += enemy.getPrize();
+            }
+        }
+    }
+
+    //update the List of Enemy
+    public void updateListEnemy() {
+        for (int i = 0; i < enemyList.size(); i++) {
+            if (enemyList.get(i).isFaded() || enemyList.get(i).getHealth() <= 0) {
+                enemyList.remove(i);
+                i--;
+            }
+        }
+    }
+
 
 }
