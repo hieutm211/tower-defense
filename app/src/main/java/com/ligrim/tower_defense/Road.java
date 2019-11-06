@@ -12,12 +12,16 @@ public class Road implements GameTile {
     protected static Bitmap image;
     protected Position position;
 
+    private final int width = 128;
+    private final int height = 128;
+
     public Road(Position position) {
         this.position = position;
         this.type = TYPE_ROAD;
+
     }
 
-    public Road(double x, double y) {
+    public Road(float x, float y) {
         this.position = new Position(x, y);
         this.type = TYPE_ROAD;
     }
@@ -35,4 +39,14 @@ public class Road implements GameTile {
     public void update() {}
 
     public void draw(Canvas canvas) {}
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
 }

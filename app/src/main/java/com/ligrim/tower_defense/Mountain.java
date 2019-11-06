@@ -7,8 +7,12 @@ public class Mountain implements GameTile {
 
     private static Bitmap image;
     private Position position;
+    private final int width = 128;
+    private final int height = 128;
 
-    public Mountain(Position position) {}
+    public Mountain(Position position) {
+        this.position = position;
+    }
 
     public Mountain(int x, int y) {}
 
@@ -25,4 +29,14 @@ public class Mountain implements GameTile {
     public void update() {}
 
     public void draw(Canvas canvas) {}
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
 }

@@ -17,7 +17,9 @@ public class MainActivity extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        GameStage gameStage = new GameStage("put_folder_link_here");
+
+        GameStage gameStage = new GameStage("put_folder_link_here", "mapFile", "enemyFile");
         setContentView(new GameField(this, gameStage));
+
     }
 }

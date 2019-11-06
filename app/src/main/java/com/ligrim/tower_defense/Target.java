@@ -7,7 +7,7 @@ public class Target extends Road {
         this.type = TYPE_TARGET;
     }
 
-    public Target(double x, double y) {
+    public Target(float x, float y) {
         super(x, y);
         this.type = TYPE_TARGET;
     }
