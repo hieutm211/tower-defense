@@ -1,8 +1,10 @@
 package com.ligrim.tower_defense;
 
-public interface Tower {
+public interface Tower extends GameTile {
 
     double getRateOfFire();
     double getRange();
     double getDamage();
+    double getTickOfLastShot();
+
 }
