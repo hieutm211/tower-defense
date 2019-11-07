@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -17,9 +20,14 @@ public class MainActivity extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-
-        GameStage gameStage = new GameStage("put_folder_link_here", "mapFile", "enemyFile");
-        setContentView(new GameField(this, gameStage));
-
+        try {
+            InputStream mapFile = getAssets().open("map/map_1/sample_map1.tmx");
+            InputStream enemyFile = getAssets().open("map/map_1/enemy_info.txt");
+            InputStream routeFile = getAssets().open("map/map_1/route_info.txt");
+            GameStage gameStage = new GameStage(mapFile, enemyFile, routeFile);
+            setContentView(new GameField(this, gameStage));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
