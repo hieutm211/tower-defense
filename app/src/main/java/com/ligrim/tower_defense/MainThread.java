@@ -36,7 +36,9 @@ public class MainThread extends Thread {
                     this.gameField.update();
                     this.gameField.draw(canvas);
                 }
-            } catch (Exception e) {       }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             finally {
                 if (canvas != null)            {
                     try {
@@ -61,7 +63,6 @@ public class MainThread extends Thread {
                 long averageFPS = 1000 / ((totalTime / frameCount) / 1000000);
                 frameCount = 0;
                 totalTime = 0;
-                System.out.println(averageFPS);
             }
         }
 
