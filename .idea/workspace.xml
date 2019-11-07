@@ -14,17 +14,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/map/Map1/enemyInfo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/map/Map1/routeInfo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +32,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="4cf28d040405" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="4cc19760" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -47,18 +43,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/SniperTower.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2160">
-              <caret line="151" column="8" selection-start-line="151" selection-start-column="8" selection-end-line="151" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TankerEnemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="68">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
@@ -67,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Target.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="34">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
@@ -76,17 +63,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Tower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="68">
               <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+            <state relative-caret-position="391">
+              <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3774">
+              <caret line="230" column="46" selection-start-line="230" selection-start-column="46" selection-end-line="230" selection-end-column="46" />
+              <folding>
+                <element signature="e#5847#5848#0" expanded="true" />
+                <element signature="e#5883#5884#0" expanded="true" />
+                <element signature="e#5944#5945#0" expanded="true" />
+                <element signature="e#5978#5979#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,7 +96,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
+            <state relative-caret-position="119">
               <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
             </state>
           </provider>
@@ -103,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
+            <state relative-caret-position="306">
               <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
             </state>
           </provider>
@@ -111,23 +113,43 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gradle.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-97" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gradlew">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2833" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="129" column="11" selection-start-line="129" selection-start-column="11" selection-end-line="129" selection-end-column="11" />
+            <state relative-caret-position="367">
+              <caret line="245" column="46" lean-forward="true" selection-start-line="245" selection-start-column="46" selection-end-line="245" selection-end-column="46" />
+              <folding>
+                <element signature="e#1222#1223#0" expanded="true" />
+                <element signature="e#1264#1265#0" expanded="true" />
+                <element signature="e#3936#3937#0" expanded="true" />
+                <element signature="e#3964#3965#0" expanded="true" />
+                <element signature="e#3994#3995#0" expanded="true" />
+                <element signature="e#4023#4024#0" expanded="true" />
+                <element signature="e#4059#4060#0" expanded="true" />
+                <element signature="e#4094#4095#0" expanded="true" />
+                <element signature="e#4129#4130#0" expanded="true" />
+                <element signature="e#4163#4164#0" expanded="true" />
+                <element signature="e#4197#4198#0" expanded="true" />
+                <element signature="e#4230#4231#0" expanded="true" />
+                <element signature="e#4259#4260#0" expanded="true" />
+                <element signature="e#4287#4288#0" expanded="true" />
+                <element signature="e#4323#4324#0" expanded="true" />
+                <element signature="e#4358#4359#0" expanded="true" />
+                <element signature="e#4643#4644#0" expanded="true" />
+                <element signature="e#4694#4695#0" expanded="true" />
+                <element signature="e#4731#4732#0" expanded="true" />
+                <element signature="e#4789#4790#0" expanded="true" />
+                <element signature="e#4820#4821#0" expanded="true" />
+                <element signature="e#4859#4860#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,6 +175,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" />
       </list>
     </option>
   </component>
@@ -163,7 +186,7 @@
     <option name="height" value="740" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -206,6 +229,15 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="map_1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tower-defense" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tower-defense" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -221,8 +253,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -290,21 +320,44 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tower-defense" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="tower-defense" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="tower-defense" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="tower_defense" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/assets" />
       <recent name="$PROJECT_DIR$/app/src/main" />
       <recent name="$PROJECT_DIR$/app/src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -395,11 +448,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="45" y="29" width="1395" height="781" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32885906" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26066098" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -412,8 +465,8 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.3270142" />
-      <window_info anchor="bottom" id="Android Profiler" order="6" />
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.3261105" />
+      <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.328594" />
       <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.328594" />
@@ -473,17 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2465">
-          <caret line="225" column="13" lean-forward="true" selection-start-line="225" selection-start-column="13" selection-end-line="225" selection-end-column="13" />
-          <folding>
-            <element signature="e#5883#5884#0" expanded="true" />
-            <element signature="e#5978#5979#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -540,72 +582,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/enemy_info.txt" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/map/route_info.txt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TankerEnemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Target.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Tower.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="68">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/enemy_info.txt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        <state relative-caret-position="3774">
+          <caret line="230" column="46" selection-start-line="230" selection-start-column="46" selection-end-line="230" selection-end-column="46" />
+          <folding>
+            <element signature="e#5847#5848#0" expanded="true" />
+            <element signature="e#5883#5884#0" expanded="true" />
+            <element signature="e#5944#5945#0" expanded="true" />
+            <element signature="e#5978#5979#0" expanded="true" />
+          </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/map/route_info.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-97" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradlew">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2833" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
+        <state relative-caret-position="119">
           <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
+        <state relative-caret-position="306">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradlew">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="129" column="11" selection-start-line="129" selection-start-column="11" selection-end-line="129" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        <state relative-caret-position="367">
+          <caret line="245" column="46" lean-forward="true" selection-start-line="245" selection-start-column="46" selection-end-line="245" selection-end-column="46" />
+          <folding>
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1264#1265#0" expanded="true" />
+            <element signature="e#3936#3937#0" expanded="true" />
+            <element signature="e#3964#3965#0" expanded="true" />
+            <element signature="e#3994#3995#0" expanded="true" />
+            <element signature="e#4023#4024#0" expanded="true" />
+            <element signature="e#4059#4060#0" expanded="true" />
+            <element signature="e#4094#4095#0" expanded="true" />
+            <element signature="e#4129#4130#0" expanded="true" />
+            <element signature="e#4163#4164#0" expanded="true" />
+            <element signature="e#4197#4198#0" expanded="true" />
+            <element signature="e#4230#4231#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="true" />
+            <element signature="e#4287#4288#0" expanded="true" />
+            <element signature="e#4323#4324#0" expanded="true" />
+            <element signature="e#4358#4359#0" expanded="true" />
+            <element signature="e#4643#4644#0" expanded="true" />
+            <element signature="e#4694#4695#0" expanded="true" />
+            <element signature="e#4731#4732#0" expanded="true" />
+            <element signature="e#4789#4790#0" expanded="true" />
+            <element signature="e#4820#4821#0" expanded="true" />
+            <element signature="e#4859#4860#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
