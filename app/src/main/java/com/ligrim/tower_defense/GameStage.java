@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import android.graphics.Bitmap;
@@ -127,7 +129,7 @@ public class GameStage {
     // route here
     private List<Position> route;
 
-    public GameStage(String mapFile, String EnemyFile, String RouteFile) {
+    public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream RouteFile) {
         roundList = new ArrayList<>();
         currentRound = 0;
         route = new ArrayList<>();
@@ -205,10 +207,10 @@ public class GameStage {
     }
 
     // read map data from txm file, do not modify
-    private void readMapData(String filename) {
-        String folder = filename;
+    private void readMapData(InputStream filename) {
+        InputStream inputFile = filename;
         try {
-            File inputFile = new File(folder);
+            /*       File inputFile = new File(folder);*/
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
@@ -269,13 +271,13 @@ public class GameStage {
 
     // read enemy Information, i.e the order enemy appear
     // initial all rounds in the game
-    private void readEnemyInfo(String Enemy_info, String Route_info) {
+    private void readEnemyInfo(InputStream Enemy_info, InputStream Route_info) {
         try {
             // declare file directory here
-            File EnemyFile = new File(Enemy_info);
-            BufferedReader Enemy = new BufferedReader(new FileReader(EnemyFile));
-            File RouteFile = new File(Route_info);
-            BufferedReader Route = new BufferedReader(new FileReader(RouteFile));
+            InputStream EnemyFile = Enemy_info;
+            BufferedReader Enemy = new BufferedReader(new InputStreamReader(EnemyFile, "UTF-8"));
+            InputStream RouteFile = Route_info;
+            BufferedReader Route = new BufferedReader(new InputStreamReader(RouteFile, "UTF-8"));
 
             // read enemy info
             String st;
@@ -372,7 +374,7 @@ public class GameStage {
         System.out.println();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         String folder1 = "app/map/Map1/sample_map1.tmx";
         String folder2 = "app/map/Map1/enemyInfo.txt";
         String folder3 = "app/map/Map1/routeInfo.txt";
@@ -381,5 +383,5 @@ public class GameStage {
         game.printRoundInfo();
         System.out.println("total round: " + game.totalRound());
         game.printRouteInfo();
-    }
+    }*/
 }
