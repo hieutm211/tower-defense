@@ -126,7 +126,8 @@ public class NormalTower implements Tower {
     }
 
     public Enemy chooseEnemyTarget() {
-        while(enemyTarget.peek().isFaded() || distance(this, enemyTarget.peek()) > this.getRange()) {
+        while(enemyTarget.peek() != null && (enemyTarget.peek().isFaded()
+                    || distance(this, enemyTarget.peek()) > this.getRange())) {
             deleteTarget();
         }
         return enemyTarget.peek();
@@ -146,8 +147,9 @@ public class NormalTower implements Tower {
     @Override
     public void update() {
         Enemy finalTarget = chooseEnemyTarget();
+        if (finalTarget == null) return;
         directionX = finalTarget.getDirectionX() - this.getPosition().getX();
-//        directionY = finalTarget.getDirectionY() - this.
+        directionY = finalTarget.getDirectionY() - this.getPosition().getY();
         if (directionX == 0 && directionY == 0) angle = 0;
         else {
             float tempAngle = (float) Math.atan(Math.abs(directionY / directionX)) * 180 / (float) Math.PI;
