@@ -12,6 +12,8 @@ public interface Enemy extends GameEntity {
     float getDirectionY();
     boolean isFaded(); // health == 0 or reach the end of the road then true
     void disappear(); // set faded from true to false
-
-
+    boolean isReachCheckpoint();
+    void nextDestination();
+    boolean isReachTarget();
+    boolean isCollideTo(Enemy other); // check if the two enemy are the same class and if they collide
 }

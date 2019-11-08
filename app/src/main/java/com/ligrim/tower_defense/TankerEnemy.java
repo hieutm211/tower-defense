@@ -2,6 +2,8 @@ package com.ligrim.tower_defense;
 
 import android.graphics.Canvas;
 
+import java.util.List;
+
 public class TankerEnemy implements Enemy {
     private int health;
     private float speed;
@@ -14,19 +16,25 @@ public class TankerEnemy implements Enemy {
     private int height;
     private float angle;
     private boolean faded;
+    private List<Position> route;
+    private int checkpoint;
 
-    public TankerEnemy(Position position) {
+    public TankerEnemy(List<Position> route) {
         this.health = 3;
         this.speed = 1f / 60;
         this.armor = 3;
         this.prize = 5;
-        this.position = position;
+        this.position = route.get(0);
         width = 64;
         height = 64;
         directionX = 0;
         directionY = 0;
         angle = (float) (Math.PI / 2);
         faded = false;
+
+        this.route = route;
+        assert (route.size() > 1);
+        checkpoint = 1;
     }
 
     @Override
@@ -134,6 +142,39 @@ public class TankerEnemy implements Enemy {
 
     public void disappear() {
         faded = true;
+    }
+
+    // check if checkpoint is target, then update checkpoint and direction
+    public void nextDestination() {
+        assert isReachCheckpoint();
+        if (checkpoint < route.size() - 1) {
+            ++checkpoint;
+            updateDirection();
+        }
+    }
+
+    public boolean isReachCheckpoint() {
+        return Position.distance(this.getPosition(), route.get(checkpoint)) <= this.getSpeed();
+    }
+
+    // check if the distance between this enemy and target is lower than speed
+    public boolean isReachTarget() {
+        return checkpoint == route.size() - 1 && Position.distance(this.position, route.get(route.size() - 1)) <= this.speed;
+    }
+
+    // check if the given enemy is the same type of this enemy, then check the distance between them
+    public boolean isCollideTo(Enemy other) {
+        if (!(this.getClass().equals(other.getClass()))) return false;
+        return Position.distance(this.position, other.getPosition()) <= this.speed;
+    }
+
+    private void updateDirection() {
+        float dx = route.get(checkpoint).getX() - this.getPosition().getX();
+        float dy = route.get(checkpoint).getY() - this.getPosition().getY();
+        // turn dx and dy to unit vector
+        dx /= Position.distance(this.getPosition(), route.get(checkpoint));
+        dy /= Position.distance(this.getPosition(), route.get(checkpoint));
+        this.setDirection(dx, dy);
     }
 
 }
