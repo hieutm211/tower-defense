@@ -65,12 +65,12 @@ public class Bullet implements GameEntity {
 
     @Override
     public void update() {
-        directionX = this.enemyTarget.getDirectionX() - this.directionX; // set vector
-        directionY = this.enemyTarget.getDirectionY() - this.directionY; // set vector
+        directionX = this.enemyTarget.getPosition().getX() - this.getPosition().getX(); // set vector
+        directionY = this.enemyTarget.getPosition().getY() - this.getPosition().getY(); // set vector
         float length = directionX * directionX + directionY * directionY;
         directionX /= length; //set to unit length
         directionY /= length; //set to unit length;
-        setPosition(new Position(this.getPosition().getX() + directionX, this.getPosition().getY() + directionY));
+        setPosition(new Position(this.getPosition().getX() + directionX * speed, this.getPosition().getY() + directionY * speed));
     }
 
     @Override
