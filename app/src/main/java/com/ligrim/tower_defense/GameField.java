@@ -21,7 +21,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     private Spawner spawner;
     private List<Bullet> bulletList; // nhung vien dan dang bay
-    private List<Position> route;
 
     private int gold;
     private int health;
@@ -47,7 +46,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.towerList = new ArrayList<>();
         this.tileList = new ArrayList<>();
         this.bulletList = new ArrayList<>();
-        route = gameStage.getRoute();
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = 0.0;
         this.health = 10;
@@ -96,11 +94,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
 
         //update Enemy status
-        addEnemy();
-        updateEnemyDirection();
         for (Enemy enemy: enemyList) {
             enemy.update();
         }
+        addEnemy();
         checkEnemyReachTarget();
 
         //check if can put tower here canPutTower(tower)
@@ -110,25 +107,19 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
         // battlefield update
         updateTowersTarget();
+        for (Tower tower: towerList) {
+            tower.update();
+        }
         updateNextShoot();
+        for (Bullet bullet: bulletList) {
+            bullet.update();
+        }
         updateCollisionBulletEnemy();
         updatePrize();
         updateListEnemy();
 
-        for (Tower tower: towerList) {
-            tower.update();
-        }
-
-        for (Bullet bullet: bulletList) {
-            bullet.update();
-        }
-
-        for (Enemy enemy: enemyList) {
-            enemy.update();
-        }
-
         if (isDead()) return;
-        else if (!stage.hasNextEnemy()) {
+        else if (!stage.hasNextEnemy() && enemyList.isEmpty()) {
             if (!stage.hasNextRound()) return;
             else {
                 stage.nextRound();
@@ -155,31 +146,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void checkEnemyReachTarget() {
         for (int i = 0; i < enemyList.size(); i++) {
             // if distance of enemy and target smaller than the enemy speed, then delete enemy
-            if (Position.distance(enemyList.get(i).getPosition(), route.get(route.size() - 1)) <= enemyList.get(i).getSpeed()) {
+            if (enemyList.get(i).isReachCheckpoint()) {
                 enemyList.get(i).disappear();
                 enemyList.remove(i);
                 i--;
                 health--;
             }
         }
-    }
-
-    public void updateEnemyDirection() {
-        if (enemyList.size() == 0) return;
-        for (Enemy enemy: enemyList) {
-            // if distance between enemy and checkpoint is smaller than the speed of Enemy, then change direction.
-            for (int i = 0; i < route.size(); i++) {
-                if (Position.distance(enemy.getPosition(), route.get(i)) <= enemy.getSpeed() && i != route.size() - 1) {
-                    float dx = route.get(i + 1).getX() - enemy.getPosition().getX();
-                    float dy = route.get(i + 1).getY() - enemy.getPosition().getY();
-                    // turn dx and dy to unit vector
-                    dx /= Position.distance(enemy.getPosition(), route.get(i + 1));
-                    dy /= Position.distance(enemy.getPosition(), route.get(i + 1));
-                    enemy.setDirection(dx, dy);
-                }
-            }
-        }
-
     }
 
     //set up Tower
@@ -208,7 +181,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void updateTowersTarget() {
         for(Tower tower: towerList) {
             for (Enemy enemy: enemyList) {
-                if (Position.distance(tower.getPosition(), enemy.getPosition()) <= tower.getRange()) {
+                if (Position.distance(tower.getPosition(), enemy.getPosition()) <= tower.getRange() && !enemy.isFaded()) {
                     tower.addEnemyTarget(enemy);
                 }
             }
@@ -243,6 +216,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         for (Enemy enemy: enemyList) {
             if (enemy.getHealth() <= 0) {
                 this.gold += enemy.getPrize();
+                enemy.disappear();
             }
         }
     }
@@ -255,6 +229,11 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
                 i--;
             }
         }
+    }
+
+    //check if Game is Over yet
+    public boolean canContinue() {
+        return !isDead() || stage.hasNextEnemy() || stage.hasNextRound() || !enemyList.isEmpty();
     }
 
 
