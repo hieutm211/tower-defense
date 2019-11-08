@@ -157,7 +157,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void checkEnemyReachTarget() {
         for (int i = 0; i < enemyList.size(); i++) {
             // if distance of enemy and target smaller than the enemy speed, then delete enemy
-            if (enemyList.get(i).isReachCheckpoint()) {
+            if (enemyList.get(i).isReachTarget()) {
                 enemyList.get(i).disappear();
                 enemyList.remove(i);
                 i--;
