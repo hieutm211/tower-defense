@@ -1,9 +1,7 @@
 package com.ligrim.tower_defense;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -23,12 +21,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class GameStage {
 
     // this class is for wrapping type, amount and order of enemy to be generated
-    public static class Round {
+    private static class Round {
         private final int roundNumber;
         private List<EnemyType> enemy;
         private List<Integer> amount;
         private int enemyID;
         private int countEnemy;
+        private List<Position> route;
 
         public Enemy nextEnemy() {
             if (enemyID > enemy.size()) return null;
@@ -55,12 +54,13 @@ public class GameStage {
             amount.add(n);
         }
 
-        public Round(int round) {
+        public Round(int round, List<Position> route) {
             roundNumber = round;
             enemyID = 0;
             countEnemy = 0;
             enemy = new ArrayList<>();
             amount = new ArrayList<>();
+            this.route = route;
         }
 
         private String EnemyBatch(int i) {
@@ -72,16 +72,16 @@ public class GameStage {
         private Enemy enemyFactory(EnemyType e) {
             switch (e) {
                 case TANKER_ENEMY:
-                    return null;
+                    return new TankerEnemy(route);
 
                 case NORMAL_ENEMY:
-                    return null;
+                    return new NormalEnemy(route);
 
                 case SMALLER_ENEMY:
-                    return null;
+                    return new SmallerEnemy(route);
 
                 case BOSS_ENEMY:
-                    return null;
+                    return new BossEnemy(route);
 
                 default:
                     return null;
@@ -279,12 +279,23 @@ public class GameStage {
             InputStream RouteFile = Route_info;
             BufferedReader Route = new BufferedReader(new InputStreamReader(RouteFile, "UTF-8"));
 
-            // read enemy info
             String st;
+            // read route info
+            while ((st = Route.readLine()) != null) {
+                String[] splitColon = st.split(";");
+
+                for (int i = 0; i < splitColon.length; ++i) {
+                    String[] coordinate = splitColon[i].split(",");
+                    Position pos = new Position(Float.parseFloat(coordinate[0]), Float.parseFloat(coordinate[1]));
+                    this.route.add(pos);
+                }
+            }
+
+            // read enemy info
             int roundNumber = 0;
             while ((st = Enemy.readLine()) != null) { // read each line from enemy_Info file
                 // initial round according to round number
-                Round round = new Round(roundNumber++);
+                Round round = new Round(roundNumber++, this.route);
 
                 // split each line by comma sign
                 String[] splitComma = st.split(",");
@@ -317,16 +328,6 @@ public class GameStage {
                 // add round to rounds list
                 roundList.add(round);
 
-                // read route info
-                while ((st = Route.readLine()) != null) {
-                    String[] splitColon = st.split(";");
-
-                    for (int i = 0; i < splitColon.length; ++i) {
-                        String[] coordinate = splitColon[i].split(",");
-                        Position pos = new Position(Float.parseFloat(coordinate[0]), Float.parseFloat(coordinate[1]));
-                        route.add(pos);
-                    }
-                }
             }
 
         } catch (FileNotFoundException ex) {
