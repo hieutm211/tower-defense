@@ -40,6 +40,10 @@ public class Bullet implements GameEntity {
         return damage;
     }
 
+    public Tower getOwner() {
+        return owner;
+    }
+
     @Override
     public void setPosition(Position position) {
         this.position = position;

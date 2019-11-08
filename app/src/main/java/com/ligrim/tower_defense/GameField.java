@@ -115,6 +115,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             bullet.update();
         }
         updateCollisionBulletEnemy();
+        updateBulletList();
         updatePrize();
         updateListEnemy();
 
@@ -128,6 +129,16 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
 
         gameTick += dt;
+    }
+
+    // check if bullet out of range
+    private void updateBulletList() {
+        for (int i = 0; i < bulletList.size(); i++) {
+            if (Position.distance(bulletList.get(i).getPosition(), bulletList.get(i).getOwner().getPosition()) > bulletList.get(i).getRange()) {
+                bulletList.remove(i);
+                --i;
+            }
+        }
     }
 
     //update list of Enemy
