@@ -68,8 +68,8 @@ public class Bullet implements GameEntity {
         directionX = this.enemyTarget.getPosition().getX() - this.getPosition().getX(); // set vector
         directionY = this.enemyTarget.getPosition().getY() - this.getPosition().getY(); // set vector
         float length = directionX * directionX + directionY * directionY;
-        directionX /= length; //set to unit length
-        directionY /= length; //set to unit length;
+        directionX /= Math.sqrt(length); //set to unit length
+        directionY /= Math.sqrt(length); //set to unit length;
         setPosition(new Position(this.getPosition().getX() + directionX * speed, this.getPosition().getY() + directionY * speed));
     }
 
