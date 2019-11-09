@@ -185,7 +185,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     // operation with Health
     public boolean isDead() {
-        return health == 0;
+        return health <= 0;
     }
 
     //add more targets for tower

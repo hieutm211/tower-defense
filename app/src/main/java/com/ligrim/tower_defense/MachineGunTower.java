@@ -134,7 +134,7 @@ public class MachineGunTower implements Tower {
     }
 
     public void deleteTarget() {
-        enemyTarget.remove();
+        enemyTarget.poll();
     }
 
     @Override

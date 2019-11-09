@@ -134,7 +134,7 @@ public class SniperTower implements Tower {
     }
 
     public void deleteTarget() {
-        enemyTarget.remove();
+        enemyTarget.poll();
     }
 
     @Override
