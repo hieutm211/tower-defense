@@ -92,7 +92,7 @@ public class TankerEnemy implements Enemy {
 
     @Override
     public void update() {
-        nextDestination();
+        if (isReachCheckpoint()) nextDestination();
         float newEnemyPositionX = this.getPosition().getX() + this.getDirectionX() * this.getSpeed();
         float newEnemyPositionY = this.getPosition().getY() + this.getDirectionY() * this.getSpeed();
         this.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
