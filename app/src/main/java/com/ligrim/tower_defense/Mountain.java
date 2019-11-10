@@ -1,11 +1,9 @@
 package com.ligrim.tower_defense;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public class Mountain implements GameTile {
 
-    private static Bitmap image;
     private Position position;
     private final int width = 128;
     private final int height = 128;

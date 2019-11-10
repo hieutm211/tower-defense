@@ -1,6 +1,5 @@
 package com.ligrim.tower_defense;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public class Road implements GameTile {
@@ -9,7 +8,6 @@ public class Road implements GameTile {
     public static final int TYPE_TARGET = 2;
 
     protected int type;
-    protected static Bitmap image;
     protected Position position;
 
     private final int width = 128;
