@@ -15,5 +15,6 @@ public interface Tower extends GameTile {
     Enemy chooseEnemyTarget();
     void deleteTarget();
     Queue<Enemy> getEnemyTarget();
-
+    int getLevel();
+    String toString();
 }

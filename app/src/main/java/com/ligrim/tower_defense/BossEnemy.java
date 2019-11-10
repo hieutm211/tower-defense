@@ -2,6 +2,8 @@ package com.ligrim.tower_defense;
 
 import android.graphics.Canvas;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 public class BossEnemy implements Enemy {
@@ -36,6 +38,7 @@ public class BossEnemy implements Enemy {
         assert (route.size() > 1);
         checkpoint = 1;
     }
+
 
     @Override
     public int getHealth() {

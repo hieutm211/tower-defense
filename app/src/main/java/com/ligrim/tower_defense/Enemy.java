@@ -16,4 +16,5 @@ public interface Enemy extends GameEntity {
     void nextDestination();
     boolean isReachTarget();
     boolean isCollideTo(Enemy other); // check if the two enemy are the same class and if they collide
+    String toString();
 }
