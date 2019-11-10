@@ -216,135 +216,63 @@ public class GameStage {
         return false;
     }
 
-    // read map data from txm file, do not modify
-    private void readMapData(InputStream filename) {
-        InputStream inputFile = filename;
-        try {
-            /*       File inputFile = new File(folder);*/
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(inputFile);
+    public List<Tower> readSaveFile(InputStream in) {
+        List<Tower> list = new ArrayList<>();
+        try
+        {
+            //an instance of factory that gives a document builder
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            //an instance of builder to parse the specified xml file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(in);
             doc.getDocumentElement().normalize();
 
-            NodeList nList = doc.getElementsByTagName("map");
+            NodeList round = doc.getElementsByTagName("round");
+            Node roundNode = round.item(0);
+            currentRound = Integer.parseInt( ((Element)roundNode).getAttribute("id") );
 
-            for (int temp = 0; temp < nList.getLength(); temp++)
+
+            NodeList nodeList = doc.getElementsByTagName("tower");
+            // nodeList is not iterable, so we are using for loop
+            for (int itr = 0; itr < nodeList.getLength(); itr++)
             {
-                //int temp = 0;
-                Node nNode = nList.item(temp);
+                Node node = nodeList.item(itr);
+                System.out.println("\nNode Name :" + node.getNodeName());
+                if (node.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    Element eElement = (Element) node;
+                    String type = eElement.getAttribute("type");
+                    String posX = eElement.getAttribute("PosX");
+                    String posY = eElement.getAttribute("PosY");
 
+                    System.out.println("tower id: "+ eElement.getAttribute("id"));
+                    System.out.println("tower type: "+ type);
+                    System.out.println("tower posX: "+ posX);
+                    System.out.println("tower posY: "+ posY);
 
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
-                    // read by attribute
+                    Position pos = new Position(Float.parseFloat(posX), Float.parseFloat(posY));
 
-                    WIDTH = Integer.parseInt(eElement.getAttribute("width"));
-
-
-                    HEIGHT = Integer.parseInt(eElement.getAttribute("height"));
-
-
-                    mapData = new int[HEIGHT][WIDTH];
-
-                    UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
-                    UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));
-
-
-                    String buffer = eElement
-                            .getElementsByTagName("data")
-                            .item(0)
-                            .getTextContent();
-
-                    // convert from String input to integer array
-
-
-                    String[] splitLine = buffer.split(NEWLINE);
-                    String[][] splitString = new String[HEIGHT][];
-
-
-                    for (int i = 1; i < splitLine.length; ++i) {
-                        splitString[i - 1] = splitLine[i].split(",");
-                    }
-
-                    for (int j = 0; j < HEIGHT; ++j) {
-                        for (int k = 0; k < WIDTH; ++k) {
-                            mapData[j][k] = Integer.parseInt(splitString[j][k]);
-                        }
+                    switch (type) {
+                        case "normal":
+                            list.add(new NormalTower(pos) );
+                            break;
+                        case "sniper":
+                            list.add(new SniperTower(pos));
+                            break;
+                        case "machine":
+                            list.add(new MachineGunTower(pos));
+                            break;
                     }
 
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-    }
-
-    // read enemy Information, i.e the order enemy appear
-    // initial all rounds in the game
-    private void readEnemyInfo(InputStream Enemy_info, InputStream Route_info) {
-        try {
-            // declare file directory here
-            InputStream EnemyFile = Enemy_info;
-            BufferedReader Enemy = new BufferedReader(new InputStreamReader(EnemyFile, "UTF-8"));
-            InputStream RouteFile = Route_info;
-            BufferedReader Route = new BufferedReader(new InputStreamReader(RouteFile, "UTF-8"));
-
-            String st;
-            // read route info
-            while ((st = Route.readLine()) != null) {
-                String[] splitColon = st.split(";");
-
-                for (int i = 0; i < splitColon.length; ++i) {
-                    String[] coordinate = splitColon[i].split(",");
-                    Position pos = new Position(Float.parseFloat(coordinate[0]), Float.parseFloat(coordinate[1]));
-                    this.route.add(pos);
-                }
-            }
-
-            // read enemy info
-            int roundNumber = 0;
-            while ((st = Enemy.readLine()) != null) { // read each line from enemy_Info file
-                // initial round according to round number
-                Round round = new Round(roundNumber++, this.route);
-
-                // split each line by comma sign
-                String[] splitComma = st.split(",");
-
-                for (int i = 0; i < splitComma.length; ++i) {
-                    // split data into two fields, enemy type and amount
-                    String[] cell = splitComma[i].split("-");
-                    // here are these two type to be processed
-                    String c1 = cell[0], c2 = cell[1];
-                    // handling according to its type
-                    switch (c1) {
-                        case "A":
-                            round.add(EnemyType.SMALLER_ENEMY, Integer.parseInt(c2));
-                            break;
-                        case "B":
-                            round.add(EnemyType.NORMAL_ENEMY, Integer.parseInt(c2));
-                            break;
-                        case "C":
-                            round.add(EnemyType.TANKER_ENEMY, Integer.parseInt(c2));
-                            break;
-                        case "D":
-                            round.add(EnemyType.BOSS_ENEMY, Integer.parseInt(c2));
-                            break;
-                        case "N":
-                            round.add(EnemyType.NONE, Integer.parseInt(c2));
-                            break;
-                    }
-                }
-
-                // add round to rounds list
-                roundList.add(round);
-
-            }
-
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        catch (Exception e)
+        {
+            //e.printStackTrace();
+            System.out.println("no file saved!");
         }
+        return list;
     }
 
     public void saveToFile(List<Tower> towerList, int currentRound, String toFile) {
@@ -425,6 +353,143 @@ public class GameStage {
         }
     }
 
+    /***************************************************************************
+     * Helper functions .
+     ***************************************************************************/
+
+    // read map data from txm file, do not modify
+    private void readMapData(InputStream filename) {
+        InputStream inputFile = filename;
+        try {
+            /*       File inputFile = new File(folder);*/
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList nList = doc.getElementsByTagName("map");
+
+            for (int temp = 0; temp < nList.getLength(); temp++)
+            {
+                //int temp = 0;
+                Node nNode = nList.item(temp);
+
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    // read by attribute
+
+                    WIDTH = Integer.parseInt(eElement.getAttribute("width"));
+
+
+                    HEIGHT = Integer.parseInt(eElement.getAttribute("height"));
+
+
+                    mapData = new int[HEIGHT][WIDTH];
+
+                    UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
+                    UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));
+
+
+                    String buffer = eElement
+                            .getElementsByTagName("data")
+                            .item(0)
+                            .getTextContent();
+
+                    // convert from String input to integer array
+
+
+                    String[] splitLine = buffer.split(NEWLINE);
+                    String[][] splitString = new String[HEIGHT][];
+
+
+                    for (int i = 1; i < splitLine.length; ++i) {
+                        splitString[i - 1] = splitLine[i].split(",");
+                    }
+
+                    for (int j = 0; j < HEIGHT; ++j) {
+                        for (int k = 0; k < WIDTH; ++k) {
+                            mapData[j][k] = Integer.parseInt(splitString[j][k]);
+                        }
+                    }
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // read enemy Information, i.e the order enemy appear
+    // initial all rounds in the game
+    private void readEnemyInfo(InputStream Enemy_info, InputStream Route_info) {
+        try {
+            // declare file directory here
+            InputStream EnemyFile = Enemy_info;
+            BufferedReader Enemy = new BufferedReader(new InputStreamReader(EnemyFile, "UTF-8"));
+            InputStream RouteFile = Route_info;
+            BufferedReader Route = new BufferedReader(new InputStreamReader(RouteFile, "UTF-8"));
+
+            String st;
+            // read route info
+            while ((st = Route.readLine()) != null) {
+                String[] splitColon = st.split(";");
+
+                for (int i = 0; i < splitColon.length; ++i) {
+                    String[] coordinate = splitColon[i].split(",");
+                    Position pos = new Position(Float.parseFloat(coordinate[0]), Float.parseFloat(coordinate[1]));
+                    this.route.add(pos);
+                }
+            }
+
+            // read enemy info
+            int roundNumber = 0;
+            while ((st = Enemy.readLine()) != null) { // read each line from enemy_Info file
+                // initial round according to round number
+                Round round = new Round(roundNumber++, this.route);
+
+                // split each line by comma sign
+                String[] splitComma = st.split(",");
+
+                for (int i = 0; i < splitComma.length; ++i) {
+                    // split data into two fields, enemy type and amount
+                    String[] cell = splitComma[i].split("-");
+                    // here are these two type to be processed
+                    String c1 = cell[0], c2 = cell[1];
+                    // handling according to its type
+                    switch (c1) {
+                        case "A":
+                            round.add(EnemyType.SMALLER_ENEMY, Integer.parseInt(c2));
+                            break;
+                        case "B":
+                            round.add(EnemyType.NORMAL_ENEMY, Integer.parseInt(c2));
+                            break;
+                        case "C":
+                            round.add(EnemyType.TANKER_ENEMY, Integer.parseInt(c2));
+                            break;
+                        case "D":
+                            round.add(EnemyType.BOSS_ENEMY, Integer.parseInt(c2));
+                            break;
+                        case "N":
+                            round.add(EnemyType.NONE, Integer.parseInt(c2));
+                            break;
+                    }
+                }
+
+                // add round to rounds list
+                roundList.add(round);
+
+            }
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private boolean isRoad(int i, int j) {
         if (i >= mapData.length || j >= mapData[0].length) return false;
         for (int k = 0; k < roadID.length; ++k) {
@@ -483,5 +548,7 @@ public class GameStage {
             towers.add(new NormalTower(new Position(i * 20, i * 20)));
         }
         game.saveToFile(towers, 3, "app/src/main/assets/map/map_1/saveFile.xml");
+        InputStream in = new FileInputStream("app/src/main/assets/map/map_1/saveFile.xml");
+        game.readSaveFile(in);
     }
 }

@@ -39,11 +39,6 @@ public class BossEnemy implements Enemy {
         checkpoint = 1;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return "boss";
-    }
 
     @Override
     public int getHealth() {
