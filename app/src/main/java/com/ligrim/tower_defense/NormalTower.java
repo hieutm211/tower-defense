@@ -127,29 +127,22 @@ public class NormalTower implements Tower {
 
     public Enemy chooseEnemyTarget() {
         while(enemyTarget.peek() != null && (enemyTarget.peek().isFaded()
-                    || distance(this, enemyTarget.peek()) > this.getRange())) {
+                    || Position.distance(this.getPosition(), enemyTarget.peek().getPosition()) > this.getRange())) {
             deleteTarget();
         }
         return enemyTarget.peek();
     }
 
     public void deleteTarget() {
-        enemyTarget.remove();
-    }
-
-    private float distance(Tower tower, Enemy enemy) {
-        Position towPos = tower.getPosition();
-        Position enPos = enemy.getPosition();
-        return (float) Math.sqrt((towPos.getX() - enPos.getX()) * (towPos.getX() - enPos.getX())
-                + (towPos.getY() - enPos.getY()) * (towPos.getY() - enPos.getY()));
+        enemyTarget.poll();
     }
 
     @Override
     public void update() {
         Enemy finalTarget = chooseEnemyTarget();
         if (finalTarget == null) return;
-        directionX = finalTarget.getDirectionX() - this.getPosition().getX();
-        directionY = finalTarget.getDirectionY() - this.getPosition().getY();
+        directionX = finalTarget.getPosition().getX() - this.getPosition().getX();
+        directionY = finalTarget.getPosition().getY() - this.getPosition().getY();
         if (directionX == 0 && directionY == 0) angle = 0;
         else {
             float tempAngle = (float) Math.atan(Math.abs(directionY / directionX)) * 180 / (float) Math.PI;
