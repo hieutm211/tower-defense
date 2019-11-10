@@ -36,6 +36,11 @@ public class MachineGunTower implements Tower {
     }
 
     @Override
+    public int getLevel() {
+        return 0;
+    }
+
+    @Override
     public float getRateOfFire() {
         return rateOfFire;
     }

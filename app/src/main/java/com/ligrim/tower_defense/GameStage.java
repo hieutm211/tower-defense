@@ -1,6 +1,8 @@
 package com.ligrim.tower_defense;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +12,7 @@ import java.util.List;
 import android.graphics.Bitmap;
 import android.text.LoginFilter;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -17,6 +20,13 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class GameStage {
 
@@ -337,6 +347,84 @@ public class GameStage {
         }
     }
 
+    public void saveToFile(List<Tower> towerList, int currentRound, String toFile) {
+        String xmlFilePath = toFile;
+        try {
+
+            DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+
+            DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+
+            Document document = documentBuilder.newDocument();
+
+            // root element
+            Element root = document.createElement("round");
+            document.appendChild(root);
+
+            // add round information here
+            Attr roundId = document.createAttribute("id");
+            roundId.setValue(Integer.toString(currentRound));
+            root.setAttributeNode(roundId);
+
+            // tower element
+            for (int i = 0; i < towerList.size(); ++i) {
+                Element tower = document.createElement("tower");
+
+                root.appendChild(tower);
+
+                // set an attribute id to element
+                Attr id = document.createAttribute("id");
+                id.setValue(Integer.toString(i));
+                tower.setAttributeNode(id);
+
+
+                // set an attribute level to element
+                Attr level = document.createAttribute("level");
+                level.setValue(Integer.toString(towerList.get(i).getLevel()));
+                tower.setAttributeNode(level);
+
+                //you can also use staff.setAttribute("id", "1") for this
+
+                // add information about x pos and y pos
+                // set an attribute level to element
+                Attr posX = document.createAttribute("PosX");
+                posX.setValue(Double.toString(towerList.get(i).getPosition().getX()));
+                tower.setAttributeNode(posX);
+
+                // set an attribute y pos to element
+                Attr posY = document.createAttribute("PosY");
+                posY.setValue( Double.toString(towerList.get(i).getPosition().getY()) );
+                tower.setAttributeNode(posY);
+
+                // set an attribute type to element
+                Attr type = document.createAttribute("type");
+                type.setValue( towerList.get(i).toString() );
+                tower.setAttributeNode(type);
+            }
+
+            // create the xml file
+            //transform the DOM Object to an XML File
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource domSource = new DOMSource(document);
+            StreamResult streamResult = new StreamResult(new File(xmlFilePath));
+
+            // If you use
+            // StreamResult result = new StreamResult(System.out);
+            // the output will be pushed to the standard output ...
+            // You can use that for debugging
+
+            transformer.transform(domSource, streamResult);
+
+            System.out.println("Done creating XML File");
+
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+    }
+
     private boolean isRoad(int i, int j) {
         if (i >= mapData.length || j >= mapData[0].length) return false;
         for (int k = 0; k < roadID.length; ++k) {
@@ -385,4 +473,15 @@ public class GameStage {
         System.out.println("total round: " + game.totalRound());
         game.printRouteInfo();
     }*/
+
+    public static void main(String[] args) throws Exception {
+        GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_1/sample_map1.tmx"),
+                        new FileInputStream("app/src/main/assets/map/map_1/enemy_info.txt"),
+                        new FileInputStream("app/src/main/assets/map/map_1/route_info.txt")  );
+        List<Tower> towers = new ArrayList<>();
+        for (int i = 0; i < 10; ++i) {
+            towers.add(new NormalTower(new Position(i * 20, i * 20)));
+        }
+        game.saveToFile(towers, 3, "app/src/main/assets/map/map_1/saveFile.xml");
+    }
 }

@@ -2,6 +2,8 @@ package com.ligrim.tower_defense;
 
 import android.graphics.Canvas;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,6 +35,17 @@ public class NormalTower implements Tower {
         directionY = 0;
         enemyTarget = new LinkedList<>();
 
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "normal";
+    }
+
+    @Override
+    public int getLevel() {
+        return 0;
     }
 
     @Override
