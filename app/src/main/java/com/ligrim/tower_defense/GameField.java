@@ -93,11 +93,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         addEnemy();
         checkEnemyReachTarget();
 
-        //check if can put tower here canPutTower(tower)
-            // if there is no problem addTower()
-        // end of build Tower code
-
-
         // battlefield update
         updateTowersTarget();
         for (Tower tower: towerList) {
@@ -170,9 +165,12 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
         return false;
     }
-
-    public void addTower(Tower tower) {
-        towerList.add(tower);
+    public void addTower(String towerId, Position pos) {
+        switch(towerId) {
+            case "tower_normal": towerList.add(new NormalTower(pos)); break;
+            case "tower_sniper": towerList.add(new SniperTower(pos)); break;
+            case "tower_machine_gun": towerList.add(new MachineGunTower(pos)); break;
+        }
     }
 
 
