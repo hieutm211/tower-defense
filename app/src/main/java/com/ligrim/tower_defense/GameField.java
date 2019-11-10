@@ -161,7 +161,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     //set up Tower
     public boolean canSetTower(String towerId, Position pos) {
-        Tower tower;
+        Tower tower = new NormalTower(pos);
         switch(towerId) {
             case "tower_normal": tower = new NormalTower(pos); break;
             case "tower_sniper": tower = new SniperTower(pos); break;
