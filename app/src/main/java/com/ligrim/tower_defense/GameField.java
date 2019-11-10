@@ -19,13 +19,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private List<Tower> towerList; // tower da duoc xay dung.
     private List<GameTile> tileList;
 
-    private Spawner spawner;
     private List<Bullet> bulletList; // nhung vien dan dang bay
 
     private int gold;
     private int health;
 
     private double gameTick;
+    private double lastAddEnemyTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
     private final double timeToAddEnemy = 1.0;
     private final double shootTime = 0.5;
@@ -48,15 +48,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.bulletList = new ArrayList<>();
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = 0.0;
+        lastAddEnemyTick = -1.0;
         this.health = 10;
-
-        //get Spawner
-        for (GameTile tile: tileList) {
-            if (tile instanceof Spawner) {
-                spawner = (Spawner) tile;
-                break;
-            }
-        }
     }
 
     @Override
@@ -143,13 +136,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     //update list of Enemy
     public void addEnemy() {
-        if (gameTick - spawner.getSpawnerTick() >= timeToAddEnemy) {
+        if (gameTick - lastAddEnemyTick >= timeToAddEnemy) {
             if (stage.hasNextEnemy()) {
                 Enemy enemy = stage.nextEnemy();
                 if (enemy != null) {
                     enemyList.add(enemy);
                 }
-                spawner.setSpawnerTick(gameTick);
+                lastAddEnemyTick = gameTick;
             }
         }
     }
