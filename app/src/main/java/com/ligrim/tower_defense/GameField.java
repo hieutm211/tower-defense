@@ -160,7 +160,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     //set up Tower
-    public boolean canSetTower(Tower tower) {
+    public boolean canSetTower(String towerId, Position pos) {
+        Tower tower;
+        switch(towerId) {
+            case "tower_normal": tower = new NormalTower(pos); break;
+            case "tower_sniper": tower = new SniperTower(pos); break;
+            case "tower_machine_gun": tower = new MachineGunTower(pos); break;
+        }
         return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower);
     }
     public boolean isTowerTowerOverlap(Tower experimentalTower) {
