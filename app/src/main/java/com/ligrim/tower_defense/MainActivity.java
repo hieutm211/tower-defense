@@ -20,14 +20,14 @@ public class MainActivity extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        GameGraphic.setAssetManager(this.getAssets());
-
         try {
             InputStream mapFile = getAssets().open("map/map_1/sample_map1.tmx");
             InputStream enemyFile = getAssets().open("map/map_1/enemy_info.txt");
             InputStream routeFile = getAssets().open("map/map_1/route_info.txt");
             GameStage gameStage = new GameStage(mapFile, enemyFile, routeFile);
             setContentView(new GameField(this, gameStage));
+            GameGraphic.setAssetManager(this.getAssets());
+            GameGraphic.setGameStage(gameStage);
         } catch (IOException e) {
             e.printStackTrace();
         }

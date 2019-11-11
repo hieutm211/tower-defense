@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.text.LoginFilter;
 
 import org.w3c.dom.Attr;
@@ -126,10 +127,10 @@ public class GameStage {
     private static String NEWLINE = Character.toString((char) 10);
     private static int[] roadID = {0, 1, 2, 5, 6, 7, 10, 11, 12, 23, 25, 28, 30, 33, 35, 46, 47, 48, 51, 52, 53, 56, 57, 58};
 
-    private int UNIT_WIDTH;
-    private int UNIT_HEIGHT;
-    private int WIDTH;
-    private int HEIGHT;
+    public int UNIT_WIDTH;
+    public int UNIT_HEIGHT;
+    public int WIDTH;
+    public int HEIGHT;
     public final int INITIAL_GOLD = 100;
     private int[][] mapData;
     private Bitmap demoImg;
@@ -151,26 +152,6 @@ public class GameStage {
 
     public List<Position> getRoute () {
         return route;
-    }
-
-    public int getHEIGHT() {
-        return HEIGHT;
-    }
-
-    public int getINITIAL_GOLD() {
-        return INITIAL_GOLD;
-    }
-
-    public int getUNIT_HEIGHT() {
-        return UNIT_HEIGHT;
-    }
-
-    public int getUNIT_WIDTH() {
-        return UNIT_WIDTH;
-    }
-
-    public int getWIDTH() {
-        return WIDTH;
     }
 
     public int getCurrentRound() {
@@ -390,7 +371,6 @@ public class GameStage {
                     UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
                     UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));
 
-
                     String buffer = eElement
                             .getElementsByTagName("data")
                             .item(0)
@@ -539,6 +519,14 @@ public class GameStage {
         game.printRouteInfo();
     }*/
 
+    public void draw(Canvas canvas) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                Bitmap bitmap = GameGraphic.getTileById(Integer.toString(mapData[j][i]));
+                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+            }
+        }
+    }
     public static void main(String[] args) throws Exception {
         GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_1/sample_map1.tmx"),
                         new FileInputStream("app/src/main/assets/map/map_1/enemy_info.txt"),
