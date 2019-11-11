@@ -198,9 +198,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         for (Tower tower: towerList) {
             if (gameTick - tower.getTickOfLastShot() > shootTime) {
                 Enemy target = tower.chooseEnemyTarget();
-                if (!(target == null))
+                if (!(target == null)) {
                     bulletList.add(new Bullet(tower, target));
-                tower.setTickOfLastShot(gameTick);
+                    tower.setTickOfLastShot(gameTick);
+                }
             }
         }
     }
