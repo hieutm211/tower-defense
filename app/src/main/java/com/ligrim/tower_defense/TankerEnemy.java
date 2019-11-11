@@ -22,6 +22,7 @@ public class TankerEnemy extends Enemy {
 
     }
 
+    @Override
     public String getId() {
         return "tanker";
     }

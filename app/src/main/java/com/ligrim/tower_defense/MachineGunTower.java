@@ -25,6 +25,7 @@ public class MachineGunTower extends Tower {
 
     }
 
+    @Override
     public String getId() {
         return "machine_gun";
     }

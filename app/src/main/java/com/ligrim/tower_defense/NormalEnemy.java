@@ -23,8 +23,9 @@ public class NormalEnemy extends Enemy {
 
     }
 
+    @Override
     public String getId() {
-        return "normal_tower";
+        return "normal";
     }
 
 }

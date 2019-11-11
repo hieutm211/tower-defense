@@ -25,6 +25,7 @@ public class SniperTower extends Tower {
 
     }
 
+    @Override
     public String getId() {
         return "sniper";
     }

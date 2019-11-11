@@ -24,8 +24,9 @@ public class NormalTower extends Tower {
 
     }
 
+    @Override
     public String getId() {
-        return "normal_enemy";
+        return "normal";
     }
 
 

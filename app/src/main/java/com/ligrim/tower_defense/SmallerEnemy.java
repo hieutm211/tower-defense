@@ -21,6 +21,7 @@ public class SmallerEnemy extends Enemy {
         faded = false;
     }
 
+    @Override
     public String getId() {
         return "smaller";
     }

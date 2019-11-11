@@ -70,6 +70,11 @@ public abstract class Enemy implements GameEntity {
     }
 
     public boolean collision(GameEntity other) {
+        if (other instanceof Tower){
+            Tower towerOther = (Tower) other;
+            if (!(this.getClass().equals(towerOther.getClass()))) return false;
+            return Position.distance(this.position, towerOther.getPosition()) <= this.speed;
+        }
         return false;
     }
 
@@ -140,10 +145,10 @@ public abstract class Enemy implements GameEntity {
     }
 
     // check if the given enemy is the same type of this enemy, then check the distance between them
-    public boolean isCollideTo(Enemy other) {
-        if (!(this.getClass().equals(other.getClass()))) return false;
-        return Position.distance(this.position, other.getPosition()) <= this.speed;
-    }
+//    public boolean isCollideTo(Enemy other) {
+//        if (!(this.getClass().equals(other.getClass()))) return false;
+//        return Position.distance(this.position, other.getPosition()) <= this.speed;
+//    }
 
     private void updateDirection() {
         float dx = route.get(checkpoint).getX() - this.getPosition().getX();
