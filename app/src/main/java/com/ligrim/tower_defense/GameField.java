@@ -82,6 +82,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
         canvas.drawColor(Color.rgb(255, 176, 242));
         stage.draw(canvas);
+        for (Enemy enemy: enemyList) {
+            enemy.draw(canvas);
+        }
     }
 
     //update game state here
