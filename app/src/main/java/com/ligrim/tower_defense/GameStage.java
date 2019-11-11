@@ -133,6 +133,7 @@ public class GameStage {
     public int HEIGHT;
     public final int INITIAL_GOLD = 100;
     private int[][] mapData;
+    private int[][] mapLayer;
     private Bitmap demoImg;
     // list of all rounds in the game
     private List<Round> roundList;
@@ -341,6 +342,14 @@ public class GameStage {
                 canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
             }
         }
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                if (mapLayer[i][j] > 0) {
+                    Bitmap bitmap = GameGraphic.getTileById(mapLayer[i][j]);
+                    canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+                }
+            }
+        }
     }
 
     /***************************************************************************
@@ -357,53 +366,109 @@ public class GameStage {
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
 
-            NodeList nList = doc.getElementsByTagName("map");
+            Element Tagmap = (Element) doc.getElementsByTagName("map").item(0);
 
-            for (int temp = 0; temp < nList.getLength(); temp++)
+            // read width and height of the map
+
+            WIDTH = Integer.parseInt(Tagmap.getAttribute("width"));
+            HEIGHT = Integer.parseInt(Tagmap.getAttribute("height"));
+            UNIT_HEIGHT = Integer.parseInt(Tagmap.getAttribute("tileheight"));
+            UNIT_WIDTH = Integer.parseInt(Tagmap.getAttribute("tilewidth"));
+
+
+            NodeList TagLayer = doc.getElementsByTagName("layer");
+
+            for (int temp = 0; temp < TagLayer.getLength(); temp++)
             {
-                //int temp = 0;
-                Node nNode = nList.item(temp);
+                // read tile
+                if (temp == 0) {
+                    Node nNode = TagLayer.item(temp);
 
 
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
-                    // read by attribute
+                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                        Element eElement = (Element) nNode;
+                        // read by attribute
 
-                    WIDTH = Integer.parseInt(eElement.getAttribute("width"));
-
-
-                    HEIGHT = Integer.parseInt(eElement.getAttribute("height"));
+                        /*WIDTH = Integer.parseInt(eElement.getAttribute("width"));
 
 
-                    mapData = new int[HEIGHT][WIDTH];
-
-                    UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
-                    UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));
-
-                    String buffer = eElement
-                            .getElementsByTagName("data")
-                            .item(0)
-                            .getTextContent();
-
-                    // convert from String input to integer array
+                        HEIGHT = Integer.parseInt(eElement.getAttribute("height"));*/
 
 
-                    String[] splitLine = buffer.split(NEWLINE);
-                    String[][] splitString = new String[HEIGHT][];
+                        mapData = new int[HEIGHT][WIDTH];
+
+                        /*UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
+                        UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));*/
+
+                        String buffer = eElement
+                                .getElementsByTagName("data")
+                                .item(0)
+                                .getTextContent();
+
+                        // convert from String input to integer array
 
 
-                    for (int i = 1; i < splitLine.length; ++i) {
-                        splitString[i - 1] = splitLine[i].split(",");
+                        String[] splitLine = buffer.split(NEWLINE);
+                        String[][] splitString = new String[HEIGHT][];
+
+
+                        for (int i = 1; i < splitLine.length; ++i) {
+                            splitString[i - 1] = splitLine[i].split(",");
+                        }
+
+                        for (int j = 0; j < HEIGHT; ++j) {
+                            for (int k = 0; k < WIDTH; ++k) {
+                                mapData[j][k] = Integer.parseInt(splitString[j][k]) - 1;
+                            }
+                        }
+
                     }
+                }
+                // read terrain
+                if (temp == 1) {
+                        Node nNode = TagLayer.item(temp);
 
-                    for (int j = 0; j < HEIGHT; ++j) {
-                        for (int k = 0; k < WIDTH; ++k) {
-                            mapData[j][k] = Integer.parseInt(splitString[j][k]) - 1;
+
+                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                            Element eElement = (Element) nNode;
+                            // read by attribute
+
+                            /*WIDTH = Integer.parseInt(eElement.getAttribute("width"));
+
+
+                            HEIGHT = Integer.parseInt(eElement.getAttribute("height"));*/
+
+
+                            mapLayer = new int[HEIGHT][WIDTH];
+
+                            /*UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
+                            UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));*/
+
+                            String buffer = eElement
+                                    .getElementsByTagName("data")
+                                    .item(0)
+                                    .getTextContent();
+
+                            // convert from String input to integer array
+
+
+                            String[] splitLine = buffer.split(NEWLINE);
+                            String[][] splitString = new String[HEIGHT][];
+
+
+                            for (int i = 1; i < splitLine.length; ++i) {
+                                splitString[i - 1] = splitLine[i].split(",");
+                            }
+
+                            for (int j = 0; j < HEIGHT; ++j) {
+                                for (int k = 0; k < WIDTH; ++k) {
+                                    mapLayer[j][k] = Integer.parseInt(splitString[j][k]) - 1;
+                                }
+                            }
                         }
                     }
-
                 }
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -517,6 +582,15 @@ public class GameStage {
         System.out.println();
     }
 
+    private void printLayer() {
+        for (int i = 0; i < HEIGHT; ++i) {
+            for (int j = 0; j < WIDTH; ++j) {
+                System.out.print(mapLayer[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     /*public static void main(String[] args) {
         String folder1 = "app/map/Map1/sample_map1.tmx";
         String folder2 = "app/map/Map1/enemyInfo.txt";
@@ -539,5 +613,6 @@ public class GameStage {
         game.saveToFile(towers, 3, "app/src/main/assets/map/map_1/saveFile.xml");
         InputStream in = new FileInputStream("app/src/main/assets/map/map_1/saveFile.xml");
         game.readSaveFile(in);
+        game.printLayer();
     }
 }
