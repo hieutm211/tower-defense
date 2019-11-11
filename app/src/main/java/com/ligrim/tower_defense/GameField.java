@@ -214,6 +214,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
                     enemy.reduceHealth(bulletList.get(i).getDamage());
                     bulletList.remove(i);
                     i--;
+                    break;
                 }
             }
         }
