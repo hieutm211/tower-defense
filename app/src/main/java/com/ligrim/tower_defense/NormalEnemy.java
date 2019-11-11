@@ -9,7 +9,7 @@ public class NormalEnemy extends Enemy {
 
     public NormalEnemy(List<Position> route) {
         super(route);
-        this.health = 2;
+        this.health = 6;
         this.speed = 70f / 60;
         this.armor = 2;
         this.prize = 5;

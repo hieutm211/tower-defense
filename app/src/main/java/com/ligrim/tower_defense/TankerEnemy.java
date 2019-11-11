@@ -8,7 +8,7 @@ public class TankerEnemy extends Enemy {
 
     public TankerEnemy(List<Position> route) {
         super(route);
-        this.health = 3;
+        this.health = 6;
         this.speed = 150f / 60;
         this.armor = 3;
         this.prize = 5;
