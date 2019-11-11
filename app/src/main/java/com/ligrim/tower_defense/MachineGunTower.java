@@ -13,7 +13,7 @@ public class MachineGunTower extends Tower {
 
     public MachineGunTower(Position position) {
         super(position);
-        rateOfFire = 5f / 60;
+        rateOfFire = 200f / 60;
         range = 100;
         damage = 3;
         width = 128;
