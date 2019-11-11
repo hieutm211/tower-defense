@@ -33,18 +33,11 @@ public class GameGraphic {
         return map.get(id);
     }
 
-    public static Bitmap getTileById(int Id) {
-
-        String id = String.format("%03d", Id);
-
-        return getBitmapById("tile" + id + ".png");
+    public static Bitmap getTileById(int id) {
+        return getTileById(String.format("%03d", id));
     }
 
     public static Bitmap getTileById(String id) {
-        while (id.length() < 3) {
-            id = "0" + id;
-        }
-
         return getBitmapById("tile" + id + ".png");
     }
 
