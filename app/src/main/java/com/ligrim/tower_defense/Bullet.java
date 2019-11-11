@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public class Bullet implements GameEntity {
@@ -78,11 +79,6 @@ public class Bullet implements GameEntity {
     }
 
     @Override
-    public void draw(Canvas canvas) {
-
-    }
-
-    @Override
     public int getWidth() {
         return width;
     }
@@ -90,5 +86,12 @@ public class Bullet implements GameEntity {
     @Override
     public int getHeight() {
         return height;
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        Bitmap bitmap = GameGraphic.getTowerById(owner.getId() + "_bullet");
+        bitmap = Bitmap.createScaledBitmap(bitmap, width, height, false);
+        canvas.drawBitmap(bitmap, position.getX(), position.getY(), null);
     }
 }
