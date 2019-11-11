@@ -88,9 +88,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
         addEnemy();
         checkEnemyReachTarget();
-        for(Enemy enemy: enemyList) {
-            System.out.println(enemy.getPosition().toString());
-        }
 
         // battlefield update
         updateTowersTarget();
