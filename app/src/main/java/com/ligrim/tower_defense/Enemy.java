@@ -70,10 +70,10 @@ public abstract class Enemy implements GameEntity {
     }
 
     public boolean collision(GameEntity other) {
-        if (other instanceof Tower){
-            Tower towerOther = (Tower) other;
-            if (!(this.getClass().equals(towerOther.getClass()))) return false;
-            return Position.distance(this.position, towerOther.getPosition()) <= this.speed;
+        if (other instanceof Enemy){
+            Tower enemyOther = (Tower) other;
+            if (!(this.getClass().equals(enemyOther.getClass()))) return false;
+            return Position.distance(this.position, enemyOther.getPosition()) <= this.speed;
         }
         return false;
     }
