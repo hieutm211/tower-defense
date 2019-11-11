@@ -12,7 +12,7 @@ import java.util.Queue;
 public class NormalTower extends Tower {
     public NormalTower(Position position) {
         super(position);
-        rateOfFire = 3f / 60;
+        rateOfFire = 180f / 60;
         range = 200;
         damage = 3;
         width = 128;

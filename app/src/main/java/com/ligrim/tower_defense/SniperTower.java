@@ -13,7 +13,7 @@ public class SniperTower extends Tower {
 
     public SniperTower(Position position) {
         super(position);
-        rateOfFire = 3f / 60;
+        rateOfFire = 190f / 60;
         range = 200;
         damage = 3;
         width = 128;

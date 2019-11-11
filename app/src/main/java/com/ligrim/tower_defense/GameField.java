@@ -27,7 +27,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private double gameTick;
     private double lastAddEnemyTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
-    private final double timeToAddEnemy = 5.0;
+    private final double timeToAddEnemy = 2.5;
     private final double shootTime = 0.5;
 
 
@@ -248,6 +248,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public boolean canContinue() {
         return !isDead() || stage.hasNextEnemy() || stage.hasNextRound() || !enemyList.isEmpty();
     }
+
 
 
 }
