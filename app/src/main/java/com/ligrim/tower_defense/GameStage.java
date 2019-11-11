@@ -522,7 +522,8 @@ public class GameStage {
     public void draw(Canvas canvas) {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                Bitmap bitmap = GameGraphic.getTileById(Integer.toString(mapData[j][i]));
+                int id = mapData[i][j] - 1;
+                Bitmap bitmap = GameGraphic.getTileById(Integer.toString(id));
                 canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
             }
         }
