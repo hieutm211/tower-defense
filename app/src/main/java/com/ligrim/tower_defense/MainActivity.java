@@ -3,8 +3,12 @@ package com.ligrim.tower_defense;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +24,22 @@ public class MainActivity extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        setContentView(R.layout.activity_main);
+    }
+
+    public void pickGame(View view) {
+        TextView taptoplayText = findViewById(R.id.taptoplayText);
+        taptoplayText.animate().alpha(0f).setDuration(1000);
+
+        ImageView startScreen = findViewById(R.id.startScreen);
+        startScreen.animate().alpha(0.5f).setDuration(1000);
+
+        Button map_1 = findViewById(R.id.map_1);
+        map_1.setVisibility(View.VISIBLE);
+        map_1.animate().alpha(1f).setDuration(1000);
+    }
+
+    public void enterGame(View view) {
         try {
             InputStream mapFile = getAssets().open("map/map_1/sample_map1.tmx");
             InputStream enemyFile = getAssets().open("map/map_1/enemy_info.txt");
