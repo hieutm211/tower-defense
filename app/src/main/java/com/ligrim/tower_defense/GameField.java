@@ -81,6 +81,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         canvas.drawColor(Color.rgb(255, 176, 242));
+        stage.draw(canvas);
     }
 
     //update game state here
