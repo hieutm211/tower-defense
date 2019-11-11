@@ -337,8 +337,7 @@ public class GameStage {
     public void draw(Canvas canvas) {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                int id = mapData[i][j] - 1;
-                Bitmap bitmap = GameGraphic.getTileById(Integer.toString(id));
+                Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
                 canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
             }
         }
@@ -399,7 +398,7 @@ public class GameStage {
 
                     for (int j = 0; j < HEIGHT; ++j) {
                         for (int k = 0; k < WIDTH; ++k) {
-                            mapData[j][k] = Integer.parseInt(splitString[j][k]);
+                            mapData[j][k] = Integer.parseInt(splitString[j][k]) - 1;
                         }
                     }
 
@@ -483,7 +482,7 @@ public class GameStage {
     private boolean isRoad(int i, int j) {
         if (i >= mapData.length || j >= mapData[0].length) return false;
         for (int k = 0; k < roadID.length; ++k) {
-            if (mapData[i][j] - 1 == roadID[k]) return true;
+            if (mapData[i][j] == roadID[k]) return true;
         }
         return false;
     }
