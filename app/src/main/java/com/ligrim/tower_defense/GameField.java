@@ -255,6 +255,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         for (Tower tower: towerList) {
             tower.draw(canvas);
         }
+        for (Bullet bullet: bulletList) {
+            bullet.draw(canvas);
+        }
     }
 
 }
