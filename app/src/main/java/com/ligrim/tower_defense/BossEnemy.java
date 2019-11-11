@@ -10,7 +10,7 @@ public class BossEnemy extends Enemy {
 
     public BossEnemy(List<Position> route) {
         super(route);
-        this.health = 3;
+        this.health = 6;
         this.speed = 54f / 60;
         this.armor = 3;
         this.prize = 10;

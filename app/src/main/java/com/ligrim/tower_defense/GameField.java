@@ -50,6 +50,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         gameTick = 0.0;
         lastAddEnemyTick = -1.0;
         this.health = 10;
+        towerList.add(new NormalTower(new Position(400, 400)));
+        towerList.add(new SniperTower(new Position(400, 100)));
     }
 
     @Override
@@ -86,6 +88,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
         addEnemy();
         checkEnemyReachTarget();
+        for(Enemy enemy: enemyList) {
+            System.out.println(enemy.getPosition().toString());
+        }
 
         // battlefield update
         updateTowersTarget();
@@ -195,7 +200,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void updateNextShoot() {
         for (Tower tower: towerList) {
             if (gameTick - tower.getTickOfLastShot() > shootTime) {
-                bulletList.add(new Bullet(tower, tower.chooseEnemyTarget()));
+                Enemy target = tower.chooseEnemyTarget();
+                if (!(target == null))
+                    bulletList.add(new Bullet(tower, target));
                 tower.setTickOfLastShot(gameTick);
             }
         }
