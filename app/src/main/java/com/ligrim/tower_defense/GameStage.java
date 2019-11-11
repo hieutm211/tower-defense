@@ -334,6 +334,15 @@ public class GameStage {
         }
     }
 
+    public void draw(Canvas canvas) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
+                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+            }
+        }
+    }
+
     /***************************************************************************
      * Helper functions .
      ***************************************************************************/
@@ -389,7 +398,7 @@ public class GameStage {
 
                     for (int j = 0; j < HEIGHT; ++j) {
                         for (int k = 0; k < WIDTH; ++k) {
-                            mapData[j][k] = Integer.parseInt(splitString[j][k]);
+                            mapData[j][k] = Integer.parseInt(splitString[j][k]) - 1;
                         }
                     }
 
@@ -519,14 +528,6 @@ public class GameStage {
         game.printRouteInfo();
     }*/
 
-    public void draw(Canvas canvas) {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                Bitmap bitmap = GameGraphic.getTileById(Integer.toString(mapData[j][i]));
-                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-            }
-        }
-    }
     public static void main(String[] args) throws Exception {
         GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_1/sample_map1.tmx"),
                         new FileInputStream("app/src/main/assets/map/map_1/enemy_info.txt"),
