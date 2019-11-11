@@ -23,6 +23,8 @@ public abstract class Enemy implements GameEntity {
 
     public Enemy(List<Position> route) {
         this.route = route;
+        directionX = 0;
+        directionY = 0;
         assert (route.size() > 1);
         checkpoint = 1;
     }
@@ -80,6 +82,7 @@ public abstract class Enemy implements GameEntity {
 
     public void update() {
         if (isReachCheckpoint()) nextDestination();
+        updateDirection();
         float newEnemyPositionX = this.getPosition().getX() + this.getDirectionX() * this.getSpeed();
         float newEnemyPositionY = this.getPosition().getY() + this.getDirectionY() * this.getSpeed();
         this.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
