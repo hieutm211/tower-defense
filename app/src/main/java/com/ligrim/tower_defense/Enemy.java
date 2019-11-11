@@ -87,7 +87,7 @@ public abstract class Enemy implements GameEntity {
     }
 
     public void draw(Canvas canvas) {
-
+        canvas.drawBitmap(GameGraphic.getEnemyById(getId()), position.getX(), position.getY(), null);
     }
 
     public int getWidth() {
