@@ -77,16 +77,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
-        canvas.drawColor(Color.rgb(255, 176, 242));
-        stage.draw(canvas);
-        for (Enemy enemy: enemyList) {
-            enemy.draw(canvas);
-        }
-    }
-
     //update game state here
     public void update() {
 
@@ -249,6 +239,17 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return !isDead() || stage.hasNextEnemy() || stage.hasNextRound() || !enemyList.isEmpty();
     }
 
-
+    @Override
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+        canvas.drawColor(Color.rgb(255, 176, 242));
+        stage.draw(canvas);
+        for (Enemy enemy: enemyList) {
+            enemy.draw(canvas);
+        }
+        for (Tower tower: towerList) {
+            tower.draw(canvas);
+        }
+    }
 
 }

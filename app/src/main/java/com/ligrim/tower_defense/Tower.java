@@ -145,6 +145,10 @@ public abstract class Tower implements GameTile {
 
     @Override
     public void draw(Canvas canvas) {
+        float x = position.getX();
+        float y = position.getY();
 
+        canvas.drawBitmap(GameGraphic.getTowerById(getId()), x, y, null);
+        canvas.drawBitmap(GameGraphic.getTowerById(getId() + "_gun"), x, y, null);
     }
 }
