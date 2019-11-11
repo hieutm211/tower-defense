@@ -94,11 +94,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         addEnemy();
         checkEnemyReachTarget();
 
-        //check if can put tower here canPutTower(tower)
-            // if there is no problem addTower()
-        // end of build Tower code
-
-
         // battlefield update
         updateTowersTarget();
         for (Tower tower: towerList) {
@@ -164,9 +159,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public boolean canSetTower(String towerId, Position pos) {
         Tower tower = new NormalTower(pos);
         switch(towerId) {
-            case "tower_normal": tower = new NormalTower(pos); break;
-            case "tower_sniper": tower = new SniperTower(pos); break;
-            case "tower_machine_gun": tower = new MachineGunTower(pos); break;
+            case "normal": tower = new NormalTower(pos); break;
+            case "sniper": tower = new SniperTower(pos); break;
+            case "machine_gun": tower = new MachineGunTower(pos); break;
         }
         return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower);
     }
