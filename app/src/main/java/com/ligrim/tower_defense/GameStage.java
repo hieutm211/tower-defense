@@ -334,6 +334,16 @@ public class GameStage {
         }
     }
 
+    public void draw(Canvas canvas) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                int id = mapData[i][j] - 1;
+                Bitmap bitmap = GameGraphic.getTileById(Integer.toString(id));
+                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+            }
+        }
+    }
+
     /***************************************************************************
      * Helper functions .
      ***************************************************************************/
@@ -473,7 +483,7 @@ public class GameStage {
     private boolean isRoad(int i, int j) {
         if (i >= mapData.length || j >= mapData[0].length) return false;
         for (int k = 0; k < roadID.length; ++k) {
-            if (mapData[i][j] == roadID[k]) return true;
+            if (mapData[i][j] - 1 == roadID[k]) return true;
         }
         return false;
     }
@@ -519,15 +529,6 @@ public class GameStage {
         game.printRouteInfo();
     }*/
 
-    public void draw(Canvas canvas) {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                int id = mapData[i][j] - 1;
-                Bitmap bitmap = GameGraphic.getTileById(Integer.toString(id));
-                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-            }
-        }
-    }
     public static void main(String[] args) throws Exception {
         GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_1/sample_map1.tmx"),
                         new FileInputStream("app/src/main/assets/map/map_1/enemy_info.txt"),
