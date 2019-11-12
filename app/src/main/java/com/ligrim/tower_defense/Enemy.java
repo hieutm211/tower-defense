@@ -106,7 +106,7 @@ public abstract class Enemy implements GameEntity {
         }
         float newAngle = (float) Math.atan(Math.abs(directionY/directionX)) * 180 / (float) Math.PI;
 
-        if (directionX == 0 && directionY > 0) angle = 0;
+        if (directionX == 0 && directionY > 0) angle = 90;
         else if (directionX == 0  && directionY < 0) angle = -90;
         else if (directionX > 0 && directionY == 0) angle = 0;
         else if (directionX < 0 && directionY == 0) angle = 180;

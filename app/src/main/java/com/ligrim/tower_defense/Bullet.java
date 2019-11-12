@@ -16,6 +16,7 @@ public class Bullet implements GameEntity {
     private float directionY;
     private Enemy enemyTarget;
     private Tower owner;
+    private float angle;
 
     public Bullet(Tower owner, Enemy targetedEnemy) {
         this.owner = owner;
@@ -33,6 +34,7 @@ public class Bullet implements GameEntity {
         length = (float) Math.sqrt((double) length);
         directionX /= length; //set to unit length
         directionY /= length; //set to unit length;
+        setAngle(directionX, directionY);
     }
 
     float getSpeed() {
@@ -43,6 +45,27 @@ public class Bullet implements GameEntity {
     }
     int getDamage() {
         return damage;
+    }
+
+    private void setAngle(float dx, float dy) {
+        if (dx == 0 && dy == 0) {
+            angle = 0;
+            return;
+        }
+        float newAngle = (float) Math.atan(Math.abs(dy/dx)) * 180 / (float) Math.PI;
+
+        if (dx == 0 && dy > 0) angle = 90 + 90;
+        else if (dx == 0  && dy < 0) angle = -90 + 90;
+        else if (dx > 0 && dy == 0) angle = 0 + 90;
+        else if (dx < 0 && dy == 0) angle = 180 + 90;
+        else if (dx > 0 && dy > 0) angle = newAngle + 90;
+        else if (dx > 0 && dy < 0) angle = -newAngle + 90;
+        else if (dx < 0 && dy > 0) angle = -90 - newAngle;
+        else if (dx < 0 && dy < 0) angle = newAngle - 90;
+    }
+
+    public float getAngle() {
+        return angle;
     }
 
     public Tower getOwner() {
@@ -96,6 +119,9 @@ public class Bullet implements GameEntity {
     public void draw(Canvas canvas) {
         Bitmap bitmap = GameGraphic.getTowerById(owner.getId() + "_bullet");
         bitmap = Bitmap.createScaledBitmap(bitmap, width, height, false);
+        canvas.save();
+        canvas.rotate(angle, position.getX() + width/2 - 1, position.getY() + height/2 - 1);
         canvas.drawBitmap(bitmap, position.getX(), position.getY(), null);
+        canvas.restore();
     }
 }
