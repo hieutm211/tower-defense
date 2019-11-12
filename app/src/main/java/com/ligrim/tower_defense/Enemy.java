@@ -7,6 +7,7 @@ import java.util.List;
 
 public abstract class Enemy extends GameEntity {
     protected int health;
+    protected int maxHealth;
     protected float speed;
     protected int armor;
     protected int prize;
@@ -35,6 +36,8 @@ public abstract class Enemy extends GameEntity {
     public int getHealth() {
         return health;
     }
+
+    public float HPpercent() { return (float) health / maxHealth; }
 
     public float getSpeed() {
         return speed;

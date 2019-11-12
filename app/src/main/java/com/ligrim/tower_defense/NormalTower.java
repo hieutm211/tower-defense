@@ -12,14 +12,14 @@ import java.util.Queue;
 public class NormalTower extends Tower {
     public NormalTower(Position position) {
         super(position);
-        rateOfFire = 180f / 60;
-        range = 200;
-        damage = 3;
+        rateOfFire = 60f / 60;
+        range = 250;
+        damage = 150;
         lastShotTick = 0;
         directionX = 0;
         directionY = 0;
         enemyTarget = new LinkedList<>();
-        bulletSpeed = 8.5f;
+        bulletSpeed = 10f;
     }
 
     @Override

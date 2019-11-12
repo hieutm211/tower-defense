@@ -13,14 +13,14 @@ public class MachineGunTower extends Tower {
 
     public MachineGunTower(Position position) {
         super(position);
-        rateOfFire = 200f / 60;
-        range = 100;
-        damage = 3;
+        rateOfFire = 4f / 60;
+        range = 350;
+        damage = 35;
         lastShotTick = 0;
         directionX = 0;
         directionY = 0;
         enemyTarget = new LinkedList<>();
-        bulletSpeed = 9f;
+        bulletSpeed = 12f;
     }
 
     @Override

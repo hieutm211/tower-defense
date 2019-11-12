@@ -23,14 +23,8 @@ public class Bullet extends GameEntity {
         this.damage = owner.getDamage();
         this.position = owner.getPosition();
         enemyTarget = targetedEnemy;
-        /*directionX = targetedEnemy.getDirectionX() - targetedEnemy.getDirectionX(); // set vector
-        directionY = targetedEnemy.getDirectionY() - targetedEnemy.getDirectionY(); // set vector*/
-        directionX = this.enemyTarget.getPosition().getX() - this.getPosition().getX() + targetedEnemy.getDirectionX() * 4f; // set vector
-        directionY = this.enemyTarget.getPosition().getY() - this.getPosition().getY() + targetedEnemy.getDirectionY() * 4f; // set vector
-        float length = directionX * directionX + directionY * directionY;
-        length = (float) Math.sqrt((double) length);
-        directionX /= length; //set to unit length
-        directionY /= length; //set to unit length;
+
+        predictDirection();
         setAngle(directionX, directionY);
     }
 
@@ -38,7 +32,7 @@ public class Bullet extends GameEntity {
         return speed;
     }
     float getRange() {
-        return range + 500f;
+        return range + 200f;
     }
     int getDamage() {
         return damage;
@@ -61,6 +55,18 @@ public class Bullet extends GameEntity {
         else if (dx < 0 && dy < 0) angle = newAngle - 90;
     }
 
+    private void predictDirection() {
+        float distance = Position.distance(position, enemyTarget.getPosition());
+        directionX = this.enemyTarget.getPosition().getX() - this.getPosition().getX() + this.enemyTarget.getDirectionX() *
+                this.enemyTarget.getSpeed() * distance / speed ; // set vector
+        directionY = this.enemyTarget.getPosition().getY() - this.getPosition().getY() + this.enemyTarget.getDirectionY() *
+                this.enemyTarget.getSpeed() * distance / speed ; // set vector
+        float length = directionX * directionX + directionY * directionY;
+        length = (float) Math.sqrt((double) length);
+        directionX /= length; //set to unit length
+        directionY /= length; //set to unit length;
+    }
+
     public float getAngle() {
         return angle;
     }
@@ -73,8 +79,7 @@ public class Bullet extends GameEntity {
     public boolean collision(GameEntity other) {
         if (other instanceof Enemy) {
             Enemy enemy = (Enemy) other;
-            if (Position.distance(enemy.getPosition(), this.position) < COLLIDE_DISTANCE/*(float) Math.max(this.width + enemy.getWidth(),
-                    this.height + enemy.getHeight())*/  ) {
+            if (Position.distance(enemy.getPosition(), this.position) < COLLIDE_DISTANCE) {
                 return true;
             }
         }

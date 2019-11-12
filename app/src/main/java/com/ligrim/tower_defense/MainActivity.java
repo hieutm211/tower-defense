@@ -41,9 +41,9 @@ public class MainActivity extends Activity {
 
     public void enterGame(View view) {
         try {
-            InputStream mapFile = getAssets().open("map/map_1/sample_map1.tmx");
-            InputStream enemyFile = getAssets().open("map/map_1/enemy_info.txt");
-            InputStream routeFile = getAssets().open("map/map_1/route_info.txt");
+            InputStream mapFile = getAssets().open("map/map_2/sample_map2.tmx");
+            InputStream enemyFile = getAssets().open("map/map_2/enemy_info.txt");
+            InputStream routeFile = getAssets().open("map/map_2/route_info.txt");
             GameStage gameStage = new GameStage(mapFile, enemyFile, routeFile);
             setContentView(new GameField(this, gameStage));
             GameGraphic.setAssetManager(this.getAssets());
