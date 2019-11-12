@@ -5,16 +5,16 @@ import android.graphics.Canvas;
 
 import java.util.List;
 
-public abstract class Enemy implements GameEntity {
+public abstract class Enemy extends GameEntity {
     protected int health;
     protected float speed;
     protected int armor;
     protected int prize;
     protected float directionX;
     protected float directionY;
-    protected Position position;
-    protected int width = GameField.UNIT_WIDTH;
-    protected int height = GameField.UNIT_HEIGHT;
+//    protected Position position;
+//    protected int width = GameField.UNIT_WIDTH;
+//    protected int height = GameField.UNIT_HEIGHT;
     protected float angle;
     protected boolean faded;
     protected List<Position> route;
@@ -66,13 +66,13 @@ public abstract class Enemy implements GameEntity {
         return directionY;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public Position getPosition() {
-        return this.position;
-    }
+//    public void setPosition(Position position) {
+//        this.position = position;
+//    }
+//
+//    public Position getPosition() {
+//        return this.position;
+//    }
 
     public boolean collision(GameEntity other) {
         if (other instanceof Enemy){
@@ -106,7 +106,7 @@ public abstract class Enemy implements GameEntity {
         }
         float newAngle = (float) Math.atan(Math.abs(directionY/directionX)) * 180 / (float) Math.PI;
 
-        if (directionX == 0 && directionY > 0) angle = 0;
+        if (directionX == 0 && directionY > 0) angle = 90;
         else if (directionX == 0  && directionY < 0) angle = -90;
         else if (directionX > 0 && directionY == 0) angle = 0;
         else if (directionX < 0 && directionY == 0) angle = 180;
