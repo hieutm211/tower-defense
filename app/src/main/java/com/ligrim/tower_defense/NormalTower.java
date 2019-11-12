@@ -21,7 +21,7 @@ public class NormalTower extends Tower {
         directionX = 0;
         directionY = 0;
         enemyTarget = new LinkedList<>();
-
+        bulletSpeed = 8.5f;
     }
 
     @Override

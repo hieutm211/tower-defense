@@ -18,8 +18,11 @@ public abstract class Tower implements GameTile {
     protected float directionX;
     protected float directionY;
     protected Queue<Enemy> enemyTarget;
+    protected float bulletSpeed;
 
     public Tower(){}
+
+    public float getBulletSpeed() { return bulletSpeed; }
 
     public Tower(Position position) {
         this.position = position;

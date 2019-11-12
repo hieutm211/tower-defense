@@ -22,7 +22,7 @@ public class SniperTower extends Tower {
         directionX = 0;
         directionY = 0;
         enemyTarget = new LinkedList<>();
-
+        bulletSpeed = 11f;
     }
 
     @Override
