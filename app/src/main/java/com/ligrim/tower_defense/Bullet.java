@@ -3,15 +3,12 @@ package com.ligrim.tower_defense;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class Bullet implements GameEntity {
+public class Bullet extends GameEntity {
 
     private static final float COLLIDE_DISTANCE = 25f;
     private final float speed;
     private final float range;
     private final int damage;
-    private Position position;
-    private final int width = GameField.UNIT_WIDTH;
-    private final int height = GameField.UNIT_HEIGHT;
     private float directionX;
     private float directionY;
     private Enemy enemyTarget;
@@ -73,16 +70,6 @@ public class Bullet implements GameEntity {
     }
 
     @Override
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    @Override
-    public Position getPosition() {
-        return position;
-    }
-
-    @Override
     public boolean collision(GameEntity other) {
         if (other instanceof Enemy) {
             Enemy enemy = (Enemy) other;
@@ -103,16 +90,6 @@ public class Bullet implements GameEntity {
         directionX /= Math.sqrt(length); //set to unit length
         directionY /= Math.sqrt(length); //set to unit length;*/
         setPosition(new Position(this.getPosition().getX() + directionX * speed, this.getPosition().getY() + directionY * speed));
-    }
-
-    @Override
-    public int getWidth() {
-        return width;
-    }
-
-    @Override
-    public int getHeight() {
-        return height;
     }
 
     @Override

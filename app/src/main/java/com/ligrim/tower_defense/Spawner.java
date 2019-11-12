@@ -23,39 +23,4 @@ public class Spawner extends Road {
     public Spawner(float x, float y) {
         super(x, y);
     }
-
-    @Override
-    public void setPosition(Position position) {
-        super.setPosition(position);
-    }
-
-    @Override
-    public Position getPosition() {
-        return super.getPosition();
-    }
-
-    @Override
-    public boolean collision(GameEntity gameEntity) {
-        return super.collision(gameEntity);
-    }
-
-    @Override
-    public void update() {
-        super.update();
-    }
-
-    @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
-    }
-
-    @Override
-    public int getWidth() {
-        return super.getWidth();
-    }
-
-    @Override
-    public int getHeight() {
-        return super.getHeight();
-    }
 }

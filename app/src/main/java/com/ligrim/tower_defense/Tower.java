@@ -6,15 +6,13 @@ import android.graphics.Canvas;
 import java.util.List;
 import java.util.Queue;
 
-public abstract class Tower implements GameTile {
+public abstract class Tower extends GameTile {
 
     protected float rateOfFire;
     protected float range;
     protected int damage;
     protected double lastShotTick;
-    protected int width = GameField.UNIT_WIDTH;
-    protected int height = GameField.UNIT_HEIGHT;
-    protected Position position;
+
     protected float angle;
     protected float directionX;
     protected float directionY;
@@ -53,22 +51,6 @@ public abstract class Tower implements GameTile {
 
     public void setTickOfLastShot(double shotTime) {
         lastShotTick = shotTime;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public Position getPosition() {
-        return position;
     }
 
     public boolean collision(GameEntity other) {
