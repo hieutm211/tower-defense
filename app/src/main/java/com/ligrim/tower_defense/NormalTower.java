@@ -15,8 +15,6 @@ public class NormalTower extends Tower {
         rateOfFire = 180f / 60;
         range = 200;
         damage = 3;
-        width = GameField.UNIT_WIDTH;
-        height = GameField.UNIT_HEIGHT;
         lastShotTick = 0;
         directionX = 0;
         directionY = 0;

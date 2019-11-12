@@ -13,8 +13,8 @@ public abstract class Enemy implements GameEntity {
     protected float directionX;
     protected float directionY;
     protected Position position;
-    protected int width;
-    protected int height;
+    protected int width = GameField.UNIT_WIDTH;
+    protected int height = GameField.UNIT_HEIGHT;
     protected float angle;
     protected boolean faded;
     protected List<Position> route;

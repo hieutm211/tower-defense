@@ -16,8 +16,6 @@ public class MachineGunTower extends Tower {
         rateOfFire = 200f / 60;
         range = 100;
         damage = 3;
-        width = GameField.UNIT_WIDTH;
-        height = GameField.UNIT_HEIGHT;
         lastShotTick = 0;
         directionX = 0;
         directionY = 0;

@@ -15,9 +15,6 @@ public class BossEnemy extends Enemy {
         this.armor = 3;
         this.prize = 10;
 
-        width = GameField.UNIT_WIDTH;
-        height = GameField.UNIT_HEIGHT;
-
         angle = (float) (Math.PI / 2);
         faded = false;
     }

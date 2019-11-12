@@ -12,8 +12,8 @@ public abstract class Tower implements GameTile {
     protected float range;
     protected int damage;
     protected double lastShotTick;
-    protected int width;
-    protected int height;
+    protected int width = GameField.UNIT_WIDTH;
+    protected int height = GameField.UNIT_HEIGHT;
     protected Position position;
     protected float angle;
     protected float directionX;

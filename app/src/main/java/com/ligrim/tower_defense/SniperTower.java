@@ -16,8 +16,6 @@ public class SniperTower extends Tower {
         rateOfFire = 190f / 60;
         range = 200;
         damage = 3;
-        width = GameField.UNIT_WIDTH;
-        height = GameField.UNIT_HEIGHT;
         lastShotTick = 0;
         directionX = 0;
         directionY = 0;
