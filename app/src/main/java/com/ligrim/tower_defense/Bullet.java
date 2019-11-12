@@ -10,8 +10,8 @@ public class Bullet implements GameEntity {
     private final float range;
     private final int damage;
     private Position position;
-    private final int width = 64;
-    private final int height = 64;
+    private final int width = GameField.UNIT_WIDTH;
+    private final int height = GameField.UNIT_HEIGHT;
     private float directionX;
     private float directionY;
     private Enemy enemyTarget;

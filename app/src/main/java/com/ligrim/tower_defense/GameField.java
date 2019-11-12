@@ -14,6 +14,11 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     private MainThread thread;
 
+    public static int WIDTH;
+    public static int HEIGHT;
+    public static int UNIT_WIDTH;
+    public static int UNIT_HEIGHT;
+
     private GameStage stage;
     private List<Enemy> enemyList; // enemy da duoc tao ra va con song
     private List<Tower> towerList; // tower da duoc xay dung.
@@ -42,6 +47,12 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         //initiate gameField using gameStage here
 
         this.stage = gameStage;
+
+        WIDTH = gameStage.WIDTH;
+        HEIGHT = gameStage.HEIGHT;
+        UNIT_WIDTH = gameStage.UNIT_WIDTH;
+        UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
+
         this.enemyList = new ArrayList<>();
         this.towerList = new ArrayList<>();
         this.tileList = new ArrayList<>();
