@@ -13,8 +13,8 @@ public class NormalEnemy extends Enemy {
         this.speed = 70f / 60;
         this.armor = 2;
         this.prize = 5;
-        width = 32;
-        height = 32;
+        width = GameField.UNIT_WIDTH;
+        height = GameField.UNIT_HEIGHT;
         angle = (float) (Math.PI / 2);
         faded = false;
 
