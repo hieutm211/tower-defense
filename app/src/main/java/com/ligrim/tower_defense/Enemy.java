@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import java.util.List;
@@ -90,10 +91,6 @@ public abstract class Enemy implements GameEntity {
         this.setAngle();
     }
 
-    public void draw(Canvas canvas) {
-        canvas.drawBitmap(GameGraphic.getEnemyById(getId()), position.getX(), position.getY(), null);
-    }
-
     public int getWidth() {
         return width;
     }
@@ -164,4 +161,14 @@ public abstract class Enemy implements GameEntity {
     }
 
     public abstract String getId();
+
+    public void draw(Canvas canvas) {
+        Bitmap enemy = GameGraphic.getEnemyById(getId());
+        enemy = Bitmap.createScaledBitmap(enemy, width, height, false);
+
+        canvas.save();
+        canvas.rotate(angle, position.getX() + width/2 - 1, position.getY() + height/2 - 1);
+        canvas.drawBitmap(enemy, position.getX(), position.getY(), null);
+        canvas.restore();
+    }
 }

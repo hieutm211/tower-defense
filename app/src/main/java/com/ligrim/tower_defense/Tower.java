@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import java.util.List;
@@ -151,7 +152,17 @@ public abstract class Tower implements GameTile {
         float x = position.getX();
         float y = position.getY();
 
-        canvas.drawBitmap(GameGraphic.getTowerById(getId()), x, y, null);
-        canvas.drawBitmap(GameGraphic.getTowerById(getId() + "_gun"), x, y, null);
+        Bitmap tower = GameGraphic.getTowerById(getId());
+        tower = Bitmap.createScaledBitmap(tower, width, height, false);
+
+        Bitmap tower_gun = GameGraphic.getTowerById(getId() + "_gun");
+        tower_gun = Bitmap.createScaledBitmap(tower_gun, width, height, false);
+
+        canvas.drawBitmap(tower, x, y, null);
+
+        canvas.save();
+        canvas.rotate(angle, position.getX() + width/2 - 1, position.getY() + height/2 - 1);
+        canvas.drawBitmap(tower_gun, x, y, null);
+        canvas.restore();
     }
 }

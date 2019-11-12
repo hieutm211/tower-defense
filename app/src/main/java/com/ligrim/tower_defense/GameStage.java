@@ -335,23 +335,6 @@ public class GameStage {
         }
     }
 
-    public void draw(Canvas canvas) {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
-                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-            }
-        }
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                if (mapLayer[i][j] > 0) {
-                    Bitmap bitmap = GameGraphic.getTileById(mapLayer[i][j]);
-                    canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-                }
-            }
-        }
-    }
-
     /***************************************************************************
      * Helper functions .
      ***************************************************************************/
@@ -615,4 +598,22 @@ public class GameStage {
         game.readSaveFile(in);
         game.printLayer();
     }
+
+    public void draw(Canvas canvas) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
+                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+            }
+        }
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                if (mapLayer[i][j] > 0) {
+                    Bitmap bitmap = GameGraphic.getTileById(mapLayer[i][j]);
+                    canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+                }
+            }
+        }
+    }
+
 }
