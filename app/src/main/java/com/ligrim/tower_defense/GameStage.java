@@ -545,6 +545,7 @@ public class GameStage {
             this.route.add(BFS.getRouteFromMatrix(matrix.get(i)));
         }
         for (int i = 0; i < matrix.size(); ++i) {
+            System.out.println("route " + i);
             BFS.print(matrix.get(i));
             System.out.println("\nend of matrix");
         }
@@ -687,7 +688,7 @@ public class GameStage {
         for (int i = 0; i < game.route.size(); ++i) {
             System.out.println("route " + i);
             for (int j = 0; j < game.route.get(i).size(); ++j) {
-                System.out.print("[ " + game.route.get(i).get(j).getX() + ", " + game.route.get(i).get(j).getY() + " ], ");
+                System.out.print( game.route.get(i).get(j).getX() + "," + game.route.get(i).get(j).getY() + "; ");
             }
         }
     }
