@@ -248,7 +248,7 @@ public class GameStage {
                         case "sniper":
                             list.add(new SniperTower(pos));
                             break;
-                        case "machine":
+                        case "machine_gun":
                             list.add(new MachineGunTower(pos));
                             break;
                     }
@@ -702,11 +702,11 @@ public class GameStage {
                 new FileInputStream("app/src/main/assets/map/map_2/route_info.txt")  );
         List<Tower> towers = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
-            towers.add(new NormalTower(new Position(i * 20, i * 20)));
+            towers.add(new MachineGunTower(new Position(i * 20, i * 20)));
         }
-        /*game.saveToFile(towers, 3, "app/src/main/assets/map/map_1/saveFile.xml");
-        InputStream in = new FileInputStream("app/src/main/assets/map/map_1/saveFile.xml");*/
-        //game.readSaveFile(in);
+        game.saveToFile(towers, 3, "app/src/main/assets/map/map_2/saveFile.xml");
+        InputStream in = new FileInputStream("app/src/main/assets/map/map_2/saveFile.xml");
+        game.readSaveFile(in);
         //game.printLayer();
         game.printMapInfo();
         for (int i = 0; i < game.route.size(); ++i) {

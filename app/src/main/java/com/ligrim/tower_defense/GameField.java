@@ -79,7 +79,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = 0.0;
         lastAddEnemyTick = -1.0;
-        this.health = 10;
+        this.health = 200;
         towerList.add(new NormalTower(new Position(450, 400)));
         towerList.add(new SniperTower(new Position(450, 50)));
         towerList.add(new MachineGunTower(new Position(800, 100)));
@@ -141,7 +141,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
                 stage.nextRound();
             }
         }
-
 
         gameTick += dt;
     }
