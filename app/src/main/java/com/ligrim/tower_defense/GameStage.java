@@ -558,15 +558,15 @@ public class GameStage {
 
             for (int j = 0; j < MapOfASpawner.length; ++j) {
                 for (int k = 0; k < MapOfASpawner[0].length; ++k) {
-                    if (j == iSpawner && k == jSpawner) MapOfASpawner[j][k] = -1;
+                    if (j == iSpawner && k == jSpawner) MapOfASpawner[j][k] = BFS.START;
                     else if (isTarget(j, k)) {
-                        if (isTargetOfSpawner(j, k, iSpawner, jSpawner)) MapOfASpawner[j][k] = -2;
-                        else MapOfASpawner[j][k] = 0;
+                        if (isTargetOfSpawner(j, k, iSpawner, jSpawner)) MapOfASpawner[j][k] = BFS.END;
+                        else MapOfASpawner[j][k] = BFS.ROAD;
                     }
                     else if (isRoad(j, k)) {
-                        if (isRoadOfType(roadType, mapData[j][k])) MapOfASpawner[j][k] = 0;
+                        if (isRoadOfType(roadType, mapData[j][k])) MapOfASpawner[j][k] = BFS.ROAD;
                         else MapOfASpawner[j][k] = 1;
-                        if (isConjunction(j, k)) MapOfASpawner[j][k] = 0;
+                        if (isConjunction(j, k)) MapOfASpawner[j][k] = BFS.ROAD;
                     }
                     else MapOfASpawner[j][k] = 1;
                 }
