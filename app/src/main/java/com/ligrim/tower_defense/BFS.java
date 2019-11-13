@@ -11,8 +11,8 @@ import java.util.*;
 public class BFS {
 
     private static int[][] map;
-    private static final int[] dx = {-1, 0, 0, 1};
-    private static final int[] dy = {0, 1, -1, 0};
+    public static final int[] dx = {-1, 0, 0, 1};
+    public static final int[] dy = {0, 1, -1, 0};
     public static final int ROAD = 0;
     public static final int START = -1;
     public static final int END = -2;

@@ -132,6 +132,7 @@ public class GameStage {
             26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 60};
     private static final int[] spawnerID = {118, 123, 128};
     private static final int[] targetID = {49, 54, 59};
+    private static final int[] conjuction = {0, 2, 5, 7, 10, 12, 46, 48, 51, 53, 56, 58};
 
     public static int UNIT_WIDTH;
     public static int UNIT_HEIGHT;
@@ -542,6 +543,17 @@ public class GameStage {
 
             int iSpawner = allSpawner.get(i).get(0);
             int jSpawner = allSpawner.get(i).get(1);
+            int roadType = 0;
+
+            for (int m = 0; m < BFS.dx.length; ++m) {
+                if (isInBound(iSpawner + BFS.dy[m], jSpawner + BFS.dx[m])) {
+                    if (isRoad(iSpawner + BFS.dy[m], jSpawner + BFS.dx[m])) {
+                        roadType = getTypeRoad(mapData[iSpawner + BFS.dy[m]][jSpawner + BFS.dx[m]]);
+                        break;
+                    }
+                }
+            }
+
             int[][] MapOfASpawner = new int[HEIGHT][WIDTH];
 
             for (int j = 0; j < MapOfASpawner.length; ++j) {
@@ -551,7 +563,11 @@ public class GameStage {
                         if (isTargetOfSpawner(j, k, iSpawner, jSpawner)) MapOfASpawner[j][k] = -2;
                         else MapOfASpawner[j][k] = 0;
                     }
-                    else if (isRoad(j, k)) MapOfASpawner[j][k] = 0;
+                    else if (isRoad(j, k)) {
+                        if (isRoadOfType(roadType, mapData[j][k])) MapOfASpawner[j][k] = 0;
+                        else MapOfASpawner[j][k] = 1;
+                        if (isConjunction(j, k)) MapOfASpawner[j][k] = 0;
+                    }
                     else MapOfASpawner[j][k] = 1;
                 }
             }
@@ -573,6 +589,30 @@ public class GameStage {
             }
         }
         return res;
+    }
+
+    private boolean isConjunction(int i, int j) {
+        for (int k = 0; k < conjuction.length; ++k) {
+            if (conjuction[k] == mapData[i][j] || (conjuction[k] + 2 * 69) == mapData[i][j] ||
+                    (conjuction[k] + 3 * 69) == mapData[i][j]) return true;
+        }
+        return false;
+    }
+
+    private boolean isRoadOfType(int type, int value) {
+        return type == getTypeRoad(value);
+    }
+
+    private boolean isInBound(int i, int j) {
+        return i >= 0 && i < mapData.length &&
+                j >= 0 && j < mapData[0].length;
+    }
+
+    private int getTypeRoad(int value) {
+        if (value <= 60) return 0;
+        if (value <= 60 + 69 * 2) return 2;
+        else if (value <= 60 + 69 * 3) return 3;
+        return -1;
     }
 
     private int countSpawner() {
@@ -620,7 +660,8 @@ public class GameStage {
     private boolean isRoad(int i, int j) {
         if (i >= mapData.length || j >= mapData[0].length) return false;
         for (int k = 0; k < roadID.length; ++k) {
-            if (mapData[i][j] == roadID[k]) return true;
+            if (mapData[i][j] == roadID[k] || mapData[i][j] == (roadID[k] + 2 * 69) ||
+                    mapData[i][j] == (roadID[k] + 3 * 69)) return true;
         }
         return false;
     }
