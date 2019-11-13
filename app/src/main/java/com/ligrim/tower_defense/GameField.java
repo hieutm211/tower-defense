@@ -49,7 +49,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private double gameTick;
     private double lastAddEnemyTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
-    private final double timeToAddEnemy = .5;
+    private final double timeToAddEnemy = .25;
     /*private final double shootTime = 0.5;*/
 
     public GameField(Context context, GameStage gameStage) {
