@@ -49,7 +49,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private double gameTick;
     private double lastAddEnemyTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
-    private final double timeToAddEnemy = .5;
+    private final double timeToAddEnemy = .25;
     /*private final double shootTime = 0.5;*/
 
     public GameField(Context context, GameStage gameStage) {
@@ -79,9 +79,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = 0.0;
         lastAddEnemyTick = -1.0;
-        this.health = 10;
-        towerList.add(new NormalTower(new Position(400, 400)));
-        towerList.add(new SniperTower(new Position(400, 100)));
+        this.health = 200;
+        towerList.add(new NormalTower(new Position(450, 400)));
+        towerList.add(new SniperTower(new Position(450, 50)));
         towerList.add(new MachineGunTower(new Position(800, 100)));
     }
 
@@ -141,7 +141,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
                 stage.nextRound();
             }
         }
-
 
         gameTick += dt;
     }

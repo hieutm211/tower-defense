@@ -15,8 +15,6 @@ public class BossEnemy extends Enemy {
         this.speed = 54f / 60;
         this.armor = 200;
         this.prize = 10;
-
-        angle = (float) (Math.PI / 2);
         faded = false;
     }
 

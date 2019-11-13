@@ -32,7 +32,7 @@ import javax.xml.transform.stream.StreamResult;
 
 public class GameStage {
 
-    // this class is for wrapping type, amount and order of enemy to be generated
+    // this class is for wrapping type, amount and order of enemies to be generated
     private static class Round {
         private final int roundNumber;
         private List<EnemyType> enemy;
@@ -128,13 +128,17 @@ public class GameStage {
     }
 
     private static String NEWLINE = Character.toString((char) 10);
-    private static int[] roadID = {0, 1, 2, 5, 6, 7, 10, 11, 12, 23, 25, 28, 30, 33, 35, 46, 47, 48, 51, 52, 53, 56, 57, 58};
+    private static final int[] roadID = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 23, 25,
+            26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 60};
+    private static final int[] spawnerID = {118, 123, 128};
+    private static final int[] targetID = {49, 54, 59};
+    private static final int[] conjuction = {0, 2, 5, 7, 10, 12, 46, 48, 51, 53, 56, 58};
 
-    public int UNIT_WIDTH;
-    public int UNIT_HEIGHT;
-    public int WIDTH;
-    public int HEIGHT;
-    public final int INITIAL_GOLD = 100;
+    public static int UNIT_WIDTH;
+    public static int UNIT_HEIGHT;
+    public static int WIDTH;
+    public static int HEIGHT;
+    public static final int INITIAL_GOLD = 100;
     private int[][] mapData;
     private int[][] mapLayer;
     private Bitmap demoImg;
@@ -151,7 +155,7 @@ public class GameStage {
 
         readMapData(mapFile);
         readEnemyInfo(EnemyFile, RouteFile);
-
+        //convertToPositionListOfRoute(convertToMapMatrix());
     }
 
     public List<Position> getRoute (int i) {
@@ -244,18 +248,16 @@ public class GameStage {
                         case "sniper":
                             list.add(new SniperTower(pos));
                             break;
-                        case "machine":
+                        case "machine_gun":
                             list.add(new MachineGunTower(pos));
                             break;
                     }
-
                 }
             }
         }
         catch (Exception e)
         {
-            //e.printStackTrace();
-            System.out.println("no file saved!");
+            System.out.println("no saved file!");
         }
         return list;
     }
@@ -296,10 +298,8 @@ public class GameStage {
                 level.setValue(Integer.toString(towerList.get(i).getLevel()));
                 tower.setAttributeNode(level);
 
-                //you can also use staff.setAttribute("id", "1") for this
-
                 // add information about x pos and y pos
-                // set an attribute level to element
+                // set an attribute pos X to element
                 Attr posX = document.createAttribute("PosX");
                 posX.setValue(Double.toString(towerList.get(i).getPosition().getX()));
                 tower.setAttributeNode(posX);
@@ -311,7 +311,7 @@ public class GameStage {
 
                 // set an attribute type to element
                 Attr type = document.createAttribute("type");
-                type.setValue( towerList.get(i).toString() );
+                type.setValue( towerList.get(i).getId() );
                 tower.setAttributeNode(type);
             }
 
@@ -338,15 +338,32 @@ public class GameStage {
         }
     }
 
+    public void draw(Canvas canvas) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
+                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+            }
+        }
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                if (mapLayer[i][j] > 0) {
+                    Bitmap bitmap = GameGraphic.getTileById(mapLayer[i][j]);
+                    canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
+                }
+            }
+        }
+    }
+
+
     /***************************************************************************
-     * Helper functions .
+     * Helper functions.
      ***************************************************************************/
 
     // read map data from txm file, do not modify
     private void readMapData(InputStream filename) {
         InputStream inputFile = filename;
         try {
-            /*       File inputFile = new File(folder);*/
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
@@ -366,25 +383,14 @@ public class GameStage {
 
             for (int temp = 0; temp < TagLayer.getLength(); temp++)
             {
-                // read tile
+                // read tiled map
                 if (temp == 0) {
                     Node nNode = TagLayer.item(temp);
 
-
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                         Element eElement = (Element) nNode;
-                        // read by attribute
-
-                        /*WIDTH = Integer.parseInt(eElement.getAttribute("width"));
-
-
-                        HEIGHT = Integer.parseInt(eElement.getAttribute("height"));*/
-
 
                         mapData = new int[HEIGHT][WIDTH];
-
-                        /*UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
-                        UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));*/
 
                         String buffer = eElement
                                 .getElementsByTagName("data")
@@ -392,7 +398,6 @@ public class GameStage {
                                 .getTextContent();
 
                         // convert from String input to integer array
-
 
                         String[] splitLine = buffer.split(NEWLINE);
                         String[][] splitString = new String[HEIGHT][];
@@ -407,7 +412,6 @@ public class GameStage {
                                 mapData[j][k] = Integer.parseInt(splitString[j][k]) - 1;
                             }
                         }
-
                     }
                 }
                 // read terrain
@@ -417,18 +421,8 @@ public class GameStage {
 
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                         Element eElement = (Element) nNode;
-                        // read by attribute
-
-                            /*WIDTH = Integer.parseInt(eElement.getAttribute("width"));
-
-
-                            HEIGHT = Integer.parseInt(eElement.getAttribute("height"));*/
-
 
                         mapLayer = new int[HEIGHT][WIDTH];
-
-                            /*UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
-                            UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));*/
 
                         String buffer = eElement
                                 .getElementsByTagName("data")
@@ -436,7 +430,6 @@ public class GameStage {
                                 .getTextContent();
 
                         // convert from String input to integer array
-
 
                         String[] splitLine = buffer.split(NEWLINE);
                         String[][] splitString = new String[HEIGHT][];
@@ -460,7 +453,6 @@ public class GameStage {
         }
     }
 
-
     // read enemy Information, i.e the order enemy appear
     // initial all rounds in the game
     private void readEnemyInfo(InputStream Enemy_info, InputStream Route_info) {
@@ -473,17 +465,8 @@ public class GameStage {
 
             String st;
             // read route info
-            while ((st = Route.readLine()) != null) {
-                String[] splitColon = st.split(";");
 
-                List<Position> auxRoute = new ArrayList<>();
-                for (int i = 0; i < splitColon.length; ++i) {
-                    String[] coordinate = splitColon[i].split(",");
-                    Position pos = new Position(Float.parseFloat(coordinate[0]) - UNIT_WIDTH / 2, Float.parseFloat(coordinate[1]) - UNIT_HEIGHT / 2);
-                    auxRoute.add(pos);
-                }
-                this.route.add(auxRoute);
-            }
+            convertToPositionListOfRoute(convertToMapMatrix());
 
             // read enemy info
             int roundNumber = 0;
@@ -500,7 +483,7 @@ public class GameStage {
                     // here are these two type to be processed
                     String c1 = cell[0];
 
-
+                    // split input strings and initial basic variables of game's map
                     String[] gc3 = cell[1].split("_");
 
                     String[] parseRoute = gc3[1].split(";");
@@ -546,11 +529,139 @@ public class GameStage {
         }
     }
 
+    private void convertToPositionListOfRoute(List<int[][]> matrix) {
+        for (int i = 0; i < matrix.size(); ++i) {
+            this.route.add(BFS.getRouteFromMatrix(matrix.get(i)));
+        }
+    }
+
+    private List<int[][]> convertToMapMatrix() {
+        List<int[][]> result = new LinkedList<>();
+        int n = countSpawner();
+        List<List<Integer>> allSpawner = getAllSpawner();
+        for (int i = 0; i < allSpawner.size(); ++i) {
+
+            int iSpawner = allSpawner.get(i).get(0);
+            int jSpawner = allSpawner.get(i).get(1);
+            int roadType = 0;
+
+            for (int m = 0; m < BFS.dx.length; ++m) {
+                if (isInBound(iSpawner + BFS.dy[m], jSpawner + BFS.dx[m])) {
+                    if (isRoad(iSpawner + BFS.dy[m], jSpawner + BFS.dx[m])) {
+                        roadType = getTypeRoad(mapData[iSpawner + BFS.dy[m]][jSpawner + BFS.dx[m]]);
+                        break;
+                    }
+                }
+            }
+
+            int[][] MapOfASpawner = new int[HEIGHT][WIDTH];
+
+            for (int j = 0; j < MapOfASpawner.length; ++j) {
+                for (int k = 0; k < MapOfASpawner[0].length; ++k) {
+                    if (j == iSpawner && k == jSpawner) MapOfASpawner[j][k] = BFS.START;
+                    else if (isTarget(j, k)) {
+                        if (isTargetOfSpawner(j, k, iSpawner, jSpawner)) MapOfASpawner[j][k] = BFS.END;
+                        else MapOfASpawner[j][k] = BFS.ROAD;
+                    }
+                    else if (isRoad(j, k)) {
+                        if (isRoadOfType(roadType, mapData[j][k])) MapOfASpawner[j][k] = BFS.ROAD;
+                        else MapOfASpawner[j][k] = 1;
+                        if (isConjunction(j, k)) MapOfASpawner[j][k] = BFS.ROAD;
+                    }
+                    else MapOfASpawner[j][k] = 1;
+                }
+            }
+            result.add(MapOfASpawner);
+        }
+        return result;
+    }
+
+    private List<List<Integer>> getAllSpawner() {
+        List<List<Integer>> res = new LinkedList<>();
+
+        for (int i = 0; i < HEIGHT; ++i) {
+            for (int j = 0; j < WIDTH; ++j) {
+                if (isSpawner(i, j)) {
+                    List<Integer> coordinate = new LinkedList<>();
+                    coordinate.add(i); coordinate.add(j);
+                    res.add(coordinate);
+                }
+            }
+        }
+        return res;
+    }
+
+    private boolean isConjunction(int i, int j) {
+        for (int k = 0; k < conjuction.length; ++k) {
+            if (conjuction[k] == mapData[i][j] || (conjuction[k] + 2 * 69) == mapData[i][j] ||
+                    (conjuction[k] + 3 * 69) == mapData[i][j]) return true;
+        }
+        return false;
+    }
+
+    private boolean isRoadOfType(int type, int value) {
+        return type == getTypeRoad(value);
+    }
+
+    private boolean isInBound(int i, int j) {
+        return i >= 0 && i < mapData.length &&
+                j >= 0 && j < mapData[0].length;
+    }
+
+    private int getTypeRoad(int value) {
+        if (value <= 60) return 0;
+        if (value <= 60 + 69 * 2) return 2;
+        else if (value <= 60 + 69 * 3) return 3;
+        return -1;
+    }
+
+    private int countSpawner() {
+        int count = 0;
+        for (int i = 0; i < HEIGHT; ++i) {
+            for (int j = 0; j < WIDTH; ++j) {
+                if (isSpawner(i, j)) ++count;
+            }
+        }
+        return count;
+    }
+
+    private boolean isSpawner(int i, int j) {
+        for (int k = 0; k < spawnerID.length; ++k) {
+            if (mapData[i][j] == spawnerID[k]) return true;
+        }
+        return false;
+    }
+
+    private boolean isTarget(int i, int j) {
+        for (int k = 0; k < targetID.length; ++k) {
+            if (mapData[i][j] == targetID[k]) return true;
+        }
+        return false;
+    }
+
+    private boolean isTargetOfSpawner(int iTarget, int jTarget, int iSpawner, int jSpawner) {
+        return getTargetID(iTarget, jTarget) == getSpawnerID(iSpawner, jSpawner);
+    }
+
+    private int getSpawnerID(int i, int j) {
+        for (int k = 0; k < spawnerID.length; ++k) {
+            if (mapData[i][j] == spawnerID[k]) return k;
+        }
+        return -1;
+    }
+
+    private int getTargetID(int i, int j) {
+        for (int k = 0; k < targetID.length; ++k) {
+            if (mapData[i][j] == targetID[k]) return k;
+        }
+        return -1;
+    }
 
     private boolean isRoad(int i, int j) {
         if (i >= mapData.length || j >= mapData[0].length) return false;
         for (int k = 0; k < roadID.length; ++k) {
-            if (mapData[i][j] == roadID[k]) return true;
+            if (mapData[i][j] == roadID[k] || mapData[i][j] == (roadID[k] + 2 * 69) ||
+                    mapData[i][j] == (roadID[k] + 3 * 69)) return true;
         }
         return false;
     }
@@ -576,7 +687,6 @@ public class GameStage {
         System.out.println();
     }
 
-
     private void printLayer() {
         for (int i = 0; i < HEIGHT; ++i) {
             for (int j = 0; j < WIDTH; ++j) {
@@ -586,47 +696,24 @@ public class GameStage {
         }
     }
 
-    /*public static void main(String[] args) {
-        String folder1 = "app/map/Map1/sample_map1.tmx";
-        String folder2 = "app/map/Map1/enemyInfo.txt";
-        String folder3 = "app/map/Map1/routeInfo.txt";
-        GameStage game = new GameStage(folder1, folder2, folder3);
-        game.printMapInfo();
-        game.printRoundInfo();
-        System.out.println("total round: " + game.totalRound());
-        game.printRouteInfo();
-    }*/
-
     public static void main(String[] args) throws Exception {
-        GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_1/sample_map1.tmx"),
-                new FileInputStream("app/src/main/assets/map/map_1/enemy_info.txt"),
-                new FileInputStream("app/src/main/assets/map/map_1/route_info.txt")  );
+        GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_2/sample_map2.tmx"),
+                new FileInputStream("app/src/main/assets/map/map_2/enemy_info.txt"),
+                new FileInputStream("app/src/main/assets/map/map_2/route_info.txt")  );
         List<Tower> towers = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
-            towers.add(new NormalTower(new Position(i * 20, i * 20)));
+            towers.add(new MachineGunTower(new Position(i * 20, i * 20)));
         }
-        game.saveToFile(towers, 3, "app/src/main/assets/map/map_1/saveFile.xml");
-        InputStream in = new FileInputStream("app/src/main/assets/map/map_1/saveFile.xml");
-        //game.readSaveFile(in);
+        game.saveToFile(towers, 3, "app/src/main/assets/map/map_2/saveFile.xml");
+        InputStream in = new FileInputStream("app/src/main/assets/map/map_2/saveFile.xml");
+        game.readSaveFile(in);
         //game.printLayer();
         game.printMapInfo();
-    }
-
-    public void draw(Canvas canvas) {
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
-                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-            }
-        }
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                if (mapLayer[i][j] > 0) {
-                    Bitmap bitmap = GameGraphic.getTileById(mapLayer[i][j]);
-                    canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-                }
+        for (int i = 0; i < game.route.size(); ++i) {
+            System.out.println("route " + i);
+            for (int j = 0; j < game.route.get(i).size(); ++j) {
+                System.out.print( game.route.get(i).get(j).getX() + "," + game.route.get(i).get(j).getY() + "; ");
             }
         }
     }
-
 }

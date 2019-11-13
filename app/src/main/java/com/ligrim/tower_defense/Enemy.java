@@ -31,6 +31,7 @@ public abstract class Enemy extends GameEntity {
         assert (route.size() > 1);
         checkpoint = 1;
         updateDirection();
+        this.setAngle();
     }
 
     public int getHealth() {
@@ -91,7 +92,6 @@ public abstract class Enemy extends GameEntity {
         float newEnemyPositionX = this.getPosition().getX() + this.getDirectionX() * this.getSpeed();
         float newEnemyPositionY = this.getPosition().getY() + this.getDirectionY() * this.getSpeed();
         this.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
-        this.setAngle();
     }
 
     public int getWidth() {
@@ -103,20 +103,21 @@ public abstract class Enemy extends GameEntity {
     }
 
     public void setAngle() {
-        if (directionX == 0 && directionY == 0) {
-            angle = 0;
+        if (Math.abs(directionX) < .1f  && Math.abs(directionY) < .1f) {
+            angle = 0f;
             return;
         }
+        // angle in degree
         float newAngle = (float) Math.atan(Math.abs(directionY/directionX)) * 180 / (float) Math.PI;
 
-        if (directionX == 0 && directionY > 0) angle = 90;
-        else if (directionX == 0  && directionY < 0) angle = -90;
-        else if (directionX > 0 && directionY == 0) angle = 0;
-        else if (directionX < 0 && directionY == 0) angle = 180;
-        else if (directionX > 0 && directionY > 0) angle = newAngle;
-        else if (directionX > 0 && directionY < 0) angle = -newAngle;
-        else if (directionX < 0 && directionY > 0) angle = 180 - newAngle;
-        else if (directionX < 0 && directionY < 0) angle = angle - 180;
+        if (Math.abs(directionX) < .1f && directionY > 0f) angle = 90f;
+        else if (Math.abs(directionX) < .1f  && directionY < 0f) angle = -90f;
+        else if (directionX > 0f && Math.abs(directionY) < .1f) angle = 0f;
+        else if (directionX < 0f && Math.abs(directionY) < .1f) angle = 180f;
+        else if (directionX > 0f && directionY > 0f) angle = newAngle;
+        else if (directionX > 0f && directionY < 0f) angle = -newAngle;
+        else if (directionX < 0f && directionY > 0f) angle = 180f - newAngle;
+        else if (directionX < 0f && directionY < 0f) angle = angle - 180f;
     }
 
     public float getAngle() {
@@ -132,10 +133,11 @@ public abstract class Enemy extends GameEntity {
 
     // check if checkpoint is target, then update checkpoint and direction
     public void nextDestination() {
-        assert isReachCheckpoint();
+        // assert isReachCheckpoint();
         if (checkpoint < route.size() - 1) {
             ++checkpoint;
             updateDirection();
+            this.setAngle();
         }
     }
 

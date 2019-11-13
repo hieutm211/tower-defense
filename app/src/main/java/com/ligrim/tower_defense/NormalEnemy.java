@@ -14,9 +14,7 @@ public class NormalEnemy extends Enemy {
         this.speed = 70f / 60;
         this.armor = 20;
         this.prize = 5;
-        angle = (float) (Math.PI / 2);
         faded = false;
-
     }
 
     @Override

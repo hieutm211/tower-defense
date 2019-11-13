@@ -10,10 +10,9 @@ public class SmallerEnemy extends Enemy {
         super(route);
         this.health = 150;
         this.maxHealth = health;
-        this.speed = 150f / 60;
+        this.speed = 180f / 60;
         this.armor = 0;
         this.prize = 1;
-        angle = (float) (Math.PI / 2);
         faded = false;
     }
 
