@@ -310,7 +310,7 @@ public class GameStage {
 
                 // set an attribute type to element
                 Attr type = document.createAttribute("type");
-                type.setValue( towerList.get(i).toString() );
+                type.setValue( towerList.get(i).getId() );
                 tower.setAttributeNode(type);
             }
 
@@ -464,19 +464,7 @@ public class GameStage {
 
             String st;
             // read route info
-            /*while ((st = Route.readLine()) != null) {
-                String[] splitColon = st.split(";");
 
-                List<Position> auxRoute = new ArrayList<>();
-                for (int i = 0; i < splitColon.length; ++i) {
-                    String[] coordinate = splitColon[i].split(",");
-                    Position pos = new Position(Float.parseFloat(coordinate[0]) - UNIT_WIDTH / 2,
-                                               Float.parseFloat(coordinate[1]) - UNIT_HEIGHT / 2);
-                    auxRoute.add(pos);
-                }
-                this.route.add(auxRoute);
-            }
-            this.route = new LinkedList<>();*/
             convertToPositionListOfRoute(convertToMapMatrix());
 
             // read enemy info
@@ -543,11 +531,6 @@ public class GameStage {
     private void convertToPositionListOfRoute(List<int[][]> matrix) {
         for (int i = 0; i < matrix.size(); ++i) {
             this.route.add(BFS.getRouteFromMatrix(matrix.get(i)));
-        }
-        for (int i = 0; i < matrix.size(); ++i) {
-            System.out.println("route " + i);
-            BFS.print(matrix.get(i));
-            System.out.println("\nend of matrix");
         }
     }
 
