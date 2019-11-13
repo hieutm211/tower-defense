@@ -8,7 +8,7 @@ import java.util.Queue;
 
 public abstract class Tower extends GameTile {
 
-    protected float rateOfFire;
+    protected double rateOfFire;
     protected float range;
     protected int damage;
     protected double lastShotTick;
@@ -33,7 +33,7 @@ public abstract class Tower extends GameTile {
         return 0;
     }
 
-    public float getRateOfFire() {
+    public double getRateOfFire() {
         return rateOfFire;
     }
 

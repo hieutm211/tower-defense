@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -36,9 +37,10 @@ public class GameStage {
         private final int roundNumber;
         private List<EnemyType> enemy;
         private List<Integer> amount;
+        private List<List<Integer>> enemyInRoute;
         private int enemyID;
         private int countEnemy;
-        private List<Position> route;
+        private List<List<Position>> route;
 
         public Enemy nextEnemy() {
             if (enemyID > enemy.size()) return null;
@@ -48,7 +50,7 @@ public class GameStage {
                 enemyID++;
             }
             ++countEnemy;
-            return enemyFactory(enemy.get(enemyID));
+            return enemyFactory(enemy.get(enemyID), enemyInRoute.get(enemyID).get(countEnemy % enemyInRoute.get(enemyID).size()));
         }
 
         public int getRoundNumber() {
@@ -60,17 +62,19 @@ public class GameStage {
             return enemyID < enemy.size() - 1 || (enemyID == enemy.size() - 1 && countEnemy < amount.get(amount.size() - 1));
         }
 
-        public void add(EnemyType e, int n) {
+        public void add(EnemyType e, int amount, List<Integer> enemyInRoute) {
             enemy.add(e);
-            amount.add(n);
+            this.amount.add(amount);
+            this.enemyInRoute.add(enemyInRoute);
         }
 
-        public Round(int round, List<Position> route) {
+        public Round(int round, List<List<Position>> route) {
             roundNumber = round;
             enemyID = 0;
             countEnemy = 0;
             enemy = new ArrayList<>();
             amount = new ArrayList<>();
+            enemyInRoute = new ArrayList<>();
             this.route = route;
         }
 
@@ -78,21 +82,20 @@ public class GameStage {
             return EnemyType.toString(enemy.get(i)) + ": " + amount.get(i);
         }
 
-        // this method has not been completed yet
-        // TODO: set return enemy reference corresponding to enemy type
-        private Enemy enemyFactory(EnemyType e) {
+        private Enemy enemyFactory(EnemyType e, int r) {
+            if (r >= this.route.size()) return null;
             switch (e) {
                 case TANKER_ENEMY:
-                    return new TankerEnemy(route);
+                    return new TankerEnemy(route.get(r));
 
                 case NORMAL_ENEMY:
-                    return new NormalEnemy(route);
+                    return new NormalEnemy(route.get(r));
 
                 case SMALLER_ENEMY:
-                    return new SmallerEnemy(route);
+                    return new SmallerEnemy(route.get(r));
 
                 case BOSS_ENEMY:
-                    return new BossEnemy(route);
+                    return new BossEnemy(route.get(r));
 
                 default:
                     return null;
@@ -139,7 +142,7 @@ public class GameStage {
     private List<Round> roundList;
     private int currentRound;
     // route here
-    private List<Position> route;
+    private List<List<Position>> route;
 
     public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream RouteFile) {
         roundList = new ArrayList<>();
@@ -151,8 +154,8 @@ public class GameStage {
 
     }
 
-    public List<Position> getRoute () {
-        return route;
+    public List<Position> getRoute (int i) {
+        return route.get(i);
     }
 
     public int getCurrentRound() {
@@ -409,12 +412,12 @@ public class GameStage {
                 }
                 // read terrain
                 if (temp == 1) {
-                        Node nNode = TagLayer.item(temp);
+                    Node nNode = TagLayer.item(temp);
 
 
-                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                            Element eElement = (Element) nNode;
-                            // read by attribute
+                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                        Element eElement = (Element) nNode;
+                        // read by attribute
 
                             /*WIDTH = Integer.parseInt(eElement.getAttribute("width"));
 
@@ -422,35 +425,35 @@ public class GameStage {
                             HEIGHT = Integer.parseInt(eElement.getAttribute("height"));*/
 
 
-                            mapLayer = new int[HEIGHT][WIDTH];
+                        mapLayer = new int[HEIGHT][WIDTH];
 
                             /*UNIT_HEIGHT = Integer.parseInt(eElement.getAttribute("tileheight"));
                             UNIT_WIDTH = Integer.parseInt(eElement.getAttribute("tilewidth"));*/
 
-                            String buffer = eElement
-                                    .getElementsByTagName("data")
-                                    .item(0)
-                                    .getTextContent();
+                        String buffer = eElement
+                                .getElementsByTagName("data")
+                                .item(0)
+                                .getTextContent();
 
-                            // convert from String input to integer array
-
-
-                            String[] splitLine = buffer.split(NEWLINE);
-                            String[][] splitString = new String[HEIGHT][];
+                        // convert from String input to integer array
 
 
-                            for (int i = 1; i < splitLine.length; ++i) {
-                                splitString[i - 1] = splitLine[i].split(",");
-                            }
+                        String[] splitLine = buffer.split(NEWLINE);
+                        String[][] splitString = new String[HEIGHT][];
 
-                            for (int j = 0; j < HEIGHT; ++j) {
-                                for (int k = 0; k < WIDTH; ++k) {
-                                    mapLayer[j][k] = Integer.parseInt(splitString[j][k]) - 1;
-                                }
+
+                        for (int i = 1; i < splitLine.length; ++i) {
+                            splitString[i - 1] = splitLine[i].split(",");
+                        }
+
+                        for (int j = 0; j < HEIGHT; ++j) {
+                            for (int k = 0; k < WIDTH; ++k) {
+                                mapLayer[j][k] = Integer.parseInt(splitString[j][k]) - 1;
                             }
                         }
                     }
                 }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -473,11 +476,13 @@ public class GameStage {
             while ((st = Route.readLine()) != null) {
                 String[] splitColon = st.split(";");
 
+                List<Position> auxRoute = new ArrayList<>();
                 for (int i = 0; i < splitColon.length; ++i) {
                     String[] coordinate = splitColon[i].split(",");
-                    Position pos = new Position(Float.parseFloat(coordinate[0]), Float.parseFloat(coordinate[1]));
-                    this.route.add(pos);
+                    Position pos = new Position(Float.parseFloat(coordinate[0]) - UNIT_WIDTH / 2, Float.parseFloat(coordinate[1]) - UNIT_HEIGHT / 2);
+                    auxRoute.add(pos);
                 }
+                this.route.add(auxRoute);
             }
 
             // read enemy info
@@ -493,24 +498,39 @@ public class GameStage {
                     // split data into two fields, enemy type and amount
                     String[] cell = splitComma[i].split("-");
                     // here are these two type to be processed
-                    String c1 = cell[0], c2 = cell[1];
+                    String c1 = cell[0];
+
+
+                    String[] gc3 = cell[1].split("_");
+
+                    String[] parseRoute = gc3[1].split(";");
+
+                    List<Integer> enemyInRoute = new ArrayList<>();
+                    for (int k = 0; k < parseRoute.length; ++k ) {
+                        enemyInRoute.add(Integer.parseInt(parseRoute[k]));
+                    }
+
+                    int amount = Integer.parseInt(gc3[0]);
+
                     // handling according to its type
                     switch (c1) {
                         case "A":
-                            round.add(EnemyType.SMALLER_ENEMY, Integer.parseInt(c2));
+                            round.add(EnemyType.SMALLER_ENEMY, amount, enemyInRoute);
                             break;
                         case "B":
-                            round.add(EnemyType.NORMAL_ENEMY, Integer.parseInt(c2));
+                            round.add(EnemyType.NORMAL_ENEMY, amount, enemyInRoute);
                             break;
                         case "C":
-                            round.add(EnemyType.TANKER_ENEMY, Integer.parseInt(c2));
+                            round.add(EnemyType.TANKER_ENEMY, amount, enemyInRoute);
                             break;
                         case "D":
-                            round.add(EnemyType.BOSS_ENEMY, Integer.parseInt(c2));
+                            round.add(EnemyType.BOSS_ENEMY, amount, enemyInRoute);
                             break;
                         case "N":
-                            round.add(EnemyType.NONE, Integer.parseInt(c2));
+                            round.add(EnemyType.NONE, amount, enemyInRoute);
                             break;
+                        default:
+                            System.out.println("unsupported character in loading enemy info: " + c1);
                     }
                 }
 
@@ -556,14 +576,6 @@ public class GameStage {
         System.out.println();
     }
 
-    private void printRouteInfo() {
-        System.out.println("route info:");
-        System.out.print("\t");
-        for (int i = 0; i < route.size(); ++i) {
-            System.out.print("(" + route.get(i).getX() + ", " + route.get(i).getY() + ") ->");
-        }
-        System.out.println();
-    }
 
     private void printLayer() {
         for (int i = 0; i < HEIGHT; ++i) {
@@ -587,27 +599,28 @@ public class GameStage {
 
     public static void main(String[] args) throws Exception {
         GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_1/sample_map1.tmx"),
-                        new FileInputStream("app/src/main/assets/map/map_1/enemy_info.txt"),
-                        new FileInputStream("app/src/main/assets/map/map_1/route_info.txt")  );
+                new FileInputStream("app/src/main/assets/map/map_1/enemy_info.txt"),
+                new FileInputStream("app/src/main/assets/map/map_1/route_info.txt")  );
         List<Tower> towers = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
             towers.add(new NormalTower(new Position(i * 20, i * 20)));
         }
         game.saveToFile(towers, 3, "app/src/main/assets/map/map_1/saveFile.xml");
         InputStream in = new FileInputStream("app/src/main/assets/map/map_1/saveFile.xml");
-        game.readSaveFile(in);
-        game.printLayer();
+        //game.readSaveFile(in);
+        //game.printLayer();
+        game.printMapInfo();
     }
 
     public void draw(Canvas canvas) {
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
                 canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
             }
         }
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 if (mapLayer[i][j] > 0) {
                     Bitmap bitmap = GameGraphic.getTileById(mapLayer[i][j]);
                     canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);

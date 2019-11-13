@@ -13,14 +13,14 @@ public class SniperTower extends Tower {
 
     public SniperTower(Position position) {
         super(position);
-        rateOfFire = 190f / 60;
-        range = 200;
-        damage = 3;
+        rateOfFire = 150f / 60;
+        range = 600;
+        damage = 1000;
         lastShotTick = 0;
         directionX = 0;
         directionY = 0;
         enemyTarget = new LinkedList<>();
-        bulletSpeed = 11f;
+        bulletSpeed = 15f;
     }
 
     @Override

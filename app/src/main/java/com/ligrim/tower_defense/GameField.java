@@ -32,8 +32,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private double gameTick;
     private double lastAddEnemyTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
-    private final double timeToAddEnemy = 2.5;
-    private final double shootTime = 0.5;
+    private final double timeToAddEnemy = .5;
+    /*private final double shootTime = 0.5;*/
 
 
 
@@ -63,6 +63,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.health = 10;
         towerList.add(new NormalTower(new Position(400, 400)));
         towerList.add(new SniperTower(new Position(400, 100)));
+        towerList.add(new MachineGunTower(new Position(800, 100)));
     }
 
     @Override
@@ -207,7 +208,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     //update Next Shoot of each tower
     public void updateNextShoot() {
         for (Tower tower: towerList) {
-            if (gameTick - tower.getTickOfLastShot() > shootTime) {
+            if (gameTick - tower.getTickOfLastShot() > tower.getRateOfFire()) {
                 Enemy target = tower.chooseEnemyTarget();
                 if (!(target == null)) {
                     bulletList.add(new Bullet(tower, target));

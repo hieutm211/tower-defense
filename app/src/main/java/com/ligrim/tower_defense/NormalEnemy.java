@@ -9,9 +9,10 @@ public class NormalEnemy extends Enemy {
 
     public NormalEnemy(List<Position> route) {
         super(route);
-        this.health = 6;
+        this.health = 450;
+        this.maxHealth = health;
         this.speed = 70f / 60;
-        this.armor = 2;
+        this.armor = 20;
         this.prize = 5;
         angle = (float) (Math.PI / 2);
         faded = false;
