@@ -3,8 +3,15 @@ package com.ligrim.tower_defense;
 import android.graphics.Canvas;
 
 public abstract class GameTile extends GameEntity {
-    GameTile() {
-        super();
+    protected String code;
+
+    GameTile(Position position) {
+        super(position);
+    }
+
+    GameTile(String code, Position position) {
+        this(position);
+        this.code = code;
     }
 
     @Override
@@ -14,11 +21,6 @@ public abstract class GameTile extends GameEntity {
 
     @Override
     public void update() {
-
-    }
-
-    @Override
-    public void draw(Canvas canvas) {
 
     }
 }

@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense;
 
+import android.graphics.Color;
 import android.view.SurfaceHolder;
 import android.graphics.Canvas;
 
@@ -34,6 +35,8 @@ public class MainThread extends Thread {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized(surfaceHolder) {
                     this.gameField.update();
+
+                    canvas.drawColor(Color.GRAY);
                     this.gameField.draw(canvas);
                 }
             } catch (Exception e) {

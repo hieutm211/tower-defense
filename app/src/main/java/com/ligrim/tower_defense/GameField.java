@@ -20,21 +20,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public static int HEIGHT;
     public static int UNIT_WIDTH;
     public static int UNIT_HEIGHT;
-    public static int MAP_WIDTH;
-    public static int MAP_HEIGHT;
-    public static int SCREEN_WIDTH;
-    public static int SCREEN_HEIGHT;
-
-    private float screenX = 0;
-    private float screenY = 0;
-    private float moveDx = 0;
-    private float moveDy = 0;
-    private float pointerCount = 0;
-    private float primStartTouchX = -1;
-    private float primStartTouchY = -1;
-    private float secStartTouchX = -1;
-    private float secStartTouchY = -1;
-    private float primSecStartDistance = 0;
 
     private GameStage stage;
     private List<Enemy> enemyList; // enemy da duoc tao ra va con song
@@ -59,6 +44,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
 
+        setOnTouchListener(new TouchEventListener());
         //initiate gameField using gameStage here
 
         this.stage = gameStage;
@@ -67,10 +53,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         HEIGHT = gameStage.HEIGHT;
         UNIT_WIDTH = gameStage.UNIT_WIDTH;
         UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
-        MAP_WIDTH = WIDTH * UNIT_WIDTH;
-        MAP_HEIGHT = HEIGHT * UNIT_HEIGHT;
-        SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
-        SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
+
 
         this.enemyList = new ArrayList<>();
         this.towerList = new ArrayList<>();
@@ -143,6 +126,30 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
 
         gameTick += dt;
+    }
+
+    public List<Enemy> getEnemyList() {
+        return enemyList;
+    }
+
+    public List<Tower> getTowerList() {
+        return towerList;
+    }
+
+    public List<GameTile> getTileList() {
+        return tileList;
+    }
+
+    public List<Bullet> getBulletList() {
+        return bulletList;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     // check if bullet out of range
@@ -275,17 +282,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return !isDead() || stage.hasNextEnemy() || stage.hasNextRound() || !enemyList.isEmpty();
     }
 
-    public void setScreenX(float screenX) {
-        screenX = Math.max(screenX, 0f);
-        screenX = Math.min(screenX, MAP_WIDTH - SCREEN_WIDTH + 1);
-        this.screenX = screenX;
-    }
-    public void setScreenY(float screenY) {
-        screenY = Math.max(screenY, 0f);
-        screenY = Math.min(screenY, MAP_HEIGHT - SCREEN_HEIGHT + 1);
-        this.screenY = screenY;
-    }
-
     //get all available tower
     public List<Tower> getAvailableTower() {
         List<Tower> tow = new ArrayList<>();
@@ -296,83 +292,11 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        super.onTouchEvent(event);
-
-        float x, y, x2, y2;
-
-        int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                pointerCount++;
-
-                primStartTouchX = event.getX();
-                primStartTouchY = event.getY();
-
-                if (pointerCount == 2) {
-                    secStartTouchX = event.getX(1);
-                    secStartTouchY = event.getY(1);
-                    primSecStartDistance = Math.max(Math.abs(secStartTouchX - primStartTouchX),
-                            Math.abs(secStartTouchY - primStartTouchY));
-                }
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                if (pointerCount == 1) {
-                    x = event.getX();
-                    y = event.getY();
-
-                    moveDx = x - primStartTouchX;
-                    moveDy = y - primStartTouchY;
-                }
-
-                if (pointerCount == 2) {
-
-                }
-                break;
-
-
-            case MotionEvent.ACTION_UP:
-                pointerCount--;
-                setScreenX(screenX - moveDx);
-                setScreenY(screenY - moveDy);
-                moveDx = 0;
-                moveDy = 0;
-                break;
-        }
-
-        return true;
-    }
-
-    @Override
     public void draw(Canvas canvas) {
-        super.draw(canvas);
-
-        canvas.save();
-
-        float currentScreenX = screenX - moveDx;
-        currentScreenX = Math.max(currentScreenX, 0f);
-        currentScreenX = Math.min(currentScreenX, MAP_WIDTH - SCREEN_WIDTH + 1);
-
-        float currentScreenY = screenY - moveDy;
-        currentScreenY = Math.max(currentScreenY, 0f);
-        currentScreenY = Math.min(currentScreenY, MAP_HEIGHT - SCREEN_HEIGHT + 1);
-
-        canvas.translate(-currentScreenX, -currentScreenY);
-
-        canvas.drawColor(Color.rgb(255, 176, 242));
-        stage.draw(canvas);
-        for (Enemy enemy: enemyList) {
-            enemy.draw(canvas);
-        }
-        for (Tower tower: towerList) {
-            tower.draw(canvas);
-        }
-        for (Bullet bullet: bulletList) {
-            bullet.draw(canvas);
-        }
-
-        canvas.restore();
+        //super.draw(canvas);
+        GameGraphic.draw(canvas, tileList);
+        GameGraphic.draw(canvas, towerList);
+        GameGraphic.draw(canvas, enemyList);
+        GameGraphic.draw(canvas, bulletList);
     }
-
 }

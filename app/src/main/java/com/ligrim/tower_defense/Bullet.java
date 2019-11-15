@@ -13,15 +13,15 @@ public class Bullet extends GameEntity {
     private float directionY;
     private Enemy enemyTarget;
     private Tower owner;
-    private float angle;
 
     public Bullet(Tower owner, Enemy targetedEnemy) {
+        super(owner.getPosition()); // initiate position
+
         this.owner = owner;
         this.enemyTarget = targetedEnemy;
         this.speed = owner.getBulletSpeed();
         this.range = owner.getRange();
         this.damage = owner.getDamage();
-        this.position = owner.getPosition();
         enemyTarget = targetedEnemy;
 
         predictDirection();
@@ -57,9 +57,9 @@ public class Bullet extends GameEntity {
 
     private void predictDirection() {
         float distance = Position.distance(position, enemyTarget.getPosition());
-        directionX = this.enemyTarget.getPosition().getX() - this.getPosition().getX() + this.enemyTarget.getDirectionX() *
+        directionX = this.enemyTarget.getX() - this.getX() + this.enemyTarget.getDirectionX() *
                 this.enemyTarget.getSpeed() * distance / speed ; // set vector
-        directionY = this.enemyTarget.getPosition().getY() - this.getPosition().getY() + this.enemyTarget.getDirectionY() *
+        directionY = this.enemyTarget.getY() - this.getY() + this.enemyTarget.getDirectionY() *
                 this.enemyTarget.getSpeed() * distance / speed ; // set vector
         float length = directionX * directionX + directionY * directionY;
         length = (float) Math.sqrt((double) length);
@@ -89,21 +89,17 @@ public class Bullet extends GameEntity {
 
     @Override
     public void update() {
-        /*directionX = this.enemyTarget.getPosition().getX() - this.getPosition().getX(); // set vector
-        directionY = this.enemyTarget.getPosition().getY() - this.getPosition().getY(); // set vector
+        /*directionX = this.enemyTarget.getX() - this.getX(); // set vector
+        directionY = this.enemyTarget.getY() - this.getY(); // set vector
         float length = directionX * directionX + directionY * directionY;
         directionX /= Math.sqrt(length); //set to unit length
         directionY /= Math.sqrt(length); //set to unit length;*/
-        setPosition(new Position(this.getPosition().getX() + directionX * speed, this.getPosition().getY() + directionY * speed));
+        setPosition(new Position(this.getX() + directionX * speed, this.getY() + directionY * speed));
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        Bitmap bitmap = GameGraphic.getTowerById(owner.getId() + "_bullet");
-        bitmap = Bitmap.createScaledBitmap(bitmap, width, height, false);
-        canvas.save();
-        canvas.rotate(angle, position.getX() + width/2 - 1, position.getY() + height/2 - 1);
-        canvas.drawBitmap(bitmap, position.getX(), position.getY(), null);
-        canvas.restore();
+    public String getId() {
+        return owner.getId() + "_" + "bullet";
     }
+
 }

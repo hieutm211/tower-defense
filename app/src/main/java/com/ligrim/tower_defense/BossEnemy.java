@@ -20,6 +20,6 @@ public class BossEnemy extends Enemy {
 
     @Override
     public String getId() {
-        return "boss";
+        return "enemy_boss";
     }
 }

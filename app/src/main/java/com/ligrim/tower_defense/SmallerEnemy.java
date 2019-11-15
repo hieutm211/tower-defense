@@ -18,7 +18,7 @@ public class SmallerEnemy extends Enemy {
 
     @Override
     public String getId() {
-        return "smaller";
+        return "enemy_smaller";
     }
 
 }

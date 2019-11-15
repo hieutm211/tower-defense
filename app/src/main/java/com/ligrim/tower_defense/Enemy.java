@@ -17,18 +17,17 @@ public abstract class Enemy extends GameEntity {
 //    protected Position position;
 //    protected int width = GameField.UNIT_WIDTH;
 //    protected int height = GameField.UNIT_HEIGHT;
-    protected float angle;
     protected boolean faded;
     protected List<Position> route;
     protected int checkpoint;
 
-    public Enemy(){}
-
     public Enemy(List<Position> route) {
+        super(route.get(0)); // set position
+
         this.route = route;
         directionX = 0;
         directionY = 0;
-        this.position = route.get(0);
+
         assert (route.size() > 1);
         checkpoint = 1;
         updateDirection();
@@ -90,8 +89,8 @@ public abstract class Enemy extends GameEntity {
 
     public void update() {
         if (isReachCheckpoint()) nextDestination();
-        float newEnemyPositionX = this.getPosition().getX() + this.getDirectionX() * this.getSpeed();
-        float newEnemyPositionY = this.getPosition().getY() + this.getDirectionY() * this.getSpeed();
+        float newEnemyPositionX = this.getX() + this.getDirectionX() * this.getSpeed();
+        float newEnemyPositionY = this.getY() + this.getDirectionY() * this.getSpeed();
         this.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
     }
 
@@ -158,15 +157,13 @@ public abstract class Enemy extends GameEntity {
 //    }
 
     private void updateDirection() {
-        float dx = route.get(checkpoint).getX() - this.getPosition().getX();
-        float dy = route.get(checkpoint).getY() - this.getPosition().getY();
+        float dx = route.get(checkpoint).getX() - this.getX();
+        float dy = route.get(checkpoint).getY() - this.getY();
         // turn dx and dy to unit vector
         dx /= Position.distance(this.getPosition(), route.get(checkpoint));
         dy /= Position.distance(this.getPosition(), route.get(checkpoint));
         this.setDirection(dx, dy);
     }
-
-    public abstract String getId();
 
     //get all available tower
     public List<Tower> getAvailableTower() {
@@ -177,13 +174,13 @@ public abstract class Enemy extends GameEntity {
         return tow;
     }
 
+    @Override
     public void draw(Canvas canvas) {
-        Bitmap enemy = GameGraphic.getEnemyById(getId());
-        enemy = Bitmap.createScaledBitmap(enemy, width, height, false);
+        Bitmap enemy = GameGraphic.getBitmapById(getId(), width, height);
 
         canvas.save();
-        canvas.rotate(angle, position.getX() + width/2 - 1, position.getY() + height/2 - 1);
-        canvas.drawBitmap(enemy, position.getX(), position.getY(), null);
+        canvas.rotate(angle, getCenterX(), getCenterY());
+        canvas.drawBitmap(enemy, getX(), getY(), null);
         canvas.restore();
     }
 }
