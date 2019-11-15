@@ -18,12 +18,12 @@ public abstract class Tower extends GameTile {
     protected float directionY;
     protected Queue<Enemy> enemyTarget;
     protected float bulletSpeed;
-    protected int price;
+    protected static int PRICE;
 
     public Tower(){}
 
     public int getPrice() {
-        return price;
+        return PRICE;
     }
 
     public float getBulletSpeed() { return bulletSpeed; }
