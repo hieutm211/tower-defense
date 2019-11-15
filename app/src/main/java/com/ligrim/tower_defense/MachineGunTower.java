@@ -21,6 +21,7 @@ public class MachineGunTower extends Tower {
         directionY = 0;
         enemyTarget = new LinkedList<>();
         bulletSpeed = 12f;
+        price = 10;
     }
 
     @Override
