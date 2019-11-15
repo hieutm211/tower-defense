@@ -116,8 +116,8 @@ public abstract class Enemy extends GameEntity {
         else if (directionX < 0f && Math.abs(directionY) < .1f) angle = 180f;
         else if (directionX > 0f && directionY > 0f) angle = newAngle;
         else if (directionX > 0f && directionY < 0f) angle = -newAngle;
-        else if (directionX < 0f && directionY > 0f) angle = 180f - newAngle;
-        else if (directionX < 0f && directionY < 0f) angle = angle - 180f;
+        else if (directionX < 0f && directionY > 0f) angle = -(180f + newAngle);
+        else if (directionX < 0f && directionY < 0f) angle = (newAngle + 180f);
     }
 
     public float getAngle() {

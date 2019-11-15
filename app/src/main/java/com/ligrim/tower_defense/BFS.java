@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense;
 
+import java.net.MulticastSocket;
 import java.util.*;
 
 /*
@@ -16,6 +17,7 @@ public class BFS {
     public static final int ROAD = 0;
     public static final int START = -1;
     public static final int END = -2;
+    private static final int curveDegree = 6; // the grater this value is, the smoothier the curves look, must be greater than 0
     private static Queue<Point> queue;
 
     private static class Point {
@@ -58,16 +60,17 @@ public class BFS {
         int min = -100;
         for (int i = 0; i < mapDat.length; ++i) {
             for (int j = 0; j < mapDat[0].length; ++j) {
-                if (mapDat[i][j] == END && ( min > map[i][j] || min == -100 ) ) {
+                if (mapDat[i][j] == END && ( (min > map[i][j]) || min == -100 ) && map[i][j] >= 0 ) {
                     nearest = new Point(j, i);
                     min = map[i][j];
                 }
             }
         }
         /*System.out.println(nearest.x + " " + nearest.y);
-        print(mapDat);*/
+        print(mapDat);
+        print(map);*/
 
-        List<Position> result = new ArrayList<>();
+        LinkedList<Position> result = new LinkedList<>();
         Stack<Point> stack = new Stack<>();
         while (map[nearest.y][nearest.x] != 0) {
             for (int i = 0; i < dx.length; ++i) {
@@ -87,6 +90,7 @@ public class BFS {
             float y = (float) (p.y) * (float)GameStage.UNIT_HEIGHT;
             result.add(new Position(x, y));
         }
+        smoothCurve(result);
         return result;
     }
 
@@ -128,6 +132,47 @@ public class BFS {
                 System.out.print(arr[i][j] + " ");
             }
             System.out.println();
+        }
+    }
+
+    private static void smoothCurve(LinkedList<Position> list) {
+        for (int i = 0; i + 2 < list.size(); ++i) {
+            // find right angle
+            if (Math.abs(Position.distanceSquared(list.get(i), list.get(i + 1)) +
+                    Position.distanceSquared(list.get(i + 1), list.get(i + 2)) -
+                    Position.distanceSquared(list.get(i), list.get(i + 2))) < .01f) {
+
+                Position firstMid = Position.midPoint(list.get(i), list.get(i + 1));
+                Position secondMid = Position.midPoint(list.get(i + 1), list.get(i + 2));
+                Position origin = Position.midPoint(list.get(i), list.get(i + 2));
+
+                boolean patch = true;
+                if (Position.distance(firstMid, list.get(i + 1)) < GameStage.UNIT_HEIGHT * .325f ) {
+                    firstMid = list.get(i);
+                    patch = false;
+                }
+
+                Position firstVec = new Position(firstMid.getX() - origin.getX(), firstMid.getY() - origin.getY());
+                Position secVec = new Position(secondMid.getX() - origin.getX(), secondMid.getY() - origin.getY());
+
+                float firstAbsAngle = Position.getAbsoluteAngle(firstVec);
+
+                float pi = (float) Math.PI;
+                float diffAngle = Position.cross(firstVec, secVec) > 0f ? pi / 2 : - pi / 2;
+
+                float unit_angle = diffAngle / curveDegree;
+                /*System.out.println("diffangle: " + diffAngle / Math.PI * 180);*/
+
+                list.remove(i++ + 1);
+                for (int j = 0; j <= curveDegree; ++j) {
+                    if (!patch && j == 0) continue;
+                    double angle = (double) j * unit_angle + firstAbsAngle;
+                    float x  = (float) Math.cos(angle) * GameStage.UNIT_WIDTH / 2, y = (float) Math.sin(angle) * GameStage.UNIT_HEIGHT / 2;
+                    Position vectorRotate = new Position(x, y);
+                    list.add(i++, Position.add(vectorRotate, origin));
+                }
+                i -= 2;
+            }
         }
     }
 
