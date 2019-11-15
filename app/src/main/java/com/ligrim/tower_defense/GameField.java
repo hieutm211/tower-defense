@@ -335,6 +335,15 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return true;
     }
 
+    //get all available tower
+    public List<Tower> getAvailableTower() {
+        List<Tower> tow = new ArrayList<>();
+        tow.add(new NormalTower(new Position(0,0)));
+        tow.add(new SniperTower(new Position(0,0)));
+        tow.add(new MachineGunTower(new Position(0,0)));
+        return tow;
+    }
+
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
