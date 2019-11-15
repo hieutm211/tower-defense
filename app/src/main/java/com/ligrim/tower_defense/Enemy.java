@@ -3,6 +3,7 @@ package com.ligrim.tower_defense;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Enemy extends GameEntity {
@@ -166,6 +167,15 @@ public abstract class Enemy extends GameEntity {
     }
 
     public abstract String getId();
+
+    //get all available tower
+    public List<Tower> getAvailableTower() {
+        List<Tower> tow = new ArrayList<>();
+        tow.add(new NormalTower(new Position(0,0)));
+        tow.add(new SniperTower(new Position(0,0)));
+        tow.add(new MachineGunTower(new Position(0,0)));
+        return tow;
+    }
 
     public void draw(Canvas canvas) {
         Bitmap enemy = GameGraphic.getEnemyById(getId());

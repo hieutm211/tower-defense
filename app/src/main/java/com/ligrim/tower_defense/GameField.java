@@ -286,6 +286,15 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.screenY = screenY;
     }
 
+    //get all available tower
+    public List<Tower> getAvailableTower() {
+        List<Tower> tow = new ArrayList<>();
+        tow.add(new NormalTower(new Position(0,0)));
+        tow.add(new SniperTower(new Position(0,0)));
+        tow.add(new MachineGunTower(new Position(0,0)));
+        return tow;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
