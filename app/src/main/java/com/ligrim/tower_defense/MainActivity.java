@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
             GameField gameField = new GameField(this, gameStage);
             setContentView(gameField);
             GameGraphic.setAssetManager(this.getAssets());
-            GameGraphic.setGameStage(gameStage);
+            GameGraphic.configMap(gameStage.WIDTH, gameStage.HEIGHT, gameStage.UNIT_WIDTH, gameStage.UNIT_HEIGHT);
         } catch (IOException e) {
             e.printStackTrace();
         }

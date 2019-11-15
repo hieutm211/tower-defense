@@ -13,7 +13,6 @@ public abstract class Tower extends GameTile {
     protected int damage;
     protected double lastShotTick;
 
-    protected float angle;
     protected float directionX;
     protected float directionY;
     protected Queue<Enemy> enemyTarget;
@@ -21,18 +20,14 @@ public abstract class Tower extends GameTile {
 
     protected int price;
 
-    public Tower(){}
-
     public int getPrice() {
         return price;
     }
     public float getBulletSpeed() { return bulletSpeed; }
 
     public Tower(Position position) {
-        this.position = position;
+        super(position);
     }
-
-    public abstract String getId();
 
     public int getLevel() {
         return 0;
@@ -74,8 +69,8 @@ public abstract class Tower extends GameTile {
     }
 
     private boolean inside(Position position, Tower tower) {
-        double x = tower.getPosition().getX();
-        double y = tower.getPosition().getY();
+        double x = tower.getX();
+        double y = tower.getY();
         double width = tower.getWidth();
         double height = tower.getHeight();
         return (position.getX() >= x && position.getY() >= y && position.getX() <= x + width && position.getY() <= y + height);
@@ -118,8 +113,8 @@ public abstract class Tower extends GameTile {
     public void update() {
         Enemy finalTarget = chooseEnemyTarget();
         if (chooseEnemyTarget() == null) return;
-        directionX = finalTarget.getPosition().getX() - this.getPosition().getX();
-        directionY = finalTarget.getPosition().getY() - this.getPosition().getY();
+        directionX = finalTarget.getX() - this.getX();
+        directionY = finalTarget.getY() - this.getY();
         if (directionX == 0 && directionY == 0) angle = 0;
         else {
             float tempAngle = (float) Math.atan(Math.abs(directionY / directionX)) * 180 / (float) Math.PI;
@@ -136,20 +131,20 @@ public abstract class Tower extends GameTile {
 
     @Override
     public void draw(Canvas canvas) {
-        float x = position.getX();
-        float y = position.getY();
+        float x = getX();
+        float y = getY();
 
-        Bitmap tower = GameGraphic.getTowerById(getId());
-        tower = Bitmap.createScaledBitmap(tower, width, height, false);
+        Bitmap tower = GameGraphic.getBitmapById(getId(), width, height);
 
-        Bitmap tower_gun = GameGraphic.getTowerById(getId() + "_gun");
-        tower_gun = Bitmap.createScaledBitmap(tower_gun, width, height, false);
+        Bitmap tower_gun = GameGraphic.getBitmapById(getId() + "_gun", width, height);
 
         canvas.drawBitmap(tower, x, y, null);
 
         canvas.save();
-        canvas.rotate(angle, position.getX() + width/2 - 1, position.getY() + height/2 - 1);
+        canvas.rotate(angle, getCenterX(), getCenterY());
         canvas.drawBitmap(tower_gun, x, y, null);
         canvas.restore();
+
+        //System.out.println("draw tower at " + x + " " + y + ", with angle = " + angle);
     }
 }

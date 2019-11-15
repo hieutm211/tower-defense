@@ -19,7 +19,7 @@ public class NormalEnemy extends Enemy {
 
     @Override
     public String getId() {
-        return "normal";
+        return "enemy_normal";
     }
 
 }

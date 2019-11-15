@@ -6,10 +6,14 @@ public class Spawner extends Road {
 
     private double spawnerTick;
 
-    public Spawner(Position position) {
-        super(position);
+    public Spawner(String code, Position position) {
+        super(code, position);
         this.type = TYPE_SPAWNER;
         spawnerTick = -1.0;
+    }
+
+    public Spawner(String code, float x, float y) {
+        this(code, new Position(x, y));
     }
 
     public double getSpawnerTick() {
@@ -20,7 +24,4 @@ public class Spawner extends Road {
         this.spawnerTick = spawnerTick;
     }
 
-    public Spawner(float x, float y) {
-        super(x, y);
-    }
 }

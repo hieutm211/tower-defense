@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class NormalTower extends Tower {
+
     public NormalTower(Position position) {
         super(position);
         rateOfFire = 60f / 60;
@@ -25,7 +26,7 @@ public class NormalTower extends Tower {
 
     @Override
     public String getId() {
-        return "normal";
+        return "tower_normal";
     }
 
 
