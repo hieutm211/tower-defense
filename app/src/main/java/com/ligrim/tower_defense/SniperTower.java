@@ -21,6 +21,7 @@ public class SniperTower extends Tower {
         directionY = 0;
         enemyTarget = new LinkedList<>();
         bulletSpeed = 15f;
+        price = 15;
     }
 
     @Override
