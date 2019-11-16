@@ -24,7 +24,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private GameStage stage;
     private List<Enemy> enemyList; // enemy da duoc tao ra va con song
     private List<Tower> towerList; // tower da duoc xay dung.
-    private List<GameTile> tileList;
+    private List<List<GameTile>> tileList;
 
     private List<Bullet> bulletList; // nhung vien dan dang bay
 
@@ -57,7 +57,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
         this.enemyList = new ArrayList<>();
         this.towerList = new ArrayList<>();
-        this.tileList = new ArrayList<>();
+        this.tileList = gameStage.getTileList();
         this.bulletList = new ArrayList<>();
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = 0.0;
@@ -136,7 +136,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return towerList;
     }
 
-    public List<GameTile> getTileList() {
+    public List<List<GameTile>> getTileList() {
         return tileList;
     }
 
@@ -294,9 +294,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         //super.draw(canvas);
-        GameGraphic.draw(canvas, tileList);
-        GameGraphic.draw(canvas, towerList);
+        GameGraphic.draw(canvas, tileList.get(0));
         GameGraphic.draw(canvas, enemyList);
+        GameGraphic.draw(canvas, tileList.get(1));
+        GameGraphic.draw(canvas, towerList);
         GameGraphic.draw(canvas, bulletList);
     }
 }
