@@ -686,7 +686,7 @@ public class GameStage {
     }
 
     private boolean isRock(int i, int j) {
-        for (int k = 0; k < roadID.length; ++k) {
+        for (int k = 0; k < rockID.length; ++k) {
             if (mapLayer[i][k] == rockID[k]) return true;
         }
         return false;
