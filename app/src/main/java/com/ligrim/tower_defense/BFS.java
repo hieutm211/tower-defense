@@ -55,17 +55,8 @@ public class BFS {
             }
         }
         bfs(mapDat);
-        // search for the nearest endpoint
-        Point nearest = new Point(0, 0) ;
-        int min = -100;
-        for (int i = 0; i < mapDat.length; ++i) {
-            for (int j = 0; j < mapDat[0].length; ++j) {
-                if (mapDat[i][j] == END && ( (min > map[i][j]) || min == -100 ) && map[i][j] >= 0 ) {
-                    nearest = new Point(j, i);
-                    min = map[i][j];
-                }
-            }
-        }
+        // search for the nearest target
+        Point nearest = findNearestTarget(mapDat);
         /*System.out.println(nearest.x + " " + nearest.y);
         print(mapDat);
         print(map);*/
@@ -92,6 +83,21 @@ public class BFS {
         }
         smoothCurve(result);
         return result;
+    }
+
+    private static Point findNearestTarget(int[][] mapDat) {
+        Point nearest = new Point(0, 0) ;
+        int min = -100;
+        for (int i = 0; i < mapDat.length; ++i) {
+            for (int j = 0; j < mapDat[0].length; ++j) {
+                if (mapDat[i][j] == END && ( (min > map[i][j]) || min == -100 ) && map[i][j] >= 0 ) {
+                    nearest = new Point(j, i);
+                    min = map[i][j];
+                }
+            }
+        }
+        if (min == -100) throw new java.lang.ExceptionInInitializerError("there is no path from Spawner to Target");
+        return nearest;
     }
 
     private static void bfs(int[][] mapDat) {

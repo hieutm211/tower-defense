@@ -19,6 +19,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import sun.awt.image.ImageWatched;
+import sun.awt.image.IntegerComponentRaster;
+import sun.security.ssl.HandshakeInStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -31,6 +34,29 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 public class GameStage {
+
+    private static String NEWLINE = Character.toString((char) 10);
+    private static final int[] roadID = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 23, 25,
+            26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 60};
+    private static final int[] spawnerID = {118, 123, 128};
+    private static final int[] targetID = {49, 54, 59};
+    private static final int[] conjuction = {0, 2, 5, 7, 10, 12, 46, 48, 51, 53, 56, 58};
+    private static final int[] treeID = {130, 131, 132, 133, 134};
+    private static final int[] rockID = {135, 136, 137};
+    private static final int[] otherID = {19, 20, 21};
+
+    public static final int INITIAL_GOLD = 100;
+    public static int UNIT_WIDTH;
+    public static int UNIT_HEIGHT;
+    public static int WIDTH;
+    public static int HEIGHT;
+    private int[][] mapData;
+    private int[][] mapLayer;
+    private int currentRound;
+    private List<Round> roundList; // list of all rounds in the game
+    private List<List<Position>> route; // route here
+    private List<List<GameTile>> tileList;
+    private Bitmap demoImg;
 
     // this class is for wrapping type, amount and order of enemies to be generated
     private static class Round {
@@ -127,34 +153,14 @@ public class GameStage {
         }
     }
 
-    private static String NEWLINE = Character.toString((char) 10);
-    private static final int[] roadID = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 23, 25,
-            26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 60};
-    private static final int[] spawnerID = {118, 123, 128};
-    private static final int[] targetID = {49, 54, 59};
-    private static final int[] conjuction = {0, 2, 5, 7, 10, 12, 46, 48, 51, 53, 56, 58};
-
-    public static int UNIT_WIDTH;
-    public static int UNIT_HEIGHT;
-    public static int WIDTH;
-    public static int HEIGHT;
-    public static final int INITIAL_GOLD = 100;
-    private int[][] mapData;
-    private int[][] mapLayer;
-    private Bitmap demoImg;
-    // list of all rounds in the game
-    private List<Round> roundList;
-    private int currentRound;
-    // route here
-    private List<List<Position>> route;
-
-    public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream RouteFile) {
+    public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream saveFile) {
         roundList = new ArrayList<>();
         currentRound = 0;
         route = new ArrayList<>();
 
         readMapData(mapFile);
-        readEnemyInfo(EnemyFile, RouteFile);
+        readEnemyInfo(EnemyFile, saveFile);
+        initTileList();
         //convertToPositionListOfRoute(convertToMapMatrix());
     }
 
@@ -455,12 +461,12 @@ public class GameStage {
 
     // read enemy Information, i.e the order enemy appear
     // initial all rounds in the game
-    private void readEnemyInfo(InputStream Enemy_info, InputStream Route_info) {
+    private void readEnemyInfo(InputStream Enemy_info, InputStream saveFile) {
         try {
             // declare file directory here
             InputStream EnemyFile = Enemy_info;
             BufferedReader Enemy = new BufferedReader(new InputStreamReader(EnemyFile, "UTF-8"));
-            InputStream RouteFile = Route_info;
+            InputStream RouteFile = saveFile;
             BufferedReader Route = new BufferedReader(new InputStreamReader(RouteFile, "UTF-8"));
 
             String st;
@@ -533,6 +539,39 @@ public class GameStage {
         for (int i = 0; i < matrix.size(); ++i) {
             this.route.add(BFS.getRouteFromMatrix(matrix.get(i)));
         }
+    }
+
+    private void initTileList() {
+        this.tileList = new LinkedList<>();
+
+        LinkedList<GameTile> layer1 = new LinkedList<>();
+        for (int i = 0; i < HEIGHT; ++i) {
+            for (int j = 0; j < WIDTH; ++j) {
+                float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
+                layer1.add(new Mountain(Integer.toString(mapData[i][j]), new Position(x, y)));
+            }
+        }
+        LinkedList<GameTile> layer2 = new LinkedList<>();
+        for (int i  = 0; i < HEIGHT; ++i) {
+            for (int j = 0; j < WIDTH; ++j) {
+                if (mapLayer[i][j] > 0) {
+                    float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
+                    if (isOther(i, j) || isRock(i, j)) {
+                        layer1.addLast(new Mountain(Integer.toString(mapLayer[i][j]), new Position(x, y)));
+                    }
+                    if (isTree(i, j)) {
+                        layer2.add(new Mountain(Integer.toString(mapLayer[i][j]), new Position(x, y)));
+                    }
+                }
+            }
+        }
+
+        tileList.add(layer1);
+        tileList.add(layer2);
+    }
+
+    public List<List<GameTile>> getTileList() {
+        return this.tileList;
     }
 
     private List<int[][]> convertToMapMatrix() {
@@ -635,6 +674,27 @@ public class GameStage {
     private boolean isTarget(int i, int j) {
         for (int k = 0; k < targetID.length; ++k) {
             if (mapData[i][j] == targetID[k]) return true;
+        }
+        return false;
+    }
+
+    private boolean isTree(int i, int j) {
+        for (int k = 0; k < treeID.length; ++k) {
+            if (mapLayer[i][j] == treeID[k]) return true;
+        }
+        return false;
+    }
+
+    private boolean isRock(int i, int j) {
+        for (int k = 0; k < roadID.length; ++k) {
+            if (mapLayer[i][k] == rockID[k]) return true;
+        }
+        return false;
+    }
+
+    private boolean isOther(int i, int j) {
+        for (int k = 0; k < otherID.length; ++k) {
+            if (mapLayer[i][j] == otherID[k] ) return true;
         }
         return false;
     }
