@@ -20,6 +20,6 @@ public class Mountain extends GameTile {
 
     @Override
     public String getId() {
-        return "tile" + "_" + code;
+        return "tile" + code;
     }
 }

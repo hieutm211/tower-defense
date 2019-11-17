@@ -293,7 +293,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void draw(Canvas canvas) {
-        //super.draw(canvas);
+        super.draw(canvas);
         GameGraphic.draw(canvas, tileList.get(0));
         GameGraphic.draw(canvas, enemyList);
         GameGraphic.draw(canvas, tileList.get(1));

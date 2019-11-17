@@ -34,6 +34,7 @@ public class GameStage {
     private static String NEWLINE = Character.toString((char) 10);
     private static final int[] roadID = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 23, 25,
             26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 60};
+    private static final int[] turningPoint = {3, 4, 26, 27, 8, 9, 31, 32, 13, 14, 36, 37};
     private static final int[] spawnerID = {118, 123, 128};
     private static final int[] targetID = {49, 54, 59};
     private static final int[] conjuction = {0, 2, 5, 7, 10, 12, 46, 48, 51, 53, 56, 58};
@@ -49,9 +50,9 @@ public class GameStage {
     private int[][] mapData;
     private int[][] mapLayer;
     private int currentRound;
-    private List<Round> roundList; // list of all rounds in the game
     private List<List<Position>> route; // route here
     private List<List<GameTile>> tileList;
+    private List<Round> roundList; // list of all rounds in the game
     private Bitmap demoImg;
 
     // this class is for wrapping type, amount and order of enemies to be generated
@@ -157,7 +158,6 @@ public class GameStage {
         readMapData(mapFile);
         readEnemyInfo(EnemyFile, saveFile);
         initTileList();
-        //convertToPositionListOfRoute(convertToMapMatrix());
     }
 
     public List<Position> getRoute (int i) {
@@ -250,7 +250,7 @@ public class GameStage {
                         case "sniper":
                             list.add(new SniperTower(pos));
                             break;
-                        case "machine_gun":
+                        case "tower_machine_gun":
                             list.add(new MachineGunTower(pos));
                             break;
                     }
@@ -340,24 +340,6 @@ public class GameStage {
         }
     }
 
-    public void draw(Canvas canvas) {
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                Bitmap bitmap = GameGraphic.getTileById(mapData[i][j]);
-                canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-            }
-        }
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                if (mapLayer[i][j] > 0) {
-                    Bitmap bitmap = GameGraphic.getTileById(mapLayer[i][j]);
-                    canvas.drawBitmap(bitmap, j*UNIT_WIDTH, i*UNIT_HEIGHT, null);
-                }
-            }
-        }
-    }
-
-
     /***************************************************************************
      * Helper functions.
      ***************************************************************************/
@@ -370,16 +352,13 @@ public class GameStage {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
-
             Element Tagmap = (Element) doc.getElementsByTagName("map").item(0);
 
             // read width and height of the map
-
             WIDTH = Integer.parseInt(Tagmap.getAttribute("width"));
             HEIGHT = Integer.parseInt(Tagmap.getAttribute("height"));
             UNIT_HEIGHT = Integer.parseInt(Tagmap.getAttribute("tileheight"));
             UNIT_WIDTH = Integer.parseInt(Tagmap.getAttribute("tilewidth"));
-
 
             NodeList TagLayer = doc.getElementsByTagName("layer");
 
@@ -388,22 +367,17 @@ public class GameStage {
                 // read tiled map
                 if (temp == 0) {
                     Node nNode = TagLayer.item(temp);
-
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                         Element eElement = (Element) nNode;
-
                         mapData = new int[HEIGHT][WIDTH];
-
                         String buffer = eElement
                                 .getElementsByTagName("data")
                                 .item(0)
                                 .getTextContent();
 
                         // convert from String input to integer array
-
                         String[] splitLine = buffer.split(NEWLINE);
                         String[][] splitString = new String[HEIGHT][];
-
 
                         for (int i = 1; i < splitLine.length; ++i) {
                             splitString[i - 1] = splitLine[i].split(",");
@@ -419,23 +393,17 @@ public class GameStage {
                 // read terrain
                 if (temp == 1) {
                     Node nNode = TagLayer.item(temp);
-
-
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                         Element eElement = (Element) nNode;
-
                         mapLayer = new int[HEIGHT][WIDTH];
-
                         String buffer = eElement
                                 .getElementsByTagName("data")
                                 .item(0)
                                 .getTextContent();
 
                         // convert from String input to integer array
-
                         String[] splitLine = buffer.split(NEWLINE);
                         String[][] splitString = new String[HEIGHT][];
-
 
                         for (int i = 1; i < splitLine.length; ++i) {
                             splitString[i - 1] = splitLine[i].split(",");
@@ -518,10 +486,8 @@ public class GameStage {
                             System.out.println("unsupported character in loading enemy info: " + c1);
                     }
                 }
-
                 // add round to rounds list
                 roundList.add(round);
-
             }
 
         } catch (FileNotFoundException ex) {
@@ -544,7 +510,8 @@ public class GameStage {
         for (int i = 0; i < HEIGHT; ++i) {
             for (int j = 0; j < WIDTH; ++j) {
                 float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
-                layer1.add(new Mountain(Integer.toString(mapData[i][j]), new Position(x, y)));
+                String id = String.format("%03d", mapData[i][j]);
+                layer1.add(new Mountain(id, new Position(x, y)));
             }
         }
         LinkedList<GameTile> layer2 = new LinkedList<>();
@@ -552,16 +519,16 @@ public class GameStage {
             for (int j = 0; j < WIDTH; ++j) {
                 if (mapLayer[i][j] > 0) {
                     float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
+                    String id = String.format("%03d", mapLayer[i][j]);
                     if (isOther(i, j) || isRock(i, j)) {
-                        layer1.addLast(new Mountain(Integer.toString(mapLayer[i][j]), new Position(x, y)));
+                        layer1.addLast(new Mountain(id, new Position(x, y)));
                     }
                     if (isTree(i, j)) {
-                        layer2.add(new Mountain(Integer.toString(mapLayer[i][j]), new Position(x, y)));
+                        layer2.add(new Mountain(id, new Position(x, y)));
                     }
                 }
             }
         }
-
         tileList.add(layer1);
         tileList.add(layer2);
     }
@@ -580,6 +547,7 @@ public class GameStage {
             int jSpawner = allSpawner.get(i).get(1);
             int roadType = 0;
 
+            // get starting point for bfs
             for (int m = 0; m < BFS.dx.length; ++m) {
                 if (isInBound(iSpawner + BFS.dy[m], jSpawner + BFS.dx[m])) {
                     if (isRoad(iSpawner + BFS.dy[m], jSpawner + BFS.dx[m])) {
@@ -589,19 +557,24 @@ public class GameStage {
                 }
             }
 
+            // create new map for that starting point
             int[][] MapOfASpawner = new int[HEIGHT][WIDTH];
+            // create a temporary variable for saving the previous road id
+            // int preID = mapData[iSpawner][jSpawner];
+            int iPreviousTurningPoint = iSpawner, jPreviousTurningPoint = jSpawner;
 
             for (int j = 0; j < MapOfASpawner.length; ++j) {
                 for (int k = 0; k < MapOfASpawner[0].length; ++k) {
                     if (j == iSpawner && k == jSpawner) MapOfASpawner[j][k] = BFS.START;
                     else if (isTarget(j, k)) {
                         if (isTargetOfSpawner(j, k, iSpawner, jSpawner)) MapOfASpawner[j][k] = BFS.END;
-                        else MapOfASpawner[j][k] = BFS.ROAD;
+                        else MapOfASpawner[j][k] = 1;
                     }
                     else if (isRoad(j, k)) {
-                        if (isRoadOfType(roadType, mapData[j][k])) MapOfASpawner[j][k] = BFS.ROAD;
+                        if ( isRoadOfType(roadType, mapData[j][k]) || isConjunction(j, k) ) {
+                            MapOfASpawner[j][k] = BFS.ROAD;
+                        }
                         else MapOfASpawner[j][k] = 1;
-                        if (isConjunction(j, k)) MapOfASpawner[j][k] = BFS.ROAD;
                     }
                     else MapOfASpawner[j][k] = 1;
                 }
@@ -624,6 +597,39 @@ public class GameStage {
             }
         }
         return res;
+    }
+
+    private int conjunctionDegree(int i, int j) {
+        int count = 0;
+        for (int k = 0; k < BFS.dx.length; ++k) {
+            if (isRoad(i + BFS.dy[k] * 2, j + BFS.dx[k] * 2)) ++count;
+        }
+        return count;
+    }
+
+    private boolean isSpawner(int id) {
+        for (int k = 0; k < spawnerID.length; ++k) {
+            if (id == spawnerID[k]) return true;
+        }
+        return false;
+    }
+
+    private boolean isTurningPoint(int id) {
+        for (int k = 0; k < turningPoint.length; ++k) {
+            if (id == turningPoint[k] || id == turningPoint[k] + 69 * 2
+                                      || id == turningPoint[k] + 69 * 3) {
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isConjunction(int id) {
+        for (int k = 0; k < conjuction.length; ++k) {
+            if (conjuction[k] == id || (conjuction[k] + 2 * 69) == id ||
+                    (conjuction[k] + 3 * 69) == id) return true;
+        }
+        return false;
     }
 
     private boolean isConjunction(int i, int j) {
@@ -753,7 +759,7 @@ public class GameStage {
     }
 
     public static void main(String[] args) throws Exception {
-        GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_2/sample_map2.tmx"),
+        GameStage game = new GameStage(new FileInputStream("app/src/main/assets/map/map_2/tilemap_info.tmx"),
                 new FileInputStream("app/src/main/assets/map/map_2/enemy_info.txt"),
                 new FileInputStream("app/src/main/assets/map/map_2/route_info.txt")  );
         List<Tower> towers = new ArrayList<>();

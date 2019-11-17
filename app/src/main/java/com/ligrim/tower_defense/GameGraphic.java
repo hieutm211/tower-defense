@@ -52,7 +52,7 @@ public class GameGraphic {
     }
 
     public static Bitmap getTileById(String id, int width, int height) {
-        return getBitmapById("tile" + "_" + id, width, height);
+        return getBitmapById("tile" + id, width, height);
     }
 
     public static Bitmap getTileById(int id) {

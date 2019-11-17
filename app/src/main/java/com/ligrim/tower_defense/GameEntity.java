@@ -7,12 +7,14 @@ import androidx.annotation.NonNull;
 
 public abstract class GameEntity implements DrawableObject {
     protected Position position;
-    protected int width = GameField.UNIT_WIDTH;
-    protected int height = GameField.UNIT_HEIGHT;
+    protected int width ;
+    protected int height ;
     protected float angle = 0;
 
     public GameEntity(Position position) {
         this.position = position;
+        width = GameStage.UNIT_WIDTH;
+        height = GameStage.UNIT_HEIGHT;
     }
     public void setPosition(Position position) {
         this.position = position;
