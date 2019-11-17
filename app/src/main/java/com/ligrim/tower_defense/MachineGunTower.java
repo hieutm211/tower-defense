@@ -12,7 +12,7 @@ import java.util.Queue;
 public class MachineGunTower extends Tower {
 
     public MachineGunTower(Position position) {
-        super(position);
+        super("tower_machine_gun", position);
         rateOfFire = 4f / 60;
         range = 350;
         damage = 35;
@@ -22,10 +22,5 @@ public class MachineGunTower extends Tower {
         enemyTarget = new LinkedList<>();
         bulletSpeed = 12f;
         price = 10;
-    }
-
-    @Override
-    public String getId() {
-        return "tower_machine_gun";
     }
 }

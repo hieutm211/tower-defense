@@ -544,7 +544,7 @@ public class GameStage {
         for (int i = 0; i < HEIGHT; ++i) {
             for (int j = 0; j < WIDTH; ++j) {
                 float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
-                layer1.add(new Mountain(Integer.toString(mapData[i][j]), new Position(x, y)));
+                layer1.add(new Mountain(mapData[i][j], new Position(x, y)));
             }
         }
         LinkedList<GameTile> layer2 = new LinkedList<>();
@@ -553,10 +553,10 @@ public class GameStage {
                 if (mapLayer[i][j] > 0) {
                     float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
                     if (isOther(i, j) || isRock(i, j)) {
-                        layer1.addLast(new Mountain(Integer.toString(mapLayer[i][j]), new Position(x, y)));
+                        layer1.addLast(new Mountain(mapLayer[i][j], new Position(x, y)));
                     }
                     if (isTree(i, j)) {
-                        layer2.add(new Mountain(Integer.toString(mapLayer[i][j]), new Position(x, y)));
+                        layer2.add(new Mountain(mapLayer[i][j], new Position(x, y)));
                     }
                 }
             }

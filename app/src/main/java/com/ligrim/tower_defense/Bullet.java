@@ -15,7 +15,7 @@ public class Bullet extends GameEntity {
     private Tower owner;
 
     public Bullet(Tower owner, Enemy targetedEnemy) {
-        super(owner.getPosition()); // initiate position
+        super(owner.getId() + "_" + "bullet", owner.getPosition()); // initiate position
 
         this.owner = owner;
         this.enemyTarget = targetedEnemy;
@@ -96,10 +96,4 @@ public class Bullet extends GameEntity {
         directionY /= Math.sqrt(length); //set to unit length;*/
         setPosition(new Position(this.getX() + directionX * speed, this.getY() + directionY * speed));
     }
-
-    @Override
-    public String getId() {
-        return owner.getId() + "_" + "bullet";
-    }
-
 }

@@ -25,8 +25,8 @@ public abstract class Tower extends GameTile {
     }
     public float getBulletSpeed() { return bulletSpeed; }
 
-    public Tower(Position position) {
-        super(position);
+    public Tower(String id, Position position) {
+        super(id, position);
     }
 
     public int getLevel() {

@@ -39,6 +39,7 @@ public class GameGraphic {
         if (!map.containsKey(id)) {
             try {
                 Bitmap originBitmap = BitmapFactory.decodeStream(assetManager.open("map/map_1/images/" + id + ".png"));
+                System.out.println("drawing " + id);
                 map.put(id, Bitmap.createScaledBitmap(originBitmap, width, height, false));
             } catch (Exception e) {
                 e.printStackTrace();

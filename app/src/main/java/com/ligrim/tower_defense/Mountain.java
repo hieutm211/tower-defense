@@ -4,11 +4,11 @@ import android.graphics.Canvas;
 
 public class Mountain extends GameTile {
 
-    public Mountain(String code, Position position) {
-        super(code, position);
+    public Mountain(int code, Position position) {
+        super("tile_" + String.format("%03d", code), position);
     }
 
-    public Mountain(String code, float x, float y) {
+    public Mountain(int code, float x, float y) {
         this(code, new Position(x, y));
     }
 
@@ -17,9 +17,4 @@ public class Mountain extends GameTile {
     }
 
     public void update() {}
-
-    @Override
-    public String getId() {
-        return "tile" + "_" + code;
-    }
 }
