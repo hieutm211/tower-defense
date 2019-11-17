@@ -9,7 +9,7 @@ import java.util.List;
 public class BossEnemy extends Enemy {
 
     public BossEnemy(List<Position> route) {
-        super(route);
+        super("enemy_boss", route);
         this.health = 6000;
         this.maxHealth = health;
         this.speed = 54f / 60;
@@ -18,8 +18,4 @@ public class BossEnemy extends Enemy {
         faded = false;
     }
 
-    @Override
-    public String getId() {
-        return "enemy_boss";
-    }
 }

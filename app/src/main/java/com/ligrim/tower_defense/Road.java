@@ -9,14 +9,14 @@ public class Road extends GameTile {
 
     protected int type;
 
-    public Road(String code, Position position) {
-        super(code, position);
+    public Road(int code, Position position) {
+        super("tile_" + String.format("%03d", code), position);
         this.position = position;
         this.type = TYPE_ROAD;
 
     }
 
-    public Road(String code, float x, float y) {
+    public Road(int code, float x, float y) {
         this(code, new Position(x, y));
     }
 
@@ -26,8 +26,5 @@ public class Road extends GameTile {
 
     public void update() {}
 
-    @Override
-    public String getId() {
-        return "tile" + "_" + code;
-    }
+
 }

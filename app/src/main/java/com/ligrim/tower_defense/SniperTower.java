@@ -12,7 +12,7 @@ import java.util.Queue;
 public class SniperTower extends Tower {
 
     public SniperTower(Position position) {
-        super(position);
+        super("tower_sniper", position);
         rateOfFire = 150f / 60;
         range = 600;
         damage = 1000;
@@ -22,10 +22,5 @@ public class SniperTower extends Tower {
         enemyTarget = new LinkedList<>();
         bulletSpeed = 15f;
         price = 15;
-    }
-
-    @Override
-    public String getId() {
-        return "tower_sniper";
     }
 }

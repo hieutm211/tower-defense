@@ -8,7 +8,7 @@ import java.util.List;
 public class NormalEnemy extends Enemy {
 
     public NormalEnemy(List<Position> route) {
-        super(route);
+        super("enemy_normal", route);
         this.health = 450;
         this.maxHealth = health;
         this.speed = 70f / 60;
@@ -16,10 +16,4 @@ public class NormalEnemy extends Enemy {
         this.prize = 5;
         faded = false;
     }
-
-    @Override
-    public String getId() {
-        return "enemy_normal";
-    }
-
 }

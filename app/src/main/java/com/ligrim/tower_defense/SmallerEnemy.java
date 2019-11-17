@@ -7,7 +7,7 @@ import java.util.List;
 public class SmallerEnemy extends Enemy {
 
     public SmallerEnemy(List<Position> route) {
-        super(route);
+        super("enemy_smaller", route);
         this.health = 150;
         this.maxHealth = health;
         this.speed = 180f / 60;
@@ -15,10 +15,4 @@ public class SmallerEnemy extends Enemy {
         this.prize = 1;
         faded = false;
     }
-
-    @Override
-    public String getId() {
-        return "enemy_smaller";
-    }
-
 }

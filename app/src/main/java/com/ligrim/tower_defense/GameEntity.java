@@ -3,16 +3,17 @@ package com.ligrim.tower_defense;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import androidx.annotation.NonNull;
-
 public abstract class GameEntity implements DrawableObject {
     protected Position position;
-    protected int width = GameField.UNIT_WIDTH;
-    protected int height = GameField.UNIT_HEIGHT;
+    protected String id;
+    protected int width;
+    protected int height;
     protected float angle = 0;
 
-    public GameEntity(Position position) {
+    public GameEntity(String id, Position position) {
         this.position = position;
+        this.width = GameField.UNIT_WIDTH;
+        this.height = GameField.UNIT_HEIGHT;
     }
     public void setPosition(Position position) {
         this.position = position;
@@ -39,12 +40,13 @@ public abstract class GameEntity implements DrawableObject {
     public float getCenterY() {
         return this.position.getY() + height / 2;
     }
+    public String getId() {
+        return id;
+    }
 
     public abstract boolean collision(GameEntity other);
 
     public abstract void update();
-
-    public abstract String getId();
 
     @Override
     public void draw(Canvas canvas) {

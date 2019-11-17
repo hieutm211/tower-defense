@@ -21,8 +21,8 @@ public abstract class Enemy extends GameEntity {
     protected List<Position> route;
     protected int checkpoint;
 
-    public Enemy(List<Position> route) {
-        super(route.get(0)); // set position
+    public Enemy(String id, List<Position> route) {
+        super(id, route.get(0)); // set position
 
         this.route = route;
         directionX = 0;
