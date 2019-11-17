@@ -36,7 +36,8 @@ public class MainThread extends Thread {
                 synchronized(surfaceHolder) {
                     this.gameField.update();
 
-                    canvas.drawColor(Color.GRAY);
+                    canvas.drawColor(Color.rgb(255, 193, 0));
+
                     this.gameField.draw(canvas);
                 }
             } catch (Exception e) {

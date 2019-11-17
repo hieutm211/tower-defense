@@ -39,7 +39,6 @@ public class GameGraphic {
         if (!map.containsKey(id)) {
             try {
                 Bitmap originBitmap = BitmapFactory.decodeStream(assetManager.open("map/map_1/images/" + id + ".png"));
-                System.out.println("drawing " + id);
                 map.put(id, Bitmap.createScaledBitmap(originBitmap, width, height, false));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -76,27 +75,22 @@ public class GameGraphic {
     }
 
     public static void draw(Canvas canvas, DrawableObject drawable) {
-        canvas.save();
-
-        canvas.translate(-screenX, -screenY);
-
         drawable.draw(canvas);
-
-        canvas.restore();
     }
 
     public static void draw(Canvas canvas, List<? extends DrawableObject> drawableList) {
-        canvas.save();
-
-        canvas.translate(-screenX, -screenY);
-
         for (DrawableObject drawable: drawableList) {
-            drawable.draw(canvas);
+            GameGraphic.draw(canvas, drawable);
         }
-
-        canvas.restore();
     }
 
+    public static int getScreenWidthPixels() {
+        return screenWidthPixels;
+    }
+
+    public static int getScreenHeightPixels() {
+        return screenHeightPixels;
+    }
 
     public static void setScreenX(float _screenX) {
         screenX = fixScreenX(_screenX);

@@ -377,9 +377,18 @@ public class GameStage {
 
             WIDTH = Integer.parseInt(Tagmap.getAttribute("width"));
             HEIGHT = Integer.parseInt(Tagmap.getAttribute("height"));
-            UNIT_HEIGHT = Integer.parseInt(Tagmap.getAttribute("tileheight"));
-            UNIT_WIDTH = Integer.parseInt(Tagmap.getAttribute("tilewidth"));
 
+            UNIT_WIDTH = Integer.parseInt(Tagmap.getAttribute("tilewidth"));
+            UNIT_HEIGHT = Integer.parseInt(Tagmap.getAttribute("tileheight"));
+
+            float fitUnitWidth = GameGraphic.getScreenWidthPixels() / WIDTH;
+            float fitUnitHeight = GameGraphic.getScreenHeightPixels() / HEIGHT;
+
+            if (UNIT_WIDTH < fitUnitWidth || UNIT_HEIGHT < fitUnitHeight) {
+                float scaleFactor = Math.max(fitUnitWidth / UNIT_WIDTH, fitUnitHeight / UNIT_HEIGHT);
+                UNIT_WIDTH = (int) (UNIT_WIDTH * scaleFactor);
+                UNIT_HEIGHT = (int) (UNIT_HEIGHT * scaleFactor);
+            }
 
             NodeList TagLayer = doc.getElementsByTagName("layer");
 
@@ -544,7 +553,7 @@ public class GameStage {
         for (int i = 0; i < HEIGHT; ++i) {
             for (int j = 0; j < WIDTH; ++j) {
                 float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
-                layer1.add(new Mountain(mapData[i][j], new Position(x, y)));
+                layer1.add(new Mountain(mapData[i][j], new Position(x, y), UNIT_WIDTH, UNIT_HEIGHT));
             }
         }
         LinkedList<GameTile> layer2 = new LinkedList<>();
@@ -553,10 +562,10 @@ public class GameStage {
                 if (mapLayer[i][j] > 0) {
                     float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
                     if (isOther(i, j) || isRock(i, j)) {
-                        layer1.addLast(new Mountain(mapLayer[i][j], new Position(x, y)));
+                        layer1.addLast(new Mountain(mapLayer[i][j], new Position(x, y), UNIT_WIDTH, UNIT_HEIGHT));
                     }
                     if (isTree(i, j)) {
-                        layer2.add(new Mountain(mapLayer[i][j], new Position(x, y)));
+                        layer2.add(new Mountain(mapLayer[i][j], new Position(x, y), UNIT_WIDTH, UNIT_HEIGHT));
                     }
                 }
             }

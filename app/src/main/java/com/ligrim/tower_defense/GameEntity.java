@@ -11,10 +11,18 @@ public abstract class GameEntity implements DrawableObject {
     protected float angle = 0;
 
     public GameEntity(String id, Position position) {
+        this.id = id;
         this.position = position;
         this.width = GameField.UNIT_WIDTH;
         this.height = GameField.UNIT_HEIGHT;
     }
+
+    public GameEntity(String id, Position position, int width, int height) {
+        this(id, position);
+        this.width = width;
+        this.height = height;
+    }
+
     public void setPosition(Position position) {
         this.position = position;
     }
