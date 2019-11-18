@@ -58,8 +58,8 @@ public abstract class GameEntity implements DrawableObject {
 
     @Override
     public void draw(Canvas canvas) {
-        float x = position.getX();
-        float y = position.getY();
+        float x = getX();
+        float y = getY();
 
         Bitmap bitmap = GameGraphic.getBitmapById(getId(), width, height);
 

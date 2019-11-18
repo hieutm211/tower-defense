@@ -33,6 +33,8 @@ public class MainThread extends Thread {
 
             try {
                 canvas = this.surfaceHolder.lockCanvas();
+                GameGraphic.setCanvas(canvas);
+
                 synchronized(surfaceHolder) {
                     this.gameField.update();
 
@@ -44,7 +46,7 @@ public class MainThread extends Thread {
                 e.printStackTrace();
             }
             finally {
-                if (canvas != null)            {
+                if (canvas != null) {
                     try {
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     }

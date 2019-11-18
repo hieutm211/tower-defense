@@ -11,6 +11,8 @@ import java.util.List;
 
 public class GameGraphic {
 
+    private static Canvas canvas;
+
     private static AssetManager assetManager;
     private static HashMap<String, Bitmap> map = new HashMap<>();
 
@@ -74,14 +76,22 @@ public class GameGraphic {
         mapHeightPixels = mapHeight * _unitHeightPixels;
     }
 
-    public static void draw(Canvas canvas, DrawableObject drawable) {
+    public static void setCanvas(Canvas canvas) {
+        GameGraphic.canvas = canvas;
+    }
+
+    public static void draw(DrawableObject drawable) {
         drawable.draw(canvas);
     }
 
-    public static void draw(Canvas canvas, List<? extends DrawableObject> drawableList) {
+    public static void draw(List<? extends DrawableObject> drawableList) {
         for (DrawableObject drawable: drawableList) {
-            GameGraphic.draw(canvas, drawable);
+            GameGraphic.draw(drawable);
         }
+    }
+
+    public static void draw(Bitmap bitmap, float x, float y) {
+        canvas.drawBitmap(bitmap, x, y, null);
     }
 
     public static int getScreenWidthPixels() {

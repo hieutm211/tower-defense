@@ -133,6 +133,8 @@ public abstract class Tower extends GameTile {
     public void draw(Canvas canvas) {
         float x = getX();
         float y = getY();
+        float centerX = getCenterX();
+        float centerY = getCenterY();
 
         Bitmap tower = GameGraphic.getBitmapById(getId(), width, height);
 
@@ -141,10 +143,8 @@ public abstract class Tower extends GameTile {
         canvas.drawBitmap(tower, x, y, null);
 
         canvas.save();
-        canvas.rotate(angle, getCenterX(), getCenterY());
+        canvas.rotate(angle, centerX, centerY);
         canvas.drawBitmap(tower_gun, x, y, null);
         canvas.restore();
-
-        //System.out.println("draw tower at " + x + " " + y + ", with angle = " + angle);
     }
 }
