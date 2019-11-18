@@ -191,10 +191,10 @@ public class GameStage {
         int topLeftY = (int)tower.getPosition().getY();
         int rightMostX = topLeftX + tower.getWidth();
         int downMostY = topLeftY + tower.getHeight();
-        return !(isRoad(topLeftX/UNIT_WIDTH, topLeftY/UNIT_HEIGHT) &&
-                isRoad(topLeftX/UNIT_WIDTH, downMostY/UNIT_HEIGHT) &&
-                isRoad(rightMostX/UNIT_WIDTH, topLeftY/UNIT_HEIGHT) &&
-                isRoad(rightMostX/UNIT_WIDTH, downMostY/UNIT_HEIGHT));
+        return (isRoad( topLeftY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
+                isRoad( downMostY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
+                isRoad( topLeftY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH) ||
+                isRoad( downMostY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH));
     }
 
     // this method is for junping immediately to a specific round
