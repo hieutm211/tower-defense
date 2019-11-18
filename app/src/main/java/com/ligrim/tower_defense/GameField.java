@@ -295,15 +295,16 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
 
         canvas.save();
-
         canvas.translate(-GameGraphic.getScreenX(), -GameGraphic.getScreenY());
 
-        GameGraphic.draw(canvas, tileList.get(0));
-        GameGraphic.draw(canvas, enemyList);
-        GameGraphic.draw(canvas, tileList.get(1));
-        GameGraphic.draw(canvas, towerList);
-        GameGraphic.draw(canvas, bulletList);
+        GameGraphic.draw(tileList.get(0));
+        GameGraphic.draw(enemyList);
+        GameGraphic.draw(tileList.get(1));
+        GameGraphic.draw(towerList);
+        GameGraphic.draw(bulletList);
 
         canvas.restore();
+
+        GamePane.draw(canvas);
     }
 }

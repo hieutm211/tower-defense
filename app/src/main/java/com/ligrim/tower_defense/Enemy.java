@@ -176,11 +176,16 @@ public abstract class Enemy extends GameEntity {
 
     @Override
     public void draw(Canvas canvas) {
+        float x = getX();
+        float y = getY();
+        float centerX = getCenterX();
+        float centerY = getCenterY();
+
         Bitmap enemy = GameGraphic.getBitmapById(getId(), width, height);
 
         canvas.save();
-        canvas.rotate(angle, getCenterX(), getCenterY());
-        canvas.drawBitmap(enemy, getX(), getY(), null);
+        canvas.rotate(angle, centerX, centerY);
+        canvas.drawBitmap(enemy, x, y, null);
         canvas.restore();
     }
 }
