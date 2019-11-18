@@ -9,15 +9,13 @@ public class Road extends GameTile {
 
     protected int type;
 
-    public Road(int code, Position position) {
-        super("tile_" + String.format("%03d", code), position);
-        this.position = position;
+    public Road(int code, Position position, int width, int height) {
+        super("tile_" + String.format("%03d", code), position, width, height);
         this.type = TYPE_ROAD;
-
     }
 
-    public Road(int code, float x, float y) {
-        this(code, new Position(x, y));
+    public Road(int code, float x, float y, int width, int height) {
+        this(code, new Position(x, y), width, height);
     }
 
     public boolean collision(GameEntity gameEntity) {

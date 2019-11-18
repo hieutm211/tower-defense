@@ -8,6 +8,10 @@ public abstract class GameTile extends GameEntity {
         super(id, position);
     }
 
+    GameTile(String id, Position position, int width, int height) {
+        super(id, position, width, height);
+    }
+
     @Override
     public boolean collision(GameEntity other) {
         return false;

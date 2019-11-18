@@ -54,7 +54,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         UNIT_WIDTH = gameStage.UNIT_WIDTH;
         UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
 
-
         this.enemyList = new ArrayList<>();
         this.towerList = new ArrayList<>();
         this.tileList = gameStage.getTileList();
@@ -293,11 +292,18 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void draw(Canvas canvas) {
-        //super.draw(canvas);
+        super.draw(canvas);
+
+        canvas.save();
+
+        canvas.translate(-GameGraphic.getScreenX(), -GameGraphic.getScreenY());
+
         GameGraphic.draw(canvas, tileList.get(0));
         GameGraphic.draw(canvas, enemyList);
         GameGraphic.draw(canvas, tileList.get(1));
         GameGraphic.draw(canvas, towerList);
         GameGraphic.draw(canvas, bulletList);
+
+        canvas.restore();
     }
 }
