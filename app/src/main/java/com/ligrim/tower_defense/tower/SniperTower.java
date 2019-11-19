@@ -11,7 +11,7 @@ public class SniperTower extends Tower {
         range = 600;
         damage = 1000;
         timer = new Timer(rateOfFire);
-        bulletSpeed = 15f;
+        bulletSpeed = 16f;
         price = 15;
     }
 }

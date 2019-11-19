@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="36" height="36" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="1">
- <tileset firstgid="1" source="tower defense.tsx"/>
+ <tileset firstgid="1" source="../../../../../../../tower defense.tsx"/>
  <layer id="1" name="Tile Layer 1" width="36" height="36">
   <data encoding="csv">
 242,242,242,129,129,242,242,101,77,120,120,125,125,125,120,120,120,75,76,76,76,102,242,242,50,50,242,242,242,242,242,242,242,101,77,120,
