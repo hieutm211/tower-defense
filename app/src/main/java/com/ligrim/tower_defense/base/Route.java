@@ -21,4 +21,6 @@ public class Route {
         return route.get(0);
     }
 
+    public int size() { return route.size(); }
+
 }

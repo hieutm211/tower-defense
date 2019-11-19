@@ -6,6 +6,7 @@ import android.view.SurfaceView;
 import android.content.Context;
 
 import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.base.Timer;
 import com.ligrim.tower_defense.enemy.Enemy;
 import com.ligrim.tower_defense.tile.GameTile;
 import com.ligrim.tower_defense.tower.MachineGunTower;
@@ -35,7 +36,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private int gold;
     private int health;
 
-    private double gameTick;
+    private Timer gameTick;
     private double lastAddEnemyTick;
     private final double dt = 1d / 60; // amount increased by game Tick after an update
     private final double timeToAddEnemy = .25;
@@ -63,7 +64,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.tileList = gameStage.getTileList();
         this.bulletList = new ArrayList<>();
         this.gold = gameStage.INITIAL_GOLD;
-        gameTick = 0.0;
+        gameTick = new Timer(dt);
         lastAddEnemyTick = -1.0;
         this.health = 200;
         towerList.add(new NormalTower(new Position(450, 400)));
@@ -101,7 +102,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
         //update Enemy status
         for (Enemy enemy: enemyList) {
-            enemy.update();
+            enemy.move();
         }
         addEnemy();
         checkEnemyReachTarget();
@@ -113,7 +114,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
         updateNextShoot();
         for (Bullet bullet: bulletList) {
-            bullet.update();
+            bullet.move();
         }
         updateCollisionBulletEnemy();
         updateBulletList();
@@ -128,7 +129,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             }
         }
 
-        gameTick += dt;
+        gameTick.tick();
     }
 
     public List<Enemy> getEnemyList() {
@@ -167,13 +168,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     //update list of Enemy
     public void addEnemy() {
-        if (gameTick - lastAddEnemyTick >= timeToAddEnemy) {
+        if (gameTick.getTime() - lastAddEnemyTick >= timeToAddEnemy) {
             if (stage.hasNextEnemy()) {
                 Enemy enemy = stage.nextEnemy();
                 if (enemy != null) {
                     enemyList.add(enemy);
                 }
-                lastAddEnemyTick = gameTick;
+                lastAddEnemyTick = gameTick.getTime();
             }
         }
     }
@@ -226,7 +227,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void updateTowersTarget() {
         for(Tower tower: towerList) {
             for (Enemy enemy: enemyList) {
-                if (Position.distance(tower.getPosition(), enemy.getPosition()) <= tower.getRange() && !enemy.isFaded()) {
+                if (Position.distance(tower.getPosition(), enemy.getPosition()) <= tower.getRange() && !enemy.isDead()) {
                     tower.addEnemyTarget(enemy);
                 }
             }
@@ -236,12 +237,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     //update Next Shoot of each tower
     public void updateNextShoot() {
         for (Tower tower: towerList) {
-            if (gameTick - tower.getTickOfLastShot() > tower.getRateOfFire()) {
-                Enemy target = tower.chooseEnemyTarget();
-                if (!(target == null)) {
-                    bulletList.add(new Bullet(tower, target));
-                    tower.setTickOfLastShot(gameTick);
-                }
+            if (tower.getTimer().alarm(gameTick.getTime())) {
+                Bullet b = tower.attack();
+                if (b != null) bulletList.add(b);
             }
         }
     }
@@ -273,7 +271,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     //update the List of Enemy
     public void updateListEnemy() {
         for (int i = 0; i < enemyList.size(); i++) {
-            if (enemyList.get(i).isFaded() || enemyList.get(i).getHealth() <= 0) {
+            if (enemyList.get(i).isDead() || enemyList.get(i).isFaded()) {
                 enemyList.remove(i);
                 i--;
             }

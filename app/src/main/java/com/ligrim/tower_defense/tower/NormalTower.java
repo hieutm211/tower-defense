@@ -1,6 +1,7 @@
 package com.ligrim.tower_defense.tower;
 
 import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.base.Timer;
 
 public class NormalTower extends Tower {
 
@@ -9,7 +10,7 @@ public class NormalTower extends Tower {
         rateOfFire = 60f / 60;
         range = 250;
         damage = 150;
-        lastShotTick = 0;
+        timer = new Timer(rateOfFire);
         bulletSpeed = 10f;
         price = 5;
     }

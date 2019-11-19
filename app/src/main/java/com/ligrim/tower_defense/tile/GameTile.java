@@ -18,8 +18,4 @@ public abstract class GameTile extends GameEntity {
         return false;
     }
 
-    @Override
-    public void update() {
-
-    }
 }

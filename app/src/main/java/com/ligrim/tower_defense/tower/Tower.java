@@ -3,6 +3,9 @@ package com.ligrim.tower_defense.tower;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import com.ligrim.tower_defense.Bullet;
+import com.ligrim.tower_defense.base.Attacker;
+import com.ligrim.tower_defense.base.Timer;
 import com.ligrim.tower_defense.enemy.Enemy;
 import com.ligrim.tower_defense.GameEntity;
 import com.ligrim.tower_defense.GameGraphic;
@@ -12,14 +15,14 @@ import com.ligrim.tower_defense.base.Position;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public abstract class Tower extends GameTile {
+public abstract class Tower extends GameTile implements Attacker {
 
     protected double rateOfFire;
     protected float bulletSpeed;
     protected float range;
     protected int damage;
     protected int price;
-    protected double lastShotTick;
+    protected Timer timer;
 
     protected float directionX;
     protected float directionY;
@@ -38,12 +41,12 @@ public abstract class Tower extends GameTile {
         enemyTarget = new LinkedList<>();
     }
 
-    public int getLevel() {
-        return 0;
+    public Timer getTimer() {
+        return this.timer;
     }
 
-    public double getRateOfFire() {
-        return rateOfFire;
+    public int getLevel() {
+        return 0;
     }
 
     public float getRange() {
@@ -54,13 +57,13 @@ public abstract class Tower extends GameTile {
         return damage;
     }
 
-    public double getTickOfLastShot() {
+    /*//public double getTickOfLastShot() {
         return lastShotTick;
     }
 
     public void setTickOfLastShot(double shotTime) {
         lastShotTick = shotTime;
-    }
+    }*/
 
     public boolean collision(GameEntity other) {
         if (other instanceof Tower) {
@@ -75,14 +78,6 @@ public abstract class Tower extends GameTile {
             if (inside(point1, this) || inside(point2, this) || inside(point3, this) || inside(point4, this)) return true;
         }
         return false;
-    }
-
-    private boolean inside(Position position, Tower tower) {
-        double x = tower.getX();
-        double y = tower.getY();
-        double width = tower.getWidth();
-        double height = tower.getHeight();
-        return (position.getX() >= x && position.getY() >= y && position.getX() <= x + width && position.getY() <= y + height);
     }
 
     public float getAngle() {
@@ -107,18 +102,13 @@ public abstract class Tower extends GameTile {
     }
 
     public Enemy chooseEnemyTarget() {
-        while(enemyTarget.peek() != null && (enemyTarget.peek().isFaded()
+        while(enemyTarget.peek() != null && (enemyTarget.peek().isDead()
                 || Position.distance(this.getPosition(), enemyTarget.peek().getPosition()) > this.getRange())) {
             deleteTarget();
         }
         return enemyTarget.peek();
     }
 
-    public void deleteTarget() {
-        enemyTarget.poll();
-    }
-
-    @Override
     public void update() {
         Enemy finalTarget = chooseEnemyTarget();
         if (chooseEnemyTarget() == null) return;
@@ -139,6 +129,13 @@ public abstract class Tower extends GameTile {
     }
 
     @Override
+    public Bullet attack() {
+        Enemy target = chooseEnemyTarget();
+        if (target == null) return null;
+        return new Bullet(this, target);
+    }
+
+    @Override
     public void draw(Canvas canvas) {
         float x = getX();
         float y = getY();
@@ -156,4 +153,21 @@ public abstract class Tower extends GameTile {
         canvas.drawBitmap(tower_gun, x, y, null);
         canvas.restore();
     }
+
+    /***************************************************************************
+     * Helper functions.
+     ***************************************************************************/
+
+    private void deleteTarget() {
+        enemyTarget.poll();
+    }
+
+    private boolean inside(Position position, Tower tower) {
+        double x = tower.getX();
+        double y = tower.getY();
+        double width = tower.getWidth();
+        double height = tower.getHeight();
+        return (position.getX() >= x && position.getY() >= y && position.getX() <= x + width && position.getY() <= y + height);
+    }
+
 }

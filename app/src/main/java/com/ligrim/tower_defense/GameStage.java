@@ -15,6 +15,7 @@ import android.graphics.Canvas;
 
 import com.ligrim.tower_defense.base.BFS;
 import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.base.Route;
 import com.ligrim.tower_defense.enemy.BossEnemy;
 import com.ligrim.tower_defense.enemy.Enemy;
 import com.ligrim.tower_defense.enemy.NormalEnemy;
@@ -63,9 +64,8 @@ public class GameStage {
     private int[][] mapLayer;
     private int currentRound;
     private List<Round> roundList; // list of all rounds in the game
-    private List<List<Position>> route; // route here
+    private List<Route> route; // route here
     private List<List<GameTile>> tileList;
-    private Bitmap demoImg;
 
     // this class is for wrapping type, amount and order of enemies to be generated
     private static class Round {
@@ -75,7 +75,7 @@ public class GameStage {
         private List<List<Integer>> enemyInRoute;
         private int enemyID;
         private int countEnemy;
-        private List<List<Position>> route;
+        private List<Route> route;
 
         public Enemy nextEnemy() {
             if (enemyID > enemy.size()) return null;
@@ -103,7 +103,7 @@ public class GameStage {
             this.enemyInRoute.add(enemyInRoute);
         }
 
-        public Round(int round, List<List<Position>> route) {
+        public Round(int round, List<Route> route) {
             roundNumber = round;
             enemyID = 0;
             countEnemy = 0;
@@ -170,11 +170,6 @@ public class GameStage {
         readMapData(mapFile);
         readEnemyInfo(EnemyFile, saveFile);
         initTileList();
-        //convertToPositionListOfRoute(convertToMapMatrix());
-    }
-
-    public List<Position> getRoute (int i) {
-        return route.get(i);
     }
 
     public int getCurrentRound() {
@@ -555,7 +550,7 @@ public class GameStage {
 
     private void convertToPositionListOfRoute(List<int[][]> matrix) {
         for (int i = 0; i < matrix.size(); ++i) {
-            this.route.add(BFS.getRouteFromMatrix(matrix.get(i)));
+            this.route.add(new Route(BFS.getRouteFromMatrix(matrix.get(i))));
         }
     }
 

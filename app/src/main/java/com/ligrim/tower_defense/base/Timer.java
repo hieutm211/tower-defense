@@ -11,13 +11,13 @@ public class Timer {
         this.alarmTime = alarmTime;
     }
 
-    public void tick(double dt) {
-        timeCounter += dt;
+    public void tick() {
+        timeCounter += alarmTime;
     }
 
-    public boolean alarm() {
-        if (timeCounter < lastAlarmTime + alarmTime) return false;
-        lastAlarmTime = timeCounter;
+    public boolean alarm(double atTime) {
+        if (atTime < lastAlarmTime + alarmTime) return false;
+        lastAlarmTime = atTime;
         return true;
     }
 

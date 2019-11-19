@@ -56,8 +56,6 @@ public abstract class GameEntity implements DrawableObject {
 
     public abstract boolean collision(GameEntity other);
 
-    public abstract void update();
-
     @Override
     public void draw(Canvas canvas) {
         float x = getX();

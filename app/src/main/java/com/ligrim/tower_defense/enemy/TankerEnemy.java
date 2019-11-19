@@ -1,12 +1,13 @@
 package com.ligrim.tower_defense.enemy;
 
 import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.base.Route;
 
 import java.util.List;
 
 public class TankerEnemy extends Enemy {
 
-    public TankerEnemy(List<Position> route) {
+    public TankerEnemy(Route route) {
         super("enemy_tanker", route);
         this.health = 2000;
         this.maxHealth = health;

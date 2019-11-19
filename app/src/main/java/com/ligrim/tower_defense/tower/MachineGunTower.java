@@ -1,6 +1,7 @@
 package com.ligrim.tower_defense.tower;
 
 import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.base.Timer;
 
 public class MachineGunTower extends Tower {
 
@@ -9,7 +10,7 @@ public class MachineGunTower extends Tower {
         rateOfFire = 4f / 60;
         range = 350;
         damage = 35;
-        lastShotTick = 0;
+        timer = new Timer(rateOfFire);
         bulletSpeed = 12f;
         price = 10;
     }

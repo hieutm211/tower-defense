@@ -30,11 +30,6 @@ public class GameButton extends GameEntity {
     }
 
     @Override
-    public void update() {
-
-    }
-
-    @Override
     public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmap, getX(), getY(), null);
     }
