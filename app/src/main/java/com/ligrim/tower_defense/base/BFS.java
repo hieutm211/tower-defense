@@ -1,6 +1,8 @@
-package com.ligrim.tower_defense;
+package com.ligrim.tower_defense.base;
 
-import java.net.MulticastSocket;
+import com.ligrim.tower_defense.GameStage;
+import com.ligrim.tower_defense.base.Position;
+
 import java.util.*;
 
 /*
@@ -77,7 +79,7 @@ public class BFS {
         stack.push(nearest);
         while (!stack.empty()) {
             Point p = stack.pop();
-            float x = (float) (p.x) * (float)GameStage.UNIT_WIDTH;
+            float x = (float) (p.x) * (float) GameStage.UNIT_WIDTH;
             float y = (float) (p.y) * (float)GameStage.UNIT_HEIGHT;
             result.add(new Position(x, y));
         }

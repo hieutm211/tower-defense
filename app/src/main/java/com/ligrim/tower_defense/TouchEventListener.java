@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.ligrim.tower_defense.base.Position;
+
 public class TouchEventListener implements View.OnTouchListener {
 
     private static final int STATUS_NONE = 0;

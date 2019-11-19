@@ -1,14 +1,18 @@
 package com.ligrim.tower_defense;
 
-import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.content.Context;
 
-import java.lang.reflect.Array;
+import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.enemy.Enemy;
+import com.ligrim.tower_defense.tile.GameTile;
+import com.ligrim.tower_defense.tower.MachineGunTower;
+import com.ligrim.tower_defense.tower.NormalTower;
+import com.ligrim.tower_defense.tower.SniperTower;
+import com.ligrim.tower_defense.tower.Tower;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -3,6 +3,8 @@ package com.ligrim.tower_defense;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import com.ligrim.tower_defense.base.Position;
+
 public class GameButton extends GameEntity {
 
     private Bitmap bitmap;

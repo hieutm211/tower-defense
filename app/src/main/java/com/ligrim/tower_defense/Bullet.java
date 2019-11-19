@@ -1,7 +1,8 @@
 package com.ligrim.tower_defense;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.enemy.Enemy;
+import com.ligrim.tower_defense.tower.Tower;
 
 public class Bullet extends GameEntity {
 

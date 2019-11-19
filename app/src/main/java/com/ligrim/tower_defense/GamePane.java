@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
+import com.ligrim.tower_defense.tower.Tower;
+
 import java.util.ArrayList;
 import java.util.List;
 

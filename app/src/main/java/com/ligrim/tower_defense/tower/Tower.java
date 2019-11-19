@@ -1,0 +1,159 @@
+package com.ligrim.tower_defense.tower;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+
+import com.ligrim.tower_defense.enemy.Enemy;
+import com.ligrim.tower_defense.GameEntity;
+import com.ligrim.tower_defense.GameGraphic;
+import com.ligrim.tower_defense.tile.GameTile;
+import com.ligrim.tower_defense.base.Position;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public abstract class Tower extends GameTile {
+
+    protected double rateOfFire;
+    protected float bulletSpeed;
+    protected float range;
+    protected int damage;
+    protected int price;
+    protected double lastShotTick;
+
+    protected float directionX;
+    protected float directionY;
+    protected Queue<Enemy> enemyTarget;
+
+
+    public int getPrice() {
+        return price;
+    }
+    public float getBulletSpeed() { return bulletSpeed; }
+
+    public Tower(String id, Position position) {
+        super(id, position);
+        directionX = 0;
+        directionY = 0;
+        enemyTarget = new LinkedList<>();
+    }
+
+    public int getLevel() {
+        return 0;
+    }
+
+    public double getRateOfFire() {
+        return rateOfFire;
+    }
+
+    public float getRange() {
+        return range;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public double getTickOfLastShot() {
+        return lastShotTick;
+    }
+
+    public void setTickOfLastShot(double shotTime) {
+        lastShotTick = shotTime;
+    }
+
+    public boolean collision(GameEntity other) {
+        if (other instanceof Tower) {
+            Tower experimentalTower = (Tower) other;
+            float widthExperimentalTower = experimentalTower.getWidth();
+            float lengthExperimentalTower = experimentalTower.getHeight();
+            // get Position of 4 vertex
+            Position point1 = experimentalTower.getPosition();
+            Position point2 = new Position(point1.getX() + widthExperimentalTower, point1.getY());
+            Position point3 = new Position(point1.getX(), point1.getY() + lengthExperimentalTower);
+            Position point4 = new Position(point3.getX() + widthExperimentalTower, point3.getY());
+            if (inside(point1, this) || inside(point2, this) || inside(point3, this) || inside(point4, this)) return true;
+        }
+        return false;
+    }
+
+    private boolean inside(Position position, Tower tower) {
+        double x = tower.getX();
+        double y = tower.getY();
+        double width = tower.getWidth();
+        double height = tower.getHeight();
+        return (position.getX() >= x && position.getY() >= y && position.getX() <= x + width && position.getY() <= y + height);
+    }
+
+    public float getAngle() {
+        return angle;
+    }
+
+    public void setAngle(float angle) {
+        this.angle = angle;
+    }
+
+    public void setDirection(float dx, float dy) {
+        directionX = dx;
+        directionY = dy;
+    }
+
+    public Queue<Enemy> getEnemyTarget() {
+        return enemyTarget;
+    }
+
+    public void addEnemyTarget(Enemy enemy) {
+        if (!enemyTarget.contains(enemy)) enemyTarget.add(enemy);
+    }
+
+    public Enemy chooseEnemyTarget() {
+        while(enemyTarget.peek() != null && (enemyTarget.peek().isFaded()
+                || Position.distance(this.getPosition(), enemyTarget.peek().getPosition()) > this.getRange())) {
+            deleteTarget();
+        }
+        return enemyTarget.peek();
+    }
+
+    public void deleteTarget() {
+        enemyTarget.poll();
+    }
+
+    @Override
+    public void update() {
+        Enemy finalTarget = chooseEnemyTarget();
+        if (chooseEnemyTarget() == null) return;
+        directionX = finalTarget.getX() - this.getX();
+        directionY = finalTarget.getY() - this.getY();
+        if (directionX == 0 && directionY == 0) angle = 0;
+        else {
+            float tempAngle = (float) Math.atan(Math.abs(directionY / directionX)) * 180 / (float) Math.PI;
+            if (directionX == 0 && directionY > 0) angle = 180;
+            else if (directionX == 0 && directionY < 0) angle = 0;
+            else if (directionX > 0 && directionY > 0) angle = 90 + tempAngle;
+            else if (directionX > 0 && directionY < 0) angle = 90 - tempAngle;
+            else if (directionX > 0 && directionY == 0) angle = 90;
+            else if (directionX < 0 && directionY > 0) angle = -90 - tempAngle;
+            else if (directionX < 0 && directionY < 0) angle = -90 + tempAngle;
+            else angle = -90;
+        }
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        float x = getX();
+        float y = getY();
+        float centerX = getCenterX();
+        float centerY = getCenterY();
+
+        Bitmap tower = GameGraphic.getBitmapById(getId(), width, height);
+
+        Bitmap tower_gun = GameGraphic.getBitmapById(getId() + "_gun", width, height);
+
+        canvas.drawBitmap(tower, x, y, null);
+
+        canvas.save();
+        canvas.rotate(angle, centerX, centerY);
+        canvas.drawBitmap(tower_gun, x, y, null);
+        canvas.restore();
+    }
+}
