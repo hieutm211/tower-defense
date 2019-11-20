@@ -5,6 +5,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.tower.Tower;
+import com.ligrim.tower_defense.tower.TowerFactory;
 
 public class TouchEventListener implements View.OnTouchListener {
 
@@ -72,8 +74,9 @@ public class TouchEventListener implements View.OnTouchListener {
 
         switch (action) {
             case MotionEvent.ACTION_MOVE:
-                Bitmap towerBitmap = GameGraphic.getBitmapById(currentId);
-                //GameGraphic.draw(towerBitmap, x, y);
+                Tower temporaryTower = TowerFactory.getInstance(currentId);
+                temporaryTower.setPosition(x, y);
+                gameField.setTemporaryTower(temporaryTower);
 
                 if (gameField.canSetTower(currentId, towerPosition)) {
                     //TODO: draw green circle
@@ -87,6 +90,7 @@ public class TouchEventListener implements View.OnTouchListener {
                 } else {
                     System.out.println("CANNOT set tower at " + x + " " + y);
                 }
+                gameField.setTemporaryTower(null);
                 currentStatus = STATUS_NONE;
                 break;
         }
