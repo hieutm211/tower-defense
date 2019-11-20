@@ -28,6 +28,9 @@ public abstract class GameEntity implements DrawableObject {
     public void setPosition(Position position) {
         this.position = position;
     }
+    public void setPosition(float x, float y) {
+        setPosition(new Position(x, y));
+    }
 
     public Position getPosition() {
         return this.position;

@@ -33,6 +33,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     private List<Bullet> bulletList; // nhung vien dan dang bay
 
+    private Tower temporaryTower = null;
+
     private int gold;
     private int health;
 
@@ -162,6 +164,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return health;
     }
 
+    public void setTemporaryTower(Tower temporaryTower) {
+        this.temporaryTower = temporaryTower;
+    }
 
     // check if bullet out of range
     private void updateBulletList() {
@@ -311,6 +316,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         GameGraphic.draw(towerList);
         GameGraphic.draw(tileList.get(1));
         GameGraphic.draw(bulletList);
+
+        if (temporaryTower != null) {
+            GameGraphic.draw(temporaryTower);
+        }
 
         canvas.restore();
 
