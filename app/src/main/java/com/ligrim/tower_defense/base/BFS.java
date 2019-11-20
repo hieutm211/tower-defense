@@ -57,9 +57,9 @@ public class BFS {
         bfs(mapDat);
         // search for the nearest target
         Point nearest = findNearestTarget(mapDat);
-        System.out.println(nearest.x + " " + nearest.y);
+        /*System.out.println(nearest.x + " " + nearest.y);
         print(mapDat);
-        print(map);
+        print(map);*/
 
         LinkedList<Position> result = new LinkedList<>();
         Stack<Point> stack = new Stack<>();

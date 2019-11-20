@@ -102,7 +102,7 @@ public abstract class Tower extends GameTile implements Attacker {
     }
 
     public Enemy chooseEnemyTarget() {
-        while(enemyTarget.peek() != null && (enemyTarget.peek().isDead()
+        while(enemyTarget.peek() != null && (enemyTarget.peek().isDead() || enemyTarget.peek().isFaded()
                 || Position.distance(this.getPosition(), enemyTarget.peek().getPosition()) > this.getRange())) {
             deleteTarget();
         }
