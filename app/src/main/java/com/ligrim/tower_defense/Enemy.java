@@ -14,6 +14,7 @@ public abstract class Enemy extends GameEntity {
     protected int prize;
     protected float directionX;
     protected float directionY;
+    protected Position prevPosition;
 //    protected Position position;
 //    protected int width = GameField.UNIT_WIDTH;
 //    protected int height = GameField.UNIT_HEIGHT;
@@ -30,8 +31,10 @@ public abstract class Enemy extends GameEntity {
 
         assert (route.size() > 1);
         checkpoint = 1;
-        updateDirection();
+        updateDirection(checkpoint);
         this.setAngle();
+
+        this.prevPosition = position;
     }
 
     public int getHealth() {
@@ -88,10 +91,16 @@ public abstract class Enemy extends GameEntity {
     }
 
     public void update() {
+        prevPosition = position;
         if (isReachCheckpoint()) nextDestination();
         float newEnemyPositionX = this.getX() + this.getDirectionX() * this.getSpeed();
         float newEnemyPositionY = this.getY() + this.getDirectionY() * this.getSpeed();
         this.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
+    }
+
+    public void unupdate() {
+        this.setPosition(prevPosition);
+        checkpoint--;
     }
 
     public int getWidth() {
@@ -136,7 +145,7 @@ public abstract class Enemy extends GameEntity {
         // assert isReachCheckpoint();
         if (checkpoint < route.size() - 1) {
             ++checkpoint;
-            updateDirection();
+            updateDirection(this.checkpoint);
             this.setAngle();
         }
     }
@@ -156,12 +165,12 @@ public abstract class Enemy extends GameEntity {
 //        return Position.distance(this.position, other.getPosition()) <= this.speed;
 //    }
 
-    private void updateDirection() {
-        float dx = route.get(checkpoint).getX() - this.getX();
-        float dy = route.get(checkpoint).getY() - this.getY();
+    private void updateDirection(int check) {
+        float dx = route.get(check).getX() - this.getX();
+        float dy = route.get(check).getY() - this.getY();
         // turn dx and dy to unit vector
-        dx /= Position.distance(this.getPosition(), route.get(checkpoint));
-        dy /= Position.distance(this.getPosition(), route.get(checkpoint));
+        dx /= Position.distance(this.getPosition(), route.get(check));
+        dy /= Position.distance(this.getPosition(), route.get(check));
         this.setDirection(dx, dy);
     }
 

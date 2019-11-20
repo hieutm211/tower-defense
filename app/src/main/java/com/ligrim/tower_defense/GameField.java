@@ -99,6 +99,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         for (Enemy enemy: enemyList) {
             enemy.update();
         }
+        checkEnemyCollision();
         addEnemy();
         checkEnemyReachTarget();
 
@@ -157,6 +158,17 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (Position.distance(bulletList.get(i).getPosition(), bulletList.get(i).getOwner().getPosition()) > bulletList.get(i).getRange()) {
                 bulletList.remove(i);
                 --i;
+            }
+        }
+    }
+
+    // check if 2 enemy of the same type collides each other and unupdate
+    public void checkEnemyCollision() {
+        for (int i = 0; i < enemyList.size(); i++) {
+            for (int j = i + 1; j < enemyList.size(); j++) {
+                if (enemyList.get(i).getClass() == enemyList.get(j).getClass() && enemyList.get(i).collision(enemyList.get(j))) {
+                    enemyList.get(i).unupdate();
+                }
             }
         }
     }
