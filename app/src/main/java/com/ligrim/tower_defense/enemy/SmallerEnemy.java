@@ -13,7 +13,7 @@ public class SmallerEnemy extends Enemy {
         this.maxHealth = health;
         this.speed = 180f / 60;
         this.armor = 0;
-        this.prize = 1;
+        this.prize = 20;
         faded = false;
     }
 }

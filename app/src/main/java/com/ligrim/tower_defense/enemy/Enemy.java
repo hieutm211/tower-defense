@@ -82,7 +82,7 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         if (other instanceof Enemy){
             Enemy enemyOther = (Enemy) other;
             if (!(this.getClass().equals(enemyOther.getClass()))) return false;
-            return Position.distance(this.position, enemyOther.getPosition()) <= this.speed;
+            return Position.distance(this.position, enemyOther.getPosition()) < enemyOther.getWidth();
         }
         return false;
     }
@@ -102,15 +102,6 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
     // check if the distance between this enemy and target is lower than speed
     public boolean isReachTarget() {
         return checkpoint == route.size() - 1 && Position.distance(this.position, route.getTarget()) <= this.speed;
-    }
-
-    //get all available tower
-    public List<Tower> getAvailableTower() {
-        List<Tower> tow = new ArrayList<>();
-        tow.add(new NormalTower(new Position(0,0)));
-        tow.add(new SniperTower(new Position(0,0)));
-        tow.add(new MachineGunTower(new Position(0,0)));
-        return tow;
     }
 
     @Override
@@ -133,6 +124,7 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         float newEnemyPositionY = this.getY() + this.getDirectionY() * this.getSpeed();
         this.setPosition(new Position(newEnemyPositionX, newEnemyPositionY));
     }
+
 
     @Override
     public void draw(Canvas canvas) {
