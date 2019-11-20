@@ -3,7 +3,7 @@ package com.ligrim.tower_defense.base;
 import java.util.List;
 
 public class Route {
-    private final List<Position> route;
+    private List<Position> route;
 
     public Route(List<Position> route) {
         this.route = route;
