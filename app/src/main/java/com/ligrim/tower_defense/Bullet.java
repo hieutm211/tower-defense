@@ -1,9 +1,11 @@
 package com.ligrim.tower_defense;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import com.ligrim.tower_defense.base.Moveable;
+import com.ligrim.tower_defense.base.Position;
+import com.ligrim.tower_defense.enemy.Enemy;
+import com.ligrim.tower_defense.tower.Tower;
 
-public class Bullet extends GameEntity {
+public class Bullet extends GameEntity implements Moveable {
 
     private static final float COLLIDE_DISTANCE = 25f;
     private final float speed;
@@ -88,12 +90,7 @@ public class Bullet extends GameEntity {
 
 
     @Override
-    public void update() {
-        /*directionX = this.enemyTarget.getX() - this.getX(); // set vector
-        directionY = this.enemyTarget.getY() - this.getY(); // set vector
-        float length = directionX * directionX + directionY * directionY;
-        directionX /= Math.sqrt(length); //set to unit length
-        directionY /= Math.sqrt(length); //set to unit length;*/
+    public void move() {
         setPosition(new Position(this.getX() + directionX * speed, this.getY() + directionY * speed));
     }
 }
