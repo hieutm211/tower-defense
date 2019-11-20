@@ -6,11 +6,11 @@ public class TankerEnemy extends Enemy {
 
     public TankerEnemy(Route route) {
         super("enemy_tanker", route);
-        this.health = 2000;
+        this.health = 800;
         this.maxHealth = health;
-        this.speed = 80f / 60;
-        this.armor = 35;
-        this.prize = 5;
+        this.speed = 60f / 60;
+        this.armor = 100;
+        this.prize = 70;
         faded = false;
     }
 }

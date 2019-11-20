@@ -67,9 +67,6 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         gameTick = new Timer(dt);
         lastAddEnemyTick = -1.0;
         this.health = 200;
-        towerList.add(new NormalTower(new Position(450, 400)));
-        towerList.add(new SniperTower(new Position(450, 50)));
-        towerList.add(new MachineGunTower(new Position(800, 100)));
     }
 
     @Override
@@ -102,7 +99,16 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
         //update Enemy status
         for (Enemy enemy: enemyList) {
+            boolean canMove = true;
+            for (Enemy enemy1: enemyList) {
+                if (enemy != enemy1 && enemy.collision(enemy1)) {
+                    canMove = false;
+                    enemy1.move();
+                    break;
+                }
+            }
             enemy.move();
+
         }
         addEnemy();
         checkEnemyReachTarget();
@@ -155,6 +161,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public int getHealth() {
         return health;
     }
+
 
     // check if bullet out of range
     private void updateBulletList() {

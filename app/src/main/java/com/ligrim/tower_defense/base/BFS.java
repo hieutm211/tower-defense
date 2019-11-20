@@ -19,7 +19,7 @@ public class BFS {
     public static final int ROAD = 0;
     public static final int START = -1;
     public static final int END = -2;
-    private static final int curveDegree = 6; // the grater this value is, the smoothier the curves look, must be greater than 0
+    private static final int curveDegree = 6; // the greater this value is, the smoothier the curves look, must be greater than 0
     private static Queue<Point> queue;
 
     private static class Point {

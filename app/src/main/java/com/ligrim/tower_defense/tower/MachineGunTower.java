@@ -8,7 +8,7 @@ public class MachineGunTower extends Tower {
     public MachineGunTower(Position position) {
         super("tower_machine_gun", position);
         rateOfFire = 4f / 60;
-        range = 350;
+        range = 200;
         damage = 35;
         timer = new Timer(rateOfFire);
         bulletSpeed = 12f;
