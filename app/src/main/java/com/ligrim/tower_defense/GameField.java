@@ -84,6 +84,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        requestTogglePause();
+/*
         boolean retry = true;
         while (retry) {
             try {
@@ -94,6 +96,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             }
             retry = false;
         }
+*/
     }
 
     //update game state here
@@ -311,6 +314,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         tow.add(new SniperTower(new Position(0,0)));
         tow.add(new MachineGunTower(new Position(0,0)));
         return tow;
+    }
+
+    public void requestTogglePause() {
+        thread.togglePause();
     }
 
     @Override

@@ -9,6 +9,7 @@ public class MainThread extends Thread {
     private SurfaceHolder surfaceHolder;
     private GameField gameField;
     private boolean running;
+    private boolean pause;
     public static Canvas canvas;
 
     public MainThread(SurfaceHolder surfaceHolder, GameField gameField) {
@@ -36,7 +37,10 @@ public class MainThread extends Thread {
                 GameGraphic.setCanvas(canvas);
 
                 synchronized(surfaceHolder) {
-                    this.gameField.update();
+
+                    if (!pause) {
+                        this.gameField.update();
+                    }
 
                     canvas.drawColor(Color.rgb(255, 193, 0));
 
@@ -76,5 +80,9 @@ public class MainThread extends Thread {
 
     public void setRunning(boolean isRunning) {
         running = isRunning;
+    }
+
+    public void togglePause() {
+        pause = !pause;
     }
 }
