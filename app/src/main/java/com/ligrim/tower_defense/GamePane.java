@@ -101,7 +101,7 @@ class InformationPane {
     }
 
     public static void draw(Canvas canvas) {
-        String wave = " Wave " + 12;
+        String wave = " Wave " + gameField.getCurrentRound() + "/" + gameField.getTotalRound();
         String health = "❤" + gameField.getHealth();
         String gold = "$" + gameField.getGold();
 

@@ -1,6 +1,6 @@
 package com.ligrim.tower_defense.base;
 
-import com.ligrim.tower_defense.EnemyType;
+import com.ligrim.tower_defense.enemy.EnemyType;
 import com.ligrim.tower_defense.Round;
 import com.ligrim.tower_defense.tower.MachineGunTower;
 import com.ligrim.tower_defense.tower.NormalTower;
@@ -283,6 +283,7 @@ public class GameIOFile {
                     // split input strings and initial basic variables of game's Map
                     String[] gc3 = cell[1].split("_");
                     String[] parseRoute = gc3[1].split(";");
+                    String[] parseEnemyType = c1.split(";");
 
                     List<Integer> enemyInRoute = new ArrayList<>();
                     for (int k = 0; k < parseRoute.length; ++k ) {
@@ -291,25 +292,33 @@ public class GameIOFile {
                     int amount = Integer.parseInt(gc3[0]);
 
                     // handling according to its type
-                    switch (c1) {
-                        case "A":
-                            round.add(EnemyType.SMALLER_ENEMY, amount, enemyInRoute);
-                            break;
-                        case "B":
-                            round.add(EnemyType.NORMAL_ENEMY, amount, enemyInRoute);
-                            break;
-                        case "C":
-                            round.add(EnemyType.TANKER_ENEMY, amount, enemyInRoute);
-                            break;
-                        case "D":
-                            round.add(EnemyType.BOSS_ENEMY, amount, enemyInRoute);
-                            break;
-                        case "N":
-                            round.add(EnemyType.NONE, amount, enemyInRoute);
-                            break;
-                        default:
-                            System.out.println("unsupported character in loading enemy info: " + c1);
+                    List<EnemyType> enemyTypes = new ArrayList<>();
+                    for (String typeOfEachEnemy : parseEnemyType) {
+                        switch (typeOfEachEnemy) {
+                            case "A":
+                                enemyTypes.add(EnemyType.SMALLER_ENEMY);
+                                break;
+                            case "B":
+                                enemyTypes.add(EnemyType.NORMAL_ENEMY);
+                                break;
+                            case "C":
+                                enemyTypes.add(EnemyType.TANKER_ENEMY);
+                                break;
+                            case "D":
+                                enemyTypes.add(EnemyType.BOSS_ENEMY);
+                                break;
+                            case "N":
+                                enemyTypes.add(EnemyType.NONE);
+                                break;
+                            case "P":
+                                enemyTypes.add(EnemyType.PLANE_ENEMY);
+                                break;
+
+                            default:
+                                System.out.println("unsupported character in loading enemy info: " + c1);
+                        }
                     }
+                    round.add(enemyTypes, amount, enemyInRoute);
                 }
                 // add round to rounds list
                 roundList.add(round);

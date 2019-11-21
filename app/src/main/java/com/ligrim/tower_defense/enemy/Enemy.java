@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import com.ligrim.tower_defense.GameEntity;
+import com.ligrim.tower_defense.GameField;
 import com.ligrim.tower_defense.GameGraphic;
 import com.ligrim.tower_defense.base.Destroyable;
 import com.ligrim.tower_defense.base.Moveable;
@@ -101,6 +102,7 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         return directionY;
     }
 
+    @Override
     public boolean collision(GameEntity other) {
         if (other instanceof Enemy){
             Enemy enemyOther = (Enemy) other;
@@ -108,7 +110,7 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
             Position temp;
             if (((Enemy) other).isHalting()) temp = other.getPosition();
             else temp = ((Enemy) other).nextStep();
-            return Position.distance(this.nextStep(), temp) < (21f);
+            return Position.distance(this.nextStep(), temp) < (GameField.UNIT_HEIGHT / 3);
         }
         return false;
     }
@@ -181,8 +183,8 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
      ***************************************************************************/
 
     private Position nextStep() {
-        float newEnemyPositionX = this.getX() + this.getDirectionX() * 25f;
-        float newEnemyPositionY = this.getY() + this.getDirectionY() * 25f;
+        float newEnemyPositionX = this.getX() + this.getDirectionX() * .4f * GameField.UNIT_WIDTH;
+        float newEnemyPositionY = this.getY() + this.getDirectionY() * .4f * GameField.UNIT_HEIGHT;
         return new Position(newEnemyPositionX, newEnemyPositionY);
     }
 
