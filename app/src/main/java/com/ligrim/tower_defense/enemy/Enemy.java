@@ -57,7 +57,19 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         return health;
     }
 
-    public float HPpercent() { return (float) health / maxHealth; }
+    public int healthPercent() {
+        float hp = (float) health / maxHealth * 100f;
+        if (hp == 100f) return 100;
+        else if (hp >= 90f) return 80;
+        else if (hp >= 80f) return 80;
+        else if (hp >= 70f) return 60;
+        else if (hp >= 60f) return 60;
+        else if (hp >= 50f) return 40;
+        else if (hp >= 40f) return 40;
+        else if (hp >= 30f) return 20;
+        else if (hp >= 20f) return 20;
+        else return 20;
+    }
 
     public float getSpeed() {
         return speed;
@@ -154,6 +166,14 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         canvas.rotate(angle, centerX, centerY);
         canvas.drawBitmap(enemy, x, y, null);
         canvas.restore();
+
+        int hp = healthPercent();
+        if (hp == 100) return;
+
+        Bitmap health = null;
+        health = GameGraphic.getBitmapById("health_" + hp, width, height);
+
+        GameGraphic.draw(health, x, y);
     }
 
     /***************************************************************************

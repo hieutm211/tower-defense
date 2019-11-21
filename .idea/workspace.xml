@@ -14,319 +14,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_boss.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_plane_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_plane_1_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_plane_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_plane_2_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_smaller.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/enemy_tanker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_028.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_029.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_032.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_034.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_039.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_041.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_042.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_044.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_045.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_047.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_051.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_052.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_054.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_055.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_056.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_057.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_058.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_059.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_060.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_061.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_062.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_063.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_064.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_065.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_068.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_069.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_070.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_071.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_073.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_074.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_075.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_076.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_077.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_079.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_080.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_081.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_082.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_088.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_089.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_091.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_094.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_095.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_096.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_098.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_099.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_102.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_103.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_104.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_105.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_106.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_107.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_108.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_109.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_110.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_111.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_114.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_115.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_116.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_118.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_119.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_120.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_123.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_124.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_125.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_126.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_127.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_129.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_130.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_131.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_132.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_133.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_134.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_135.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_136.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_137.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_138.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_139.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_140.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_141.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_142.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_143.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_144.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_145.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_146.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_147.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_148.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_149.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_150.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_151.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_152.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_153.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_154.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_155.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_156.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_157.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_158.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_159.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_160.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_161.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_162.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_163.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_164.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_165.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_166.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_167.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_168.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_169.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_170.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_171.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_172.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_173.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_174.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_175.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_176.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_177.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_178.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_179.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_184.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_185.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_186.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_187.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_188.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_189.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_190.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_191.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_193.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_194.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_195.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_196.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_197.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_198.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_199.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_200.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_201.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_202.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_203.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_204.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_205.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_206.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_207.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_208.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_209.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_210.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_211.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_212.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_213.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_214.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_215.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_216.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_217.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_218.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_219.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_220.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_221.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_222.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_223.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_224.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_225.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_226.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_227.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_230.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_231.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_232.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_233.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_234.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_235.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_236.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_237.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_238.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_239.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_241.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_242.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_243.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_244.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_253.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_254.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_255.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_256.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_257.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_258.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_259.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_260.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_261.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_262.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_263.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_264.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_265.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_266.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_267.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_272.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_273.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_274.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_275.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_276.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_277.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_278.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_279.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_280.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_281.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_282.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_283.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_284.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_285.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_286.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_287.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_288.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_289.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_290.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_295.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_296.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tile_298.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_machine_gun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_machine_gun1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_machine_gun_bullet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_machine_gun_gun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_machine_gun_gun1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_machine_gun_gun_level_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_machine_gun_level_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_normal_bullet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_normal_gun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_normal_gun_level_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_sniper.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_sniper_bullet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_sniper_gun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/images/tower_sniper_level_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GamePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GamePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TouchEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TouchEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -351,29 +43,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+            <state relative-caret-position="18">
+              <caret line="39" column="53" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="53" />
               <folding>
-                <element signature="e#9447#9448#0" expanded="true" />
-                <element signature="e#9466#9467#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-360">
-              <caret line="42" column="84" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
+            <state relative-caret-position="-1764">
+              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2570#2571#0" expanded="true" />
-                <element signature="e#2613#2614#0" expanded="true" />
-                <element signature="e#2669#2670#0" expanded="true" />
-                <element signature="e#2706#2707#0" expanded="true" />
+                <element signature="e#2016#2017#0" expanded="true" />
+                <element signature="e#2073#2074#0" expanded="true" />
+                <element signature="e#2130#2131#0" expanded="true" />
+                <element signature="e#2427#2428#0" expanded="true" />
+                <element signature="e#2496#2497#0" expanded="true" />
+                <element signature="e#3025#3026#0" expanded="true" />
+                <element signature="e#3084#3085#0" expanded="true" />
+                <element signature="e#3143#3144#0" expanded="true" />
+                <element signature="e#3456#3457#0" expanded="true" />
+                <element signature="e#3596#3597#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -395,6 +92,7 @@
               <caret line="132" column="6" selection-start-line="132" selection-start-column="6" selection-end-line="132" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2997#2998#0" expanded="true" />
                 <element signature="e#3030#3031#0" expanded="true" />
               </folding>
             </state>
@@ -404,7 +102,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
+            <state relative-caret-position="405">
               <caret line="46" selection-start-line="46" selection-end-line="46" />
             </state>
           </provider>
@@ -413,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
+            <state relative-caret-position="486">
               <caret line="28" column="32" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -424,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TouchEventListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2340">
-              <caret line="136" column="23" lean-forward="true" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
+            <state relative-caret-position="207">
+              <caret line="122" column="5" lean-forward="true" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -436,10 +134,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
+            <state relative-caret-position="1494">
               <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
               <folding>
+                <element signature="e#2228#2229#0" expanded="true" />
                 <element signature="e#2263#2264#0" expanded="true" />
+                <element signature="e#2296#2297#0" expanded="true" />
                 <element signature="e#2326#2327#0" expanded="true" />
               </folding>
             </state>
@@ -461,7 +161,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="288">
               <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -484,8 +184,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>id</find>
-      <find>Tower(</find>
       <find>while (</find>
       <find>new Mount</find>
       <find>getId</find>
@@ -514,6 +212,8 @@
       <find>setP</find>
       <find>UNIT_WIDTH</find>
       <find>round</find>
+      <find>health</find>
+      <find>draw</find>
     </findStrings>
     <replaceStrings>
       <replace>getX()</replace>
@@ -572,12 +272,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/BFS.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/Tower.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/map/map_3/enemy_info.txt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GamePane.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainThread.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TouchEventListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" />
       </list>
     </option>
   </component>
@@ -592,7 +292,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -656,7 +355,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -680,6 +378,13 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="tower_defense" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="enemy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tower-defense" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="tower_defense" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="tower" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -691,6 +396,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -871,7 +578,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5021322" side_tool="true" weight="0.20476706" />
       <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32913387" />
-      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.4978678" weight="0.20379147" />
+      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.4978678" visible="true" weight="0.20379147" />
       <window_info anchor="bottom" id="Android Profiler" order="12" weight="0.328594" />
       <window_info anchor="bottom" id="Logcat" order="13" weight="0.32827735" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1010,16 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/SmallerEnemy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -1085,6 +782,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1278">
+          <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1494">
+          <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
+          <folding>
+            <element signature="e#2228#2229#0" expanded="true" />
+            <element signature="e#2263#2264#0" expanded="true" />
+            <element signature="e#2296#2297#0" expanded="true" />
+            <element signature="e#2326#2327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/sources/android-29/android/text/TextPaint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
@@ -1097,8 +826,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="288">
           <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TouchEventListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="122" column="5" lean-forward="true" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="39" column="53" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1112,21 +858,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="32" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#860#861#0" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
+        <state relative-caret-position="405">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
@@ -1137,51 +871,29 @@
           <caret line="132" column="6" selection-start-line="132" selection-start-column="6" selection-end-line="132" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2997#2998#0" expanded="true" />
             <element signature="e#3030#3031#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
-          <folding>
-            <element signature="e#9447#9448#0" expanded="true" />
-            <element signature="e#9466#9467#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameGraphic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="42" column="84" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
+        <state relative-caret-position="-1764">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2570#2571#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2669#2670#0" expanded="true" />
-            <element signature="e#2706#2707#0" expanded="true" />
+            <element signature="e#2016#2017#0" expanded="true" />
+            <element signature="e#2073#2074#0" expanded="true" />
+            <element signature="e#2130#2131#0" expanded="true" />
+            <element signature="e#2427#2428#0" expanded="true" />
+            <element signature="e#2496#2497#0" expanded="true" />
+            <element signature="e#3025#3026#0" expanded="true" />
+            <element signature="e#3084#3085#0" expanded="true" />
+            <element signature="e#3143#3144#0" expanded="true" />
+            <element signature="e#3456#3457#0" expanded="true" />
+            <element signature="e#3596#3597#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
-          <folding>
-            <element signature="e#2263#2264#0" expanded="true" />
-            <element signature="e#2326#2327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/TouchEventListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="136" column="23" lean-forward="true" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
         </state>
       </provider>
     </entry>
