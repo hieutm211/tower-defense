@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/startScreen"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:onClick="pickGame"
         android:scaleType="fitXY"
         android:src="@drawable/demo"
@@ -24,29 +24,63 @@
         android:id="@+id/taptoplayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:fadingEdge="horizontal|vertical"
         android:text="tap to play!"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/map_3"
+        app:layout_constraintEnd_toStartOf="@+id/map_2"
+        app:layout_constraintStart_toEndOf="@+id/map_1"
+        app:layout_constraintTop_toBottomOf="@+id/map_1" />
 
     <Button
         android:id="@+id/map_1"
-        android:layout_width="208dp"
-        android:layout_height="126dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="65dp"
         android:layout_marginTop="56dp"
+        android:layout_marginEnd="3dp"
         android:alpha="0"
         android:background="@drawable/demo_map_1"
         android:onClick="enterGame"
         android:text="Map 1"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/taptoplayText"
+        app:layout_constraintEnd_toStartOf="@+id/taptoplayText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/map_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="67dp"
+        android:alpha="0"
+        android:background="@drawable/demo_map_1"
+        android:onClick="enterGame"
+        android:text="Map 2"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/map_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/taptoplayText"
+        app:layout_constraintTop_toTopOf="@+id/map_1" />
+
+    <Button
+        android:id="@+id/map_3"
+        android:layout_width="208dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="49dp"
+        android:alpha="0"
+        android:background="@drawable/demo_map_1"
+        android:onClick="enterGame"
+        android:text="Map 3"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taptoplayText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
