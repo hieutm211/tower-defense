@@ -101,16 +101,25 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
         //update Enemy status
         for (Enemy enemy: enemyList) {
-            boolean canMove = true;
-            for (Enemy enemy1: enemyList) {
-                if (enemy != enemy1 && enemy.collision(enemy1)) {
+            if (enemy.isHalting() ) {
+                boolean canMove = true;
+                if (!enemy.getTimer().alarm(gameTick.getTime())) {
                     canMove = false;
-                    enemy1.move();
-                    break;
+                }
+                else for (Enemy e : enemyList) {
+                    if (enemy != e && enemy.collision(e)) {
+                        canMove = false;
+                    }
+                }
+                if (canMove) enemy.go();
+            }
+            else for (Enemy enemy1: enemyList) {
+                if (enemy != enemy1 && enemy.collision(enemy1)) {
+                    enemy.halt();
+                    enemy.getTimer().alarm(gameTick.getTime());
                 }
             }
             enemy.move();
-
         }
         addEnemy();
         checkEnemyReachTarget();

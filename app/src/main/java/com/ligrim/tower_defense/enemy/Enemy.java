@@ -9,14 +9,8 @@ import com.ligrim.tower_defense.base.Destroyable;
 import com.ligrim.tower_defense.base.Moveable;
 import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Route;
+import com.ligrim.tower_defense.base.Timer;
 import com.ligrim.tower_defense.base.Vulnerable;
-import com.ligrim.tower_defense.tower.MachineGunTower;
-import com.ligrim.tower_defense.tower.NormalTower;
-import com.ligrim.tower_defense.tower.SniperTower;
-import com.ligrim.tower_defense.tower.Tower;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, Destroyable {
     protected int health;
@@ -29,6 +23,8 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
     protected boolean faded;
     protected Route route;
     protected int checkpoint;
+    protected boolean halt;
+    protected Timer timer;
 
     public Enemy(String id, Route route) {
         super(id, route.getSpawner()); // set position
@@ -36,11 +32,26 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         this.route = route;
         directionX = 0;
         directionY = 0;
-
+        halt = false;
         checkpoint = 1;
         updateDirection();
         this.setAngle();
+        timer = new Timer(0.1f);
     }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void halt() {
+        halt = true;
+    }
+
+    public void go() {
+        halt = false;
+    }
+
+    public boolean isHalting() { return halt; }
 
     public int getHealth() {
         return health;
@@ -82,7 +93,10 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         if (other instanceof Enemy){
             Enemy enemyOther = (Enemy) other;
             if (!(this.getClass().equals(enemyOther.getClass()))) return false;
-            return Position.distance(this.position, enemyOther.getPosition()) < enemyOther.getWidth();
+            Position temp;
+            if (((Enemy) other).isHalting()) temp = other.getPosition();
+            else temp = ((Enemy) other).nextStep();
+            return Position.distance(this.nextStep(), temp) < (21f);
         }
         return false;
     }
@@ -119,6 +133,7 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
 
     @Override
     public void move() {
+        if (halt) return;
         if (isReachCheckpoint()) nextDestination();
         float newEnemyPositionX = this.getX() + this.getDirectionX() * this.getSpeed();
         float newEnemyPositionY = this.getY() + this.getDirectionY() * this.getSpeed();
@@ -144,6 +159,12 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
     /***************************************************************************
      * Helper functions.
      ***************************************************************************/
+
+    private Position nextStep() {
+        float newEnemyPositionX = this.getX() + this.getDirectionX() * 25f;
+        float newEnemyPositionY = this.getY() + this.getDirectionY() * 25f;
+        return new Position(newEnemyPositionX, newEnemyPositionY);
+    }
 
     private void updateDirection() {
         float dx = route.get(checkpoint).getX() - this.getX();
