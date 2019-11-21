@@ -11,11 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d0db1449-5413-4106-956c-e5b4edf4010c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/AirborneEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/AirborneEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="104" column="45" lean-forward="true" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="45" />
+            <state relative-caret-position="799">
+              <caret line="186" column="98" selection-start-line="186" selection-start-column="98" selection-end-line="186" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1988#1989#0" expanded="true" />
@@ -56,30 +53,18 @@
                 <element signature="e#2427#2428#0" expanded="true" />
                 <element signature="e#2463#2464#0" expanded="true" />
                 <element signature="e#2496#2497#0" expanded="true" />
-                <element signature="e#2997#2998#0" expanded="true" />
-                <element signature="e#3025#3026#0" expanded="true" />
-                <element signature="e#3055#3056#0" expanded="true" />
-                <element signature="e#3084#3085#0" expanded="true" />
-                <element signature="e#3115#3116#0" expanded="true" />
-                <element signature="e#3143#3144#0" expanded="true" />
-                <element signature="e#3428#3429#0" expanded="true" />
-                <element signature="e#3456#3457#0" expanded="true" />
-                <element signature="e#3568#3569#0" expanded="true" />
-                <element signature="e#3596#3597#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameEntity.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="187">
+              <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#860#861#0" expanded="true" />
-                <element signature="e#907#908#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,12 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-              <folding>
-                <element signature="e#1395#1396#0" expanded="true" />
-                <element signature="e#1430#1431#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="493">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
@@ -110,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="61" column="29" lean-forward="true" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+            <state relative-caret-position="952">
+              <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -119,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="39" selection-start-column="39" selection-end-column="39" />
+            <state relative-caret-position="34">
+              <caret line="2" column="45" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -152,14 +133,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/AirborneEnemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -261,7 +239,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/NormalEnemy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/SmallerEnemy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/TankerEnemy.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/MachineGunTower.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/EnemyType.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/GameIOFile.java" />
@@ -271,8 +248,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Map.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/AirborneEnemy.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java" />
       </list>
     </option>
   </component>
@@ -287,7 +265,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -317,7 +295,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -770,13 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/SniperTower.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -812,6 +783,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/EnemyType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/SmallerEnemy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -833,54 +844,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/AirborneEnemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="39" selection-start-column="39" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="61" column="29" lean-forward="true" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="e#1395#1396#0" expanded="true" />
-            <element signature="e#1430#1431#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/EnemyType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#860#861#0" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="104" column="45" lean-forward="true" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="45" />
+        <state relative-caret-position="799">
+          <caret line="186" column="98" selection-start-line="186" selection-start-column="98" selection-end-line="186" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1988#1989#0" expanded="true" />
@@ -893,24 +867,14 @@
             <element signature="e#2427#2428#0" expanded="true" />
             <element signature="e#2463#2464#0" expanded="true" />
             <element signature="e#2496#2497#0" expanded="true" />
-            <element signature="e#2997#2998#0" expanded="true" />
-            <element signature="e#3025#3026#0" expanded="true" />
-            <element signature="e#3055#3056#0" expanded="true" />
-            <element signature="e#3084#3085#0" expanded="true" />
-            <element signature="e#3115#3116#0" expanded="true" />
-            <element signature="e#3143#3144#0" expanded="true" />
-            <element signature="e#3428#3429#0" expanded="true" />
-            <element signature="e#3456#3457#0" expanded="true" />
-            <element signature="e#3568#3569#0" expanded="true" />
-            <element signature="e#3596#3597#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/AirborneEnemy.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        <state relative-caret-position="187">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense.enemy;
 
+import com.ligrim.tower_defense.GameField;
 import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Route;
 
@@ -11,7 +12,7 @@ public class SmallerEnemy extends Enemy {
         super("enemy_smaller", route);
         this.health = 200;
         this.maxHealth = health;
-        this.speed = 180f / 60f;
+        this.speed = (180f / 60f) / 64f * GameField.UNIT_HEIGHT;
         this.armor = 2;
         this.prize = 1;
         faded = false;

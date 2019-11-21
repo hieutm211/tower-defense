@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense.enemy;
 
+import com.ligrim.tower_defense.GameField;
 import com.ligrim.tower_defense.base.Route;
 
 public class TankerEnemy extends Enemy {
@@ -8,7 +9,7 @@ public class TankerEnemy extends Enemy {
         super("enemy_tanker", route);
         this.health = 3000;
         this.maxHealth = health;
-        this.speed = 60f / 60f;
+        this.speed = (60f / 60f) / 64f * GameField.UNIT_HEIGHT;
         this.armor = 60;
         this.prize = 10;
         faded = false;
