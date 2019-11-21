@@ -11,9 +11,9 @@ public class NormalEnemy extends Enemy {
         super("enemy_normal", route);
         this.health = 450;
         this.maxHealth = health;
-        this.speed = 80f / 60;
-        this.armor = 20;
-        this.prize = 50;
+        this.speed = 80f / 60f;
+        this.armor = 30;
+        this.prize = 2;
         faded = false;
     }
 }

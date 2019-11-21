@@ -8,9 +8,9 @@ public class BossEnemy extends Enemy {
         super("enemy_boss", route);
         this.health = 10000;
         this.maxHealth = health;
-        this.speed = 54f / 60;
-        this.armor = 200;
-        this.prize = 100;
+        this.speed = 40f / 60f;
+        this.armor = 100;
+        this.prize = 50;
         faded = false;
     }
 

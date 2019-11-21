@@ -8,10 +8,10 @@ public class SniperTower extends Tower {
     public SniperTower(Position position) {
         super("tower_sniper", position);
         rateOfFire = 150f / 60;
-        range = 600;
+        range = 400;
         damage = 1000;
         timer = new Timer(rateOfFire);
         bulletSpeed = 16f;
-        price = 15;
+        price = 25;
     }
 }

@@ -8,10 +8,10 @@ public class NormalTower extends Tower {
     public NormalTower(Position position) {
         super("tower_normal", position);
         rateOfFire = 60f / 60;
-        range = 300;
-        damage = 350;
+        range = 250;
+        damage = 365;
         timer = new Timer(rateOfFire);
         bulletSpeed = 10f;
-        price = 5;
+        price = 20;
     }
 }
