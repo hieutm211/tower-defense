@@ -1,7 +1,5 @@
 package com.ligrim.tower_defense.enemy;
 
-import com.ligrim.tower_defense.base.Route;
-
 public class PlaneEnemy extends AirborneEnemy {
 
     public PlaneEnemy() {

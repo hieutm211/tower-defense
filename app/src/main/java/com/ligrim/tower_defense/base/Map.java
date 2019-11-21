@@ -33,27 +33,27 @@ public class Map {
         this.mapLayer = new int[HEIGHT][WIDTH];
     }
 
-    public List<List<GameTile>> toTileList() {
+    public List<List<GameTile>> toTileList(int unitwidth, int unitheight) {
 
         List<List<GameTile>> tileList = new LinkedList<>();
 
         LinkedList<GameTile> layer1 = new LinkedList<>();
         for (int i = 0; i < HEIGHT; ++i) {
             for (int j = 0; j < WIDTH; ++j) {
-                float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
-                layer1.add(new Mountain(mapData[i][j], new Position(x, y), UNIT_WIDTH, UNIT_HEIGHT));
+                float x = (float) j * unitwidth, y = (float) i * unitheight;
+                layer1.add(new Mountain(mapData[i][j], new Position(x, y), unitwidth, unitheight));
             }
         }
         LinkedList<GameTile> layer2 = new LinkedList<>();
         for (int i  = 0; i < HEIGHT; ++i) {
             for (int j = 0; j < WIDTH; ++j) {
                 if (mapLayer[i][j] > 0) {
-                    float x = (float) j * UNIT_WIDTH, y = (float) i * UNIT_HEIGHT;
+                    float x = (float) j * unitwidth, y = (float) i * unitheight;
                     if (isOther(i, j) || isRock(i, j)) {
-                        layer1.addLast(new Mountain(mapLayer[i][j], new Position(x, y), UNIT_WIDTH, UNIT_HEIGHT));
+                        layer1.addLast(new Mountain(mapLayer[i][j], new Position(x, y), unitwidth, unitheight));
                     }
                     if (isTree(i, j)) {
-                        layer2.add(new Mountain(mapLayer[i][j], new Position(x, y), UNIT_WIDTH, UNIT_HEIGHT));
+                        layer2.add(new Mountain(mapLayer[i][j], new Position(x, y), unitwidth, unitheight));
                     }
                 }
             }

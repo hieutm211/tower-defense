@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense.enemy;
 
+import com.ligrim.tower_defense.GameEntity;
 import com.ligrim.tower_defense.GameField;
 import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Route;
@@ -24,4 +25,8 @@ public abstract class AirborneEnemy extends Enemy {
         route.add(new Position(-xStart, -yStart)); route.add(new Position(xEnd, yEnd));
         return new Route(route);
     }
+
+    // air enemy generally dont collide to each other
+    @Override
+    public boolean collision(GameEntity other) { return false; }
 }

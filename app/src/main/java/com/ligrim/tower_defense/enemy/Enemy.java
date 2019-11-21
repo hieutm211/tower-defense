@@ -101,6 +101,7 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         return directionY;
     }
 
+    @Override
     public boolean collision(GameEntity other) {
         if (other instanceof Enemy){
             Enemy enemyOther = (Enemy) other;

@@ -17,8 +17,8 @@ import com.ligrim.tower_defense.tower.Tower;
 public class GameStage {
 
     public static final int INITIAL_GOLD = 100;
-    public static int UNIT_WIDTH;
-    public static int UNIT_HEIGHT;
+    public static int UNIT_WIDTH = 100;
+    public static int UNIT_HEIGHT = 100;
     public static int WIDTH;
     public static int HEIGHT;
     private Map map;
@@ -29,8 +29,6 @@ public class GameStage {
     public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream saveFile) {
         map = GameIOFile.initMapData(mapFile);
         currentRound = 0;
-        this.UNIT_HEIGHT = map.UNIT_HEIGHT;
-        this.UNIT_WIDTH = map.UNIT_WIDTH;
         this.WIDTH = map.WIDTH;
         this.HEIGHT = map.HEIGHT;
         route = map.convertToPositionListOfRoute();
@@ -52,7 +50,7 @@ public class GameStage {
     }
 
     public List<List<GameTile>> getTileList() {
-        return map.toTileList();
+        return map.toTileList(UNIT_WIDTH, UNIT_HEIGHT);
     }
 
     public boolean hasNextRound() {
