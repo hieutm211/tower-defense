@@ -1,6 +1,6 @@
 package com.ligrim.tower_defense.base;
 
-import com.ligrim.tower_defense.EnemyType;
+import com.ligrim.tower_defense.enemy.EnemyType;
 import com.ligrim.tower_defense.Round;
 import com.ligrim.tower_defense.tower.MachineGunTower;
 import com.ligrim.tower_defense.tower.NormalTower;
@@ -310,6 +310,10 @@ public class GameIOFile {
                             case "N":
                                 enemyTypes.add(EnemyType.NONE);
                                 break;
+                            case "P":
+                                enemyTypes.add(EnemyType.PLANE_ENEMY);
+                                break;
+
                             default:
                                 System.out.println("unsupported character in loading enemy info: " + c1);
                         }

@@ -3,7 +3,9 @@ package com.ligrim.tower_defense;
 import com.ligrim.tower_defense.base.Route;
 import com.ligrim.tower_defense.enemy.BossEnemy;
 import com.ligrim.tower_defense.enemy.Enemy;
+import com.ligrim.tower_defense.enemy.EnemyType;
 import com.ligrim.tower_defense.enemy.NormalEnemy;
+import com.ligrim.tower_defense.enemy.PlaneEnemy;
 import com.ligrim.tower_defense.enemy.SmallerEnemy;
 import com.ligrim.tower_defense.enemy.TankerEnemy;
 
@@ -71,6 +73,9 @@ public class Round {
 
             case BOSS_ENEMY:
                 return new BossEnemy(route.get(r));
+
+            case PLANE_ENEMY:
+                return new PlaneEnemy();
 
             default:
                 return null;
