@@ -156,6 +156,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return enemyList;
     }
 
+    public int getCurrentRound() { return stage.getCurrentRound(); }
+
     public List<Tower> getTowerList() {
         return towerList;
     }

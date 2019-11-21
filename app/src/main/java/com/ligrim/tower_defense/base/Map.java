@@ -12,7 +12,7 @@ public class Map {
             26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 46, 47, 48, 50, 51, 52, 53, 55, 56, 57, 58, 60};
     private static final int[] spawnerID = {118, 123, 128};
     private static final int[] targetID = {49, 54, 59};
-    private static final int[] conjuction = {0, 2, 5, 7, 10, 12, 46, 48, 51, 53, 56, 58};
+    private static final int[] conjunctionID = {0, 2, 5, 7, 10, 12, 46, 48, 51, 53, 56, 58};
     private static final int[] treeID = {130, 131, 132, 133, 134};
     private static final int[] rockID = {135, 136, 137};
     private static final int[] otherID = {19, 20, 21};
@@ -116,9 +116,9 @@ public class Map {
 
     public boolean isConjunction(int i, int j) {
         if (!isInBound(i, j)) return false;
-        for (int k = 0; k < conjuction.length; ++k) {
-            if (conjuction[k] == mapData[i][j] || (conjuction[k] + 2 * 69) == mapData[i][j] ||
-                    (conjuction[k] + 3 * 69) == mapData[i][j]) return true;
+        for (int k = 0; k < conjunctionID.length; ++k) {
+            if (conjunctionID[k] == mapData[i][j] || (conjunctionID[k] + 2 * 69) == mapData[i][j] ||
+                    (conjunctionID[k] + 3 * 69) == mapData[i][j]) return true;
         }
         return false;
     }

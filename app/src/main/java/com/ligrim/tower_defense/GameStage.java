@@ -27,8 +27,8 @@ public class GameStage {
     private List<Route> route; // route here
 
     public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream saveFile) {
-        currentRound = 0;
         map = GameIOFile.initMapData(mapFile);
+        currentRound = 0;
         this.UNIT_HEIGHT = map.UNIT_HEIGHT;
         this.UNIT_WIDTH = map.UNIT_WIDTH;
         this.WIDTH = map.WIDTH;
