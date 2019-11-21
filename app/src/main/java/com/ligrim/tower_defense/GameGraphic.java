@@ -40,7 +40,7 @@ public class GameGraphic {
     public static Bitmap getBitmapById(String id, int width, int height) {
         if (!map.containsKey(id)) {
             try {
-                Bitmap originBitmap = BitmapFactory.decodeStream(assetManager.open("map/map_1/images/" + id + ".png"));
+                Bitmap originBitmap = BitmapFactory.decodeStream(assetManager.open("images/" + id + ".png"));
                 map.put(id, Bitmap.createScaledBitmap(originBitmap, width, height, false));
             } catch (Exception e) {
                 e.printStackTrace();

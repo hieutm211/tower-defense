@@ -123,6 +123,28 @@ public class TouchEventListener implements View.OnTouchListener {
     }
 
     public boolean clickEvent(View v, MotionEvent event) {
+        GameField gameField = (GameField) v;
+        float x = event.getX();
+        float y = event.getY();
+
+        int action = event.getAction();
+
+        switch (action) {
+            case MotionEvent.ACTION_UP:
+                String buttonUpId = GamePane.getButtonId(x, y);
+                if (buttonUpId != null && buttonUpId.equals(currentId)) {
+                    switch (currentId) {
+                        case "pause":
+                            gameField.requestTogglePause();
+                            break;
+                        case "settings":
+                            break;
+                    }
+                }
+                currentStatus = STATUS_NONE;
+                break;
+        }
+
         return true;
     }
 }
