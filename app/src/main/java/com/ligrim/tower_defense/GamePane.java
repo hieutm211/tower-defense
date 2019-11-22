@@ -228,14 +228,6 @@ class SettingPane {
 
         y += margin;
 
-        button = new TextButton("load", x, y, buttonWidth, buttonHeight);
-        button.setText("Load");
-        button.setTextPaint(textPaint);
-        button.setBackgroundPaint(backgroundPaint);
-        buttonList.add(button);
-
-        y += margin;
-
         button = new TextButton("toggle_mute", x, y, buttonWidth, buttonHeight);
         button.setText("Mute / Unmute");
         button.setTextPaint(textPaint);

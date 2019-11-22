@@ -151,10 +151,6 @@ public class TouchEventListener implements View.OnTouchListener {
                             SettingPane.setActive(false);
                             break;
 
-                        case "load":
-                            gameField.requestExitAndLoad();
-                            break;
-
                         case "toggle_mute":
                             break;
 
