@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.text.TextPaint;
 
 import com.ligrim.tower_defense.tower.Tower;
@@ -74,9 +75,20 @@ class TowerPane {
         int renderX = margin;
         int renderY = GameGraphic.getScreenHeightPixels() - margin - height;
 
+        Paint paint = new Paint();
+        paint.setTextSize(25f);
+        paint.setColor(Color.WHITE);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+
         for (Tower tower: towerAvailableList) {
             ImageButton button = new ImageButton(tower.getId(), renderX, renderY, width, height);
+
+            button.setText(Integer.toString(tower.getPrice()));
+            button.setTextPaint(paint);
+            button.setTextAlign(ImageButton.TOP_LEFT);
+
             buttonList.add(button);
+
             renderX += width + margin;
         }
 

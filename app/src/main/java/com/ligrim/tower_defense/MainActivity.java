@@ -34,17 +34,35 @@ public class MainActivity extends Activity {
         ImageView startScreen = findViewById(R.id.startScreen);
         startScreen.animate().alpha(0.5f).setDuration(1000);
 
+        TextView text;
+
+        text = findViewById(R.id.textView0);
+        text.setVisibility(View.VISIBLE);
+        text.animate().alpha(1f).setDuration(1000);
+
         Button map_1 = findViewById(R.id.map_1);
         map_1.setVisibility(View.VISIBLE);
-        map_1.animate().alpha(1f).setDuration(2000);
+        map_1.animate().alpha(1f).setDuration(1000);
 
         Button map_2 = findViewById(R.id.map_2);
         map_2.setVisibility(View.VISIBLE);
-        map_2.animate().alpha(1f).setDuration(2000);
+        map_2.animate().alpha(1f).setDuration(1000);
 
         Button map_3 = findViewById(R.id.map_3);
         map_3.setVisibility(View.VISIBLE);
-        map_3.animate().alpha(1f).setDuration(2000);
+        map_3.animate().alpha(1f).setDuration(1000);
+
+        text = findViewById(R.id.textView1);
+        text.setVisibility(View.VISIBLE);
+        text.animate().alpha(1f).setDuration(1000);
+
+        text = findViewById(R.id.textView2);
+        text.setVisibility(View.VISIBLE);
+        text.animate().alpha(1f).setDuration(1000);
+
+        text = findViewById(R.id.textView3);
+        text.setVisibility(View.VISIBLE);
+        text.animate().alpha(1f).setDuration(1000);
     }
 
     public void enterGame(View view) {
