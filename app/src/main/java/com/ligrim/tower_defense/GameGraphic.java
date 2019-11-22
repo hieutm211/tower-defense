@@ -14,7 +14,7 @@ public class GameGraphic {
     private static Canvas canvas;
 
     private static AssetManager assetManager;
-    private static HashMap<String, Bitmap> map = new HashMap<>();
+    private static HashMap<String, Bitmap> map;
 
     private static int mapWidth;
     private static int mapHeight;
@@ -69,6 +69,11 @@ public class GameGraphic {
         unitHeightPixels = _unitHeight;
 
         updateMapPixels(unitWidthPixels, unitHeightPixels);
+
+        map = new HashMap<>();
+        canvas = null;
+        screenX = 0;
+        screenY = 0;
     }
 
     private static void updateMapPixels(int _unitWidthPixels, int _unitHeightPixels) {
@@ -102,6 +107,14 @@ public class GameGraphic {
         return screenHeightPixels;
     }
 
+    public static int getCenterScreenX() {
+        return screenWidthPixels / 2;
+    }
+
+    public static int getCenterScreenY() {
+        return screenHeightPixels / 2;
+    }
+
     public static void setScreenX(float _screenX) {
         screenX = fixScreenX(_screenX);
     }
@@ -129,5 +142,7 @@ public class GameGraphic {
         screenY = Math.min(screenY, mapHeightPixels - screenHeightPixels + 1);
         return screenY;
     }
+
+    public static void reset() {}
 }
 
