@@ -1,6 +1,8 @@
 package com.ligrim.tower_defense;
 
+import android.app.Activity;
 import android.graphics.Canvas;
+import android.view.ContextMenu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.content.Context;
@@ -322,6 +324,42 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     public void requestTogglePause() {
         thread.togglePause();
+    }
+
+    public void requestPause() {
+        thread.setPause(true);
+    }
+
+    public void requestUnpause() {
+        thread.setPause(false);
+    }
+
+    public void requestRestart() {
+        //TODO: reset this round
+    }
+
+    public void requestExit() {
+        exitGame();
+        ((Activity) getContext()).setContentView(R.layout.activity_main);
+    }
+
+    public void requestExitAndLoad() {
+        exitGame();
+        ((Activity) getContext()).setContentView(R.layout.load_game);
+    }
+
+
+    public void exitGame() {
+        boolean retry = true;
+        while (retry) {
+            try {
+                thread.setRunning(false);
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            retry = false;
+        }
     }
 
     @Override

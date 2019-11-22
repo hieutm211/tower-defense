@@ -79,10 +79,17 @@ public class MainThread extends Thread {
     }
 
     public void setRunning(boolean isRunning) {
-        running = isRunning;
+        this.running = isRunning;
+    }
+    public boolean isRunning() {
+        return running;
     }
 
     public void togglePause() {
         pause = !pause;
+    }
+
+    public void setPause(boolean isPause) {
+        this.pause = isPause;
     }
 }

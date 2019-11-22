@@ -87,10 +87,10 @@ public class TouchEventListener implements View.OnTouchListener {
             case MotionEvent.ACTION_UP:
                 if (gameField.canSetTower(currentId, towerPosition)) {
                     gameField.addTower(currentId, towerPosition);
-                } else {
-                    System.out.println("CANNOT set tower at " + x + " " + y);
                 }
+
                 gameField.setTemporaryTower(null);
+
                 currentStatus = STATUS_NONE;
                 break;
         }
@@ -138,6 +138,28 @@ public class TouchEventListener implements View.OnTouchListener {
                             gameField.requestTogglePause();
                             break;
                         case "settings":
+                            SettingPane.setActive(true);
+                            gameField.requestPause();
+                            break;
+                        case "back_to_game":
+                            System.out.println("backed to game");
+                            SettingPane.setActive(false);
+                            gameField.requestUnpause();
+                            break;
+                        case "restart":
+                            gameField.requestRestart();
+                            SettingPane.setActive(false);
+                            break;
+
+                        case "load":
+                            gameField.requestExitAndLoad();
+                            break;
+
+                        case "toggle_mute":
+                            break;
+
+                        case "exit":
+                            gameField.requestExit();
                             break;
                     }
                 }
