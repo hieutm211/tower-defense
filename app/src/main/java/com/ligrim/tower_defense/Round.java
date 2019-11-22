@@ -59,6 +59,11 @@ public class Round {
         this.enemyInRoute.add(enemyInRoute);
     }
 
+    public void reset() {
+        enemyID = 0;
+        countEnemy = 0;
+    }
+
     private Enemy enemyFactory(EnemyType e, int r) {
         if (r >= this.route.size()) return null;
         switch (e) {

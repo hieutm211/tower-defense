@@ -58,7 +58,7 @@ public class GameStage {
     }
 
     public int totalRound() {
-        return roundList.size();
+        return roundList.size() - 1;
     }
 
     // unchecked
@@ -81,6 +81,13 @@ public class GameStage {
             currentRound = i;
         }
         return false;
+    }
+
+    public void restart() {
+        for (int i = 0; i <= currentRound; ++i ) {
+            roundList.get(i).reset();
+        }
+        currentRound = 0;
     }
 
     /***************************************************************************
