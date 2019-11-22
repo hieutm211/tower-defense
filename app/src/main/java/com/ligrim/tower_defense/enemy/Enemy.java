@@ -175,7 +175,7 @@ public abstract class Enemy extends GameEntity implements Moveable, Vulnerable, 
         Bitmap health = null;
         health = GameGraphic.getBitmapById("health_" + hp, width, height);
 
-        GameGraphic.draw(health, x, y);
+        GameGraphic.draw(health, x, y - height/3f);
     }
 
     /***************************************************************************
