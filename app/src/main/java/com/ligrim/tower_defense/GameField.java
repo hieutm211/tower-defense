@@ -2,6 +2,8 @@ package com.ligrim.tower_defense;
 
 import android.app.Activity;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.ContextMenu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -370,6 +372,21 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         GameGraphic.draw(bulletList);
 
         if (temporaryTower != null) {
+            Paint circlePaint = new Paint();
+
+            if (canSetTower(temporaryTower.getId(), temporaryTower.getPosition())) {
+                circlePaint.setColor(Color.rgb(10, 200, 10)); // green
+            } else {
+                circlePaint.setColor(Color.rgb(200, 10, 10)); // red
+            }
+
+            circlePaint.setAlpha(100);
+
+            float circleX = temporaryTower.getCenterX();
+            float circleY = temporaryTower.getCenterY();
+            float circleRadius = temporaryTower.getRange();
+            canvas.drawCircle(circleX, circleY, circleRadius, circlePaint);
+
             GameGraphic.draw(temporaryTower);
         }
 
