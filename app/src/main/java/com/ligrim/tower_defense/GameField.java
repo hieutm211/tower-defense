@@ -107,27 +107,30 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
 
         //update Enemy status
-        for (Enemy enemy: enemyList) {
-            if (enemy.isHalting() ) {
-                boolean canMove = true;
-                if (!enemy.getTimer().alarm(gameTick.getTime())) {
-                    canMove = false;
-                }
-                else for (Enemy e : enemyList) {
-                    if (enemy != e && enemy.collision(e)) {
-                        canMove = false;
-                    }
-                }
-                if (canMove) enemy.go();
-            }
-            else for (Enemy enemy1: enemyList) {
-                if (enemy != enemy1 && enemy.collision(enemy1)) {
-                    enemy.halt();
-                    enemy.getTimer().alarm(gameTick.getTime());
-                }
-            }
+//        for (Enemy enemy: enemyList) {
+//            if (enemy.isHalting() ) {
+//                boolean canMove = true;
+//                if (!enemy.getTimer().alarm(gameTick.getTime())) {
+//                    canMove = false;
+//                }
+//                else for (Enemy e : enemyList) {
+//                    if (enemy != e && enemy.collision(e)) {
+//                        canMove = false;
+//                    }
+//                }
+//                if (canMove) enemy.go();
+//            }
+//            else for (Enemy enemy1: enemyList) {
+//                if (enemy != enemy && enemy.collision(enemy1)) {
+//                    enemy.halt();
+//                    enemy.getTimer().alarm(gameTick.getTime());
+//                }
+//            }
+//            enemy.move();
+//        }
+
+        for (Enemy enemy: enemyList)
             enemy.move();
-        }
         addEnemy();
         checkEnemyReachTarget();
 
@@ -332,6 +335,11 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         tow.add(new SniperTower(new Position(0,0)));
         tow.add(new MachineGunTower(new Position(0,0)));
         return tow;
+    }
+
+    //get Tower through Id
+    public Tower getTower(int i) {
+        return towerList.get(i);
     }
 
     public void requestTogglePause() {

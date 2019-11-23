@@ -13,5 +13,7 @@ public class SniperTower extends Tower {
         timer = new Timer(rateOfFire);
         bulletSpeed = 16f;
         price = 25;
+        currentLevel = 0;
+        MAX_LEVEL = 3;
     }
 }
