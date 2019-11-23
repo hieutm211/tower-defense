@@ -231,7 +231,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             case "sniper": tower = new SniperTower(pos); break;
             case "machine_gun": tower = new MachineGunTower(pos); break;
         }
-        return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower);
+        return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower) && this.gold >= tower.getPrice();
     }
     public boolean isTowerTowerOverlap(Tower experimentalTower) {
         if (towerList.size() == 0) return false;
@@ -242,10 +242,20 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void addTower(String towerId, Position pos) {
+
         switch(towerId) {
-            case "tower_normal": towerList.add(new NormalTower(pos)); break;
-            case "tower_sniper": towerList.add(new SniperTower(pos)); break;
-            case "tower_machine_gun": towerList.add(new MachineGunTower(pos)); break;
+            case "tower_normal":
+                Tower tow = new NormalTower(pos);
+                towerList.add(tow); this.gold -= tow.getPrice();
+                break;
+            case "tower_sniper":
+                Tower tow1 = new SniperTower(pos);
+                towerList.add(tow1); this.gold -= tow1.getPrice();
+                break;
+            case "tower_machine_gun":
+                Tower tow2 = new MachineGunTower(pos);
+                towerList.add(tow2); this.gold -= tow2.getPrice();
+                break;
         }
     }
 
@@ -358,6 +368,23 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    //from the position of the finger get Tower
+    public int getTower(float x, float y) {
+        for (int i = 0; i < towerList.size(); i++) {
+            if (towerList.get(i).getX() <= x && towerList.get(i).getX() + towerList.get(i).getWidth()>= x &&
+                    towerList.get(i).getY() <= y && towerList.get(i).getY() + towerList.get(i).getHeight() >= y) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // delete tower index i
+    public void requestSellTower(int i) {
+        this.gold += towerList.get(i).getPrice();
+        towerList.remove(i);
+    }
+
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
@@ -394,4 +421,5 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
         GamePane.draw(canvas);
     }
+
 }
