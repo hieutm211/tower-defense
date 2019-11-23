@@ -13,5 +13,7 @@ public class NormalTower extends Tower {
         timer = new Timer(rateOfFire);
         bulletSpeed = 10f;
         price = 20;
+        currentLevel = 0;
+        MAX_LEVEL = 3;
     }
 }

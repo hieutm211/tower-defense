@@ -27,7 +27,8 @@ public abstract class Tower extends GameTile implements Attacker {
     protected float directionX;
     protected float directionY;
     protected Queue<Enemy> enemyTarget;
-
+    protected int currentLevel;
+    protected int MAX_LEVEL;
 
     public int getPrice() {
         return price;
@@ -46,7 +47,7 @@ public abstract class Tower extends GameTile implements Attacker {
     }
 
     public int getLevel() {
-        return 0;
+        return currentLevel;
     }
 
     public float getRange() {
@@ -153,6 +154,15 @@ public abstract class Tower extends GameTile implements Attacker {
         canvas.drawBitmap(tower_gun, x, y, null);
         canvas.restore();
     }
+
+    public void upgrade() {
+        currentLevel++;
+    }
+
+    public boolean isLevelMax() {
+        return currentLevel >= MAX_LEVEL;
+    }
+
 
     /***************************************************************************
      * Helper functions.
