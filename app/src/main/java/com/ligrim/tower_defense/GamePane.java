@@ -8,7 +8,6 @@ import android.graphics.Typeface;
 import android.text.TextPaint;
 
 import com.ligrim.tower_defense.tower.Tower;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +32,7 @@ class GamePane {
             buttonList.addAll(SettingPane.getButtonList());
         } else {
             buttonList.addAll(OptionPane.getButtonList());
+            buttonList.addAll(TowerClickedPane.getButtonList());
         }
 
         for (GameButton button: buttonList) {
@@ -58,6 +58,8 @@ class GamePane {
         TowerPane.draw(canvas);
         InformationPane.draw(canvas);
         OptionPane.draw(canvas);
+
+        TowerClickedPane.draw(canvas);
 
         if (SettingPane.isActive()) {
             SettingPane.draw(canvas);
@@ -276,5 +278,76 @@ class SettingPane {
         for (TextButton button: buttonList) {
             button.draw(canvas);
         }
+    }
+}
+
+class TowerClickedPane {
+    private static int width = GameField.UNIT_WIDTH;
+    private static int height = GameField.UNIT_HEIGHT;
+    private static Tower tower;
+    private static TextButton upgradeButton;
+    private static TextButton sellButton;
+
+    public static void setTower(Tower _tower) {
+        tower = _tower;
+
+        if (tower == null) return;
+
+        Paint backgroundPaint = new Paint();
+        backgroundPaint.setColor(Color.DKGRAY);
+        backgroundPaint.setAlpha(200);
+
+        Paint textPaint = new Paint();
+
+        textPaint.reset();
+
+
+        if (tower.isLevelMax()) {
+            textPaint.setColor(Color.LTGRAY);
+        } else {
+            textPaint.setColor(Color.WHITE);
+        }
+
+        textPaint.setTextSize(25f);
+
+        int x = (int) tower.getCenterX() - tower.getWidth() - width;
+        int y = (int) tower.getY();
+        upgradeButton = new TextButton("upgrade", x, y, width, height);
+        upgradeButton.setText("Up");
+        upgradeButton.setBackgroundPaint(backgroundPaint);
+        upgradeButton.setTextPaint(textPaint);
+
+        textPaint.reset();
+
+        textPaint.setColor(Color.WHITE);
+        textPaint.setTextSize(25f);
+
+        x = (int) tower.getCenterX() + tower.getWidth();
+        sellButton = new TextButton("sell", x, y, width, height);
+        sellButton.setText("Sell");
+        sellButton.setBackgroundPaint(backgroundPaint);
+        sellButton.setTextPaint(textPaint);
+    }
+
+    public static List<TextButton> getButtonList() {
+        List<TextButton> list = new ArrayList<>();
+
+        if (tower == null) return list;
+
+        if (!tower.isLevelMax()) {
+            list.add(upgradeButton);
+        }
+        list.add(sellButton);
+
+        return list;
+    }
+
+    public static void draw(Canvas canvas) {
+        if (tower == null) return;
+        canvas.save();
+        canvas.translate(-GameGraphic.getScreenX(), -GameGraphic.getScreenY());
+        upgradeButton.draw(canvas);
+        sellButton.draw(canvas);
+        canvas.restore();
     }
 }
