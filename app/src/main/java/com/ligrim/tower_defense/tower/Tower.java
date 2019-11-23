@@ -2,6 +2,8 @@ package com.ligrim.tower_defense.tower;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import com.ligrim.tower_defense.Bullet;
 import com.ligrim.tower_defense.base.Attacker;
@@ -29,6 +31,7 @@ public abstract class Tower extends GameTile implements Attacker {
     protected Queue<Enemy> enemyTarget;
     protected int currentLevel;
     protected int MAX_LEVEL;
+    protected boolean displayRange = false;
 
     public int getPrice() {
         return price;
@@ -94,6 +97,10 @@ public abstract class Tower extends GameTile implements Attacker {
         directionY = dy;
     }
 
+    public void setDisplayRange(boolean displayRange) {
+        this.displayRange = displayRange;
+    }
+
     public Queue<Enemy> getEnemyTarget() {
         return enemyTarget;
     }
@@ -143,6 +150,16 @@ public abstract class Tower extends GameTile implements Attacker {
         float centerX = getCenterX();
         float centerY = getCenterY();
 
+        if (displayRange) {
+            Paint circlePaint = new Paint();
+
+            circlePaint.setColor(Color.LTGRAY); // green
+
+            circlePaint.setAlpha(150);
+
+            canvas.drawCircle(centerX, centerY, range, circlePaint);
+        }
+
         Bitmap tower = GameGraphic.getBitmapById(getId(), width, height);
 
         Bitmap tower_gun = GameGraphic.getBitmapById(getId() + "_gun", width, height);
@@ -153,6 +170,11 @@ public abstract class Tower extends GameTile implements Attacker {
         canvas.rotate(angle, centerX, centerY);
         canvas.drawBitmap(tower_gun, x, y, null);
         canvas.restore();
+
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(20f);
+        canvas.drawText(Integer.toString(getLevel()), getCenterX()-5, getCenterY()+10, paint);
     }
 
     public void upgrade() {

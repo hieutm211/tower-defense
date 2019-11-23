@@ -14,6 +14,7 @@ public class TouchEventListener implements View.OnTouchListener {
     private static final int STATUS_DRAG = 1;
     private static final int STATUS_TOWER_DRAG = 2;
     private static final int STATUS_BUTTON_CLICK = 3;
+    private static final int STATUS_TOWER_CLICK = 4;
 
     private float primStartTouchX = -1;
     private float primStartTouchY = -1;
@@ -23,11 +24,15 @@ public class TouchEventListener implements View.OnTouchListener {
     private float moveDy = 0;
     private int currentStatus = STATUS_NONE;
     private String currentId;
+    private String tempId;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
         switch (currentStatus) {
+            case STATUS_TOWER_CLICK:
+                return towerClickedEvent(v, event);
+
             case STATUS_DRAG:
                 return dragEvent(v, event);
 
@@ -38,18 +43,29 @@ public class TouchEventListener implements View.OnTouchListener {
                 return clickEvent(v, event);
 
             case STATUS_NONE:
+
                 primStartTouchX = event.getX();
                 primStartTouchY = event.getY();
 
-                if (GamePane.getTowerId(primStartTouchX, primStartTouchY) != null) {
+                GameField gameField = (GameField) v;
+                int towerIndex = gameField.getTower(primStartTouchX + GameGraphic.getScreenX(), primStartTouchY + GameGraphic.getScreenY());
+
+                if (towerIndex != -1) { // click tower
+                    currentStatus = STATUS_TOWER_CLICK;
+                    currentId = Integer.toString(towerIndex);
+                    tempId = currentId;
+                    Tower tower = gameField.getTower(towerIndex);
+                    TowerClickedPane.setTower(tower);
+                    tower.setDisplayRange(true);
+
+                } else if (GamePane.getTowerId(primStartTouchX, primStartTouchY) != null) { //click build tower
                     currentStatus = STATUS_TOWER_DRAG;
                     currentId = GamePane.getTowerId(primStartTouchX, primStartTouchY);
 
-                } else if (GamePane.getButtonId(primStartTouchX, primStartTouchY) != null){
+                } else if (GamePane.getButtonId(primStartTouchX, primStartTouchY) != null){ // click a button
                     currentStatus = STATUS_BUTTON_CLICK;
                     currentId = GamePane.getButtonId(primStartTouchX, primStartTouchY);
-
-                } else {
+                } else { // click nothing
                     currentStatus = STATUS_DRAG;
                     currentId = null;
                 }
@@ -78,11 +94,6 @@ public class TouchEventListener implements View.OnTouchListener {
                 temporaryTower.setPosition(x, y);
                 gameField.setTemporaryTower(temporaryTower);
 
-                if (gameField.canSetTower(currentId, towerPosition)) {
-                    //TODO: draw green circle
-                } else {
-                    //TODO: draw red circle
-                }
                 break;
             case MotionEvent.ACTION_UP:
                 if (gameField.canSetTower(currentId, towerPosition)) {
@@ -142,7 +153,6 @@ public class TouchEventListener implements View.OnTouchListener {
                             gameField.requestPause();
                             break;
                         case "back_to_game":
-                            System.out.println("backed to game");
                             SettingPane.setActive(false);
                             gameField.requestUnpause();
                             break;
@@ -165,4 +175,39 @@ public class TouchEventListener implements View.OnTouchListener {
 
         return true;
     }
+    public boolean towerClickedEvent(View v, MotionEvent event) {
+        GameField gameField = (GameField) v;
+        float x = event.getX() + GameGraphic.getScreenX();
+        float y = event.getY() + GameGraphic.getScreenY();
+
+        int action = event.getAction();
+
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+
+                gameField.getTower(Integer.parseInt(currentId)).setDisplayRange(false);
+
+                tempId = GamePane.getButtonId(x, y);
+
+                int towerIndex = Integer.parseInt(currentId);
+
+                if (tempId != null) {
+                    if (tempId.equals("upgrade")) {
+                        gameField.getTower(towerIndex).upgrade();
+                    } else if (tempId.equals("sell")) {
+                        gameField.requestSellTower(towerIndex);
+                    }
+                }
+
+                if (!currentId.equals(tempId)) {
+                    TowerClickedPane.setTower(null);
+                    currentStatus = STATUS_NONE;
+                }
+
+                break;
+        }
+        return true;
+    }
+
 }
+

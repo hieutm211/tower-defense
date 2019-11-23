@@ -48,6 +48,7 @@ public class GameGraphic {
         }
         return map.get(id);
     }
+/*
 
     public static Bitmap getBitmapById(String id) {
         return getBitmapById(id, unitWidthPixels, unitHeightPixels);
@@ -60,6 +61,7 @@ public class GameGraphic {
     public static Bitmap getTileById(int id) {
         return getTileById(String.format("%03d", id), unitWidthPixels, unitHeightPixels);
     }
+*/
 
     public static void configMap(int _mapWidth, int _mapHeight, int _unitWidth, int _unitHeight) {
         mapWidth = _mapWidth;

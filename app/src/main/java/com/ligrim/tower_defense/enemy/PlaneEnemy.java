@@ -38,7 +38,6 @@ public class PlaneEnemy extends AirborneEnemy {
         canvas.save();
         canvas.rotate(angle, centerX, centerY);
         canvas.drawBitmap(enemy, x, y, null);
-        System.out.println(width);
         canvas.restore();
 
         int hp = healthPercent();
