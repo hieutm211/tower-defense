@@ -72,7 +72,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = new Timer(dt);
         lastAddEnemyTick = -1.0;
-        this.health = 200;
+        this.health = 25;
     }
 
     @Override

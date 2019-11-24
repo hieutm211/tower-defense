@@ -17,8 +17,8 @@ import com.ligrim.tower_defense.tower.Tower;
 public class GameStage {
 
     public static final int INITIAL_GOLD = 100;
-    public static int UNIT_WIDTH = 100;
-    public static int UNIT_HEIGHT = 100;
+    public static int UNIT_WIDTH = 80;
+    public static int UNIT_HEIGHT = 80;
     public static int WIDTH;
     public static int HEIGHT;
     private Map map;
