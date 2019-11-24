@@ -209,8 +209,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (stage.hasNextEnemy()) {
                 Enemy enemy = stage.nextEnemy();
                 if (enemy != null) {
-                    if (enemy instanceof FlyingEnemy) enemyList.add(0, enemy);
-                    else enemyList.add(enemy);
+                    if (enemy instanceof FlyingEnemy) enemyList.add( enemy);
+                    else enemyList.add(0,enemy);
                 }
                 lastAddEnemyTick = gameTick.getTime();
             }
@@ -405,8 +405,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
         GameGraphic.draw(tileList.get(0));
         GameGraphic.draw(tileList.get(1));
-        GameGraphic.draw(enemyList);
         GameGraphic.draw(towerList);
+        GameGraphic.draw(enemyList);
         GameGraphic.draw(bulletList);
 
         if (temporaryTower != null) {
