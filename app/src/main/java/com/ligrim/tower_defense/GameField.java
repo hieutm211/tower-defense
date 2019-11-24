@@ -230,10 +230,11 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public boolean canSetTower(String towerId, Position pos) {
         Tower tower = new NormalTower(pos);
         switch(towerId) {
-            case "normal": tower = new NormalTower(pos); break;
-            case "sniper": tower = new SniperTower(pos); break;
-            case "machine_gun": tower = new MachineGunTower(pos); break;
+            case "tower_normal": tower = new NormalTower(pos); break;
+            case "tower_sniper": tower = new SniperTower(pos); break;
+            case "tower_machine_gun": tower = new MachineGunTower(pos); break;
         }
+        System.out.println(gold + " " + tower.getPrice());
         return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower) && this.gold >= tower.getPrice();
     }
     public boolean isTowerTowerOverlap(Tower experimentalTower) {
@@ -249,15 +250,19 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         switch(towerId) {
             case "tower_normal":
                 Tower tow = new NormalTower(pos);
-                towerList.add(tow); this.gold -= tow.getPrice();
+                towerList.add(tow);
+                this.gold -= tow.getPrice();
+
                 break;
             case "tower_sniper":
                 Tower tow1 = new SniperTower(pos);
-                towerList.add(tow1); this.gold -= tow1.getPrice();
+                towerList.add(tow1);
+                this.gold -= tow1.getPrice();
                 break;
             case "tower_machine_gun":
                 Tower tow2 = new MachineGunTower(pos);
-                towerList.add(tow2); this.gold -= tow2.getPrice();
+                towerList.add(tow2);
+                this.gold -= tow2.getPrice();
                 break;
         }
     }
@@ -391,6 +396,11 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void requestSellTower(int i) {
         this.gold += towerList.get(i).getPrice();
         towerList.remove(i);
+    }
+
+    //check tower upgrade condition
+    public boolean canTowerUpgrade(Tower tower) {
+        return (!tower.isLevelMax() && gold >= tower.getUpgradePrice());
     }
 
     @Override
