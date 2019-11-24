@@ -114,6 +114,10 @@ public class Map {
         return result;
     }
 
+    public boolean isOverlap(int i, int j) {
+        return isRoad(i, j) || isTree(i, j);
+    }
+
     public boolean isConjunction(int i, int j) {
         if (!isInBound(i, j)) return false;
         for (int k = 0; k < conjunctionID.length; ++k) {
