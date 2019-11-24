@@ -19,6 +19,7 @@ import com.ligrim.tower_defense.tower.SniperTower;
 import com.ligrim.tower_defense.tower.Tower;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameField extends SurfaceView implements SurfaceHolder.Callback {
@@ -65,10 +66,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         UNIT_WIDTH = gameStage.UNIT_WIDTH;
         UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
 
-        this.enemyList = new ArrayList<>();
-        this.towerList = new ArrayList<>();
+        this.enemyList = new LinkedList<>();
+        this.towerList = new LinkedList<>();
         this.tileList = gameStage.getTileList();
-        this.bulletList = new ArrayList<>();
+        this.bulletList = new LinkedList<>();
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = new Timer(dt);
         lastAddEnemyTick = -1.0;

@@ -9,7 +9,7 @@ public class NormalTower extends Tower {
     public NormalTower(Position position) {
         super("tower_normal", position);
         rateOfFire = 60f / 60;
-        range = 250 / 64 * GameField.UNIT_HEIGHT;
+        range = 260 / 64f * GameField.UNIT_HEIGHT;
         damage = 160;
         timer = new Timer(rateOfFire);
         bulletSpeed = 14f / 64 * GameField.UNIT_HEIGHT;
