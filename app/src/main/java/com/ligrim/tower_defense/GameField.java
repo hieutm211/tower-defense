@@ -12,6 +12,7 @@ import android.content.Context;
 import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Timer;
 import com.ligrim.tower_defense.enemy.Enemy;
+import com.ligrim.tower_defense.enemy.FlyingEnemy;
 import com.ligrim.tower_defense.tile.GameTile;
 import com.ligrim.tower_defense.tower.MachineGunTower;
 import com.ligrim.tower_defense.tower.NormalTower;
@@ -208,7 +209,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (stage.hasNextEnemy()) {
                 Enemy enemy = stage.nextEnemy();
                 if (enemy != null) {
-                    enemyList.add(enemy);
+                    if (enemy instanceof FlyingEnemy) enemyList.add(0, enemy);
+                    else enemyList.add(enemy);
                 }
                 lastAddEnemyTick = gameTick.getTime();
             }
@@ -402,9 +404,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         canvas.translate(-GameGraphic.getScreenX(), -GameGraphic.getScreenY());
 
         GameGraphic.draw(tileList.get(0));
+        GameGraphic.draw(tileList.get(1));
         GameGraphic.draw(enemyList);
         GameGraphic.draw(towerList);
-        GameGraphic.draw(tileList.get(1));
         GameGraphic.draw(bulletList);
 
         if (temporaryTower != null) {
