@@ -25,9 +25,15 @@ public class MainActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_main);
+
+        GameSound.config(this);
+
+        GameSound.playMediaPlayer("home");
     }
 
     public void pickGame(View view) {
+        GameSound.playMediaPlayer("home");
+
         TextView taptoplayText = findViewById(R.id.taptoplayText);
         taptoplayText.animate().alpha(0f).setDuration(1000);
 
@@ -92,5 +98,7 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        GameSound.playMediaPlayer("ingame");
     }
 }
