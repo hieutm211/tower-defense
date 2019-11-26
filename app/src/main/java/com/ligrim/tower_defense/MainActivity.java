@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
             InputStream enemyFile = getAssets().open("map/" + mapId + "/enemy_info.txt");
             InputStream saveFile = getAssets().open("map/" + mapId + "/saveFile.xml");
             GameStage gameStage = new GameStage(mapFile, enemyFile);
-            GameField gameField = new GameField(this, gameStage, saveFile);
+            GameField gameField = new GameField(this, gameStage, saveFile, "map/" + mapId + "/saveFile.xml");
             setContentView(gameField);
             GameGraphic.setAssetManager(this.getAssets());
             GameGraphic.configMap(gameStage.WIDTH, gameStage.HEIGHT, gameStage.UNIT_WIDTH, gameStage.UNIT_HEIGHT);

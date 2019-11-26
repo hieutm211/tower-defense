@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.view.ContextMenu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.content.Context;
@@ -46,6 +45,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     private int gold;
     private int health;
+    private String directorySaveFile;
 
     private Timer gameTick;
     private double lastAddEnemyTick;
@@ -53,9 +53,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private final double timeToAddEnemy = .25;
     /*private final double shootTime = 0.5;*/
 
-    public GameField(Context context, GameStage gameStage, InputStream saveFile) {
+    public GameField(Context context, GameStage gameStage, InputStream saveFile, String directorySaveFile) {
         //android code here
         super(context);
+        this.directorySaveFile = directorySaveFile;
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
@@ -168,6 +169,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (!stage.hasNextRound()) return;
             else {
                 stage.nextRound();
+                System.out.println("save file here");
+                GameIOFile.saveToFile(this.towerList, stage.getCurrentRound(), this.health, this.gold, this.directorySaveFile);
             }
         }
 
@@ -254,7 +257,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             case "tower_sniper": tower = new SniperTower(pos); break;
             case "tower_machine_gun": tower = new MachineGunTower(pos); break;
         }
-        return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower) && this.gold >= tower.getPrice();
+        return !isTowerTowerOverlap(tower) && !stage.isMapTowerOverlap(tower) && this.gold >= tower.getPrice();
     }
     public boolean isTowerTowerOverlap(Tower experimentalTower) {
         if (towerList.size() == 0) return false;
