@@ -1,6 +1,5 @@
 package com.ligrim.tower_defense;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,7 @@ public class GameStage {
     public static int HEIGHT;
     private int currentRound;
     private List<Round> roundList; // list of all rounds in the game
-    private List<Route> route; // route here
+    private List<Route> routeList; // routeList here
     private Map map;
 
     public GameStage(InputStream mapFile, InputStream EnemyFile) {
@@ -31,8 +30,8 @@ public class GameStage {
         currentRound = 0;
         this.WIDTH = map.WIDTH;
         this.HEIGHT = map.HEIGHT;
-        route = map.convertToPositionListOfRoute();
-        roundList = GameIOFile.createRoundList(EnemyFile, route);
+        routeList = map.convertToPositionListOfRoute();
+        roundList = GameIOFile.createRoundList(EnemyFile, routeList);
         setTileSize();
     }
 
@@ -61,7 +60,7 @@ public class GameStage {
         return roundList.size();
     }
 
-    public boolean isRoadTowerOverlap(Tower tower) {
+    public boolean isMapTowerOverlap(Tower tower) {
         int topLeftX = (int)tower.getPosition().getX();
         int topLeftY = (int)tower.getPosition().getY();
         int rightMostX = topLeftX + tower.getWidth();
@@ -97,14 +96,5 @@ public class GameStage {
             UNIT_WIDTH = (int) (UNIT_WIDTH * scaleFactor);
             UNIT_HEIGHT = (int) (UNIT_HEIGHT * scaleFactor);
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-
-        List<Tower> towers = new ArrayList<>();
-        for (int i = 0; i < 10; ++i) {
-            towers.add(new MachineGunTower(new Position(i * 20, i * 20)));
-        }
-        GameIOFile.saveToFile(towers, 1, 2000, 9999999, "app/src/main/assets/map/map_3/saveFile.xml");
     }
 }

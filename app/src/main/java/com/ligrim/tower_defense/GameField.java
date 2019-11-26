@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.view.ContextMenu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.content.Context;
@@ -46,6 +45,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     private int gold;
     private int health;
+    private String directorySaveFile;
 
     private Timer gameTick;
     private double lastAddEnemyTick;
@@ -53,9 +53,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private final double timeToAddEnemy = .25;
     /*private final double shootTime = 0.5;*/
 
-    public GameField(Context context, GameStage gameStage, InputStream saveFile) {
+    public GameField(Context context, GameStage gameStage, String directorySaveFile) {
         //android code here
         super(context);
+        this.directorySaveFile = directorySaveFile;
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
@@ -70,7 +71,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         UNIT_WIDTH = gameStage.UNIT_WIDTH;
         UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
 
-        bufferedSavedGame savedGame = GameIOFile.readSaveFile(saveFile);
+        bufferedSavedGame savedGame = GameIOFile.readSaveFile(getContext(), directorySaveFile);
         if (savedGame.hasSavedGame()) {
             stage.jumpToRound(savedGame.getCurrentRound());
             this.towerList = savedGame.getTowerList();
@@ -168,6 +169,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (!stage.hasNextRound()) return;
             else {
                 stage.nextRound();
+                GameIOFile.saveToFile(this.towerList, stage.getCurrentRound(), this.health, this.gold, this.directorySaveFile, getContext());
             }
         }
 
@@ -254,7 +256,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             case "tower_sniper": tower = new SniperTower(pos); break;
             case "tower_machine_gun": tower = new MachineGunTower(pos); break;
         }
-        return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower) && this.gold >= tower.getPrice();
+        return !isTowerTowerOverlap(tower) && !stage.isMapTowerOverlap(tower) && this.gold >= tower.getPrice();
     }
     public boolean isTowerTowerOverlap(Tower experimentalTower) {
         if (towerList.size() == 0) return false;
