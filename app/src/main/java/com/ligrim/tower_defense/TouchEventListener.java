@@ -162,6 +162,7 @@ public class TouchEventListener implements View.OnTouchListener {
                             break;
 
                         case "toggle_mute":
+                            GameSound.toggleMute();
                             break;
 
                         case "exit":

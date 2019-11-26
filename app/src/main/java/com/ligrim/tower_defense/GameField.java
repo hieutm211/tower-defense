@@ -385,6 +385,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         lastAddEnemyTick = -1.0;
         this.health = 25;
         this.gold = stage.INITIAL_GOLD;
+
+        GameSound.playMediaPlayer("ingame");
     }
 
     public void requestExit() {

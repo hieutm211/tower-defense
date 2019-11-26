@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import com.ligrim.tower_defense.Bullet;
+import com.ligrim.tower_defense.GameSound;
 import com.ligrim.tower_defense.base.Attacker;
 import com.ligrim.tower_defense.base.Timer;
 import com.ligrim.tower_defense.enemy.Enemy;
@@ -141,6 +142,7 @@ public abstract class Tower extends GameTile implements Attacker {
     public Bullet attack() {
         Enemy target = chooseEnemyTarget();
         if (target == null) return null;
+        GameSound.play(getId());
         return new Bullet(this, target);
     }
 
