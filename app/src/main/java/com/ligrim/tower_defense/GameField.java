@@ -53,7 +53,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private final double timeToAddEnemy = .25;
     /*private final double shootTime = 0.5;*/
 
-    public GameField(Context context, GameStage gameStage, InputStream saveFile, String directorySaveFile) {
+    public GameField(Context context, GameStage gameStage, String directorySaveFile) {
         //android code here
         super(context);
         this.directorySaveFile = directorySaveFile;
@@ -71,7 +71,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         UNIT_WIDTH = gameStage.UNIT_WIDTH;
         UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
 
-        bufferedSavedGame savedGame = GameIOFile.readSaveFile(saveFile);
+        bufferedSavedGame savedGame = GameIOFile.readSaveFile(getContext(), directorySaveFile);
         if (savedGame.hasSavedGame()) {
             stage.jumpToRound(savedGame.getCurrentRound());
             this.towerList = savedGame.getTowerList();
@@ -169,8 +169,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (!stage.hasNextRound()) return;
             else {
                 stage.nextRound();
-                System.out.println("save file here");
-                GameIOFile.saveToFile(this.towerList, stage.getCurrentRound(), this.health, this.gold, this.directorySaveFile);
+                GameIOFile.saveToFile(this.towerList, stage.getCurrentRound(), this.health, this.gold, this.directorySaveFile, getContext());
             }
         }
 

@@ -97,13 +97,4 @@ public class GameStage {
             UNIT_HEIGHT = (int) (UNIT_HEIGHT * scaleFactor);
         }
     }
-
-    public static void main(String[] args) throws Exception {
-
-        List<Tower> towers = new ArrayList<>();
-        for (int i = 0; i < 10; ++i) {
-            towers.add(new MachineGunTower(new Position(i * 20, i * 20)));
-        }
-        GameIOFile.saveToFile(towers, 1, 2000, 9999999, "app/src/main/assets/map/map_3/saveFile.xml");
-    }
 }

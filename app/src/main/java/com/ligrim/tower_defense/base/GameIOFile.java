@@ -1,5 +1,8 @@
 package com.ligrim.tower_defense.base;
 
+import android.content.Context;
+import android.util.Log;
+
 import com.ligrim.tower_defense.enemy.EnemyType;
 import com.ligrim.tower_defense.Round;
 import com.ligrim.tower_defense.tower.MachineGunTower;
@@ -12,13 +15,16 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +43,7 @@ public class GameIOFile {
 
     private GameIOFile() {}
 
-    public static final void saveToFile(List<Tower> towerList, int currentRound, int health, int gold, String toFile) {
-        String xmlFilePath = toFile;
+    public static final void saveToFile(List<Tower> towerList, int currentRound, int health, int gold, String toFile, Context context) {
         try {
 
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
@@ -100,15 +105,15 @@ public class GameIOFile {
             //transform the DOM Object to an XML File
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            DOMSource domSource = new DOMSource(document);
-            StreamResult streamResult = new StreamResult(new File(xmlFilePath));
 
-            // If you use
-            // StreamResult result = new StreamResult(System.out);
-            // the output will be pushed to the standard output ...
-            // You can use that for debugging
+            StringWriter writer = new StringWriter();
+            StreamResult result = new StreamResult(writer);
 
-            transformer.transform(domSource, streamResult);
+            transformer.transform(new DOMSource(document), result);
+
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(toFile, Context.MODE_PRIVATE));
+            outputStreamWriter.write(writer.toString());
+            outputStreamWriter.close();
 
             System.out.println("Done creating XML File");
 
@@ -116,6 +121,8 @@ public class GameIOFile {
             pce.printStackTrace();
         } catch (TransformerException tfe) {
             tfe.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -202,15 +209,12 @@ public class GameIOFile {
         return map;
     }
 
-    public static bufferedSavedGame readSaveFile(InputStream in) {
+    public static bufferedSavedGame readSaveFile(Context in, String directory) {
         bufferedSavedGame buffer = new bufferedSavedGame();
         try
         {
-            //an instance of factory that gives a document builder
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            //an instance of builder to parse the specified xml file
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(in);
+            String xmlStr = readFromFile(in, directory);
+            Document doc = convertStringToDocument(xmlStr);
             doc.getDocumentElement().normalize();
 
             NodeList round = doc.getElementsByTagName("round");
@@ -234,12 +238,6 @@ public class GameIOFile {
                     String posX = eElement.getAttribute("PosX");
                     String posY = eElement.getAttribute("PosY");
                     String level = eElement.getAttribute("level");
-
-                    /*System.out.println("tower id: "+ eElement.getAttribute("id"));
-                    System.out.println("tower type: "+ type);
-                    System.out.println("tower posX: "+ posX);
-                    System.out.println("tower posY: "+ posY);
-                    System.out.println("tower level: "+ level);*/
 
                     Position pos = new Position(Float.parseFloat(posX), Float.parseFloat(posY));
 
@@ -351,5 +349,54 @@ public class GameIOFile {
         }
         return roundList;
     }
+
+    /***************************************************************************
+     * Helper functions.
+     ***************************************************************************/
+
+    private static String readFromFile(Context context, String directory) {
+
+        String ret = "";
+
+        try {
+            InputStream inputStream = context.openFileInput(directory);
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+
+        return ret;
+    }
+
+    private static Document convertStringToDocument(String xmlStr) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        try
+        {
+            builder = factory.newDocumentBuilder();
+            Document doc = builder.parse( new InputSource( new StringReader( xmlStr ) ) );
+            return doc;
+        } catch (Exception e) {
+            System.out.println("something goes wrong in converting string to document");
+        }
+        return null;
+    }
+
 
 }
