@@ -33,10 +33,13 @@ public abstract class Tower extends GameTile implements Attacker {
     protected int MAX_LEVEL;
     protected boolean displayRange = false;
 
+    public void setPrice() { price += (price / 2);}
+    public int getUpgradePrice() { return price / 2; }
     public int getPrice() {
         return price;
     }
     public float getBulletSpeed() { return bulletSpeed; }
+    public void setDamage() {damage += (damage / 2);}
 
     public Tower(String id, Position position) {
         super(id, position);
@@ -179,6 +182,8 @@ public abstract class Tower extends GameTile implements Attacker {
 
     public void upgrade() {
         currentLevel++;
+        setPrice();
+        setDamage();
     }
 
     public boolean isLevelMax() {

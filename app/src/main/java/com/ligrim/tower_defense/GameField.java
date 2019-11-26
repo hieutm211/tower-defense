@@ -185,6 +185,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         return gold;
     }
 
+    public void setGold(int newGold) {
+        this.gold = newGold;
+    }
+
     public int getHealth() {
         return health;
     }
@@ -233,9 +237,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public boolean canSetTower(String towerId, Position pos) {
         Tower tower = new NormalTower(pos);
         switch(towerId) {
-            case "normal": tower = new NormalTower(pos); break;
-            case "sniper": tower = new SniperTower(pos); break;
-            case "machine_gun": tower = new MachineGunTower(pos); break;
+            case "tower_normal": tower = new NormalTower(pos); break;
+            case "tower_sniper": tower = new SniperTower(pos); break;
+            case "tower_machine_gun": tower = new MachineGunTower(pos); break;
         }
         return !isTowerTowerOverlap(tower) && !stage.isRoadTowerOverlap(tower) && this.gold >= tower.getPrice();
     }
@@ -394,6 +398,12 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     public void requestSellTower(int i) {
         this.gold += towerList.get(i).getPrice();
         towerList.remove(i);
+    }
+
+    public boolean canUpgradeTower(int towerIndex) {
+        if (towerList.get(towerIndex).getUpgradePrice() > gold) return false;
+        if (towerList.get(towerIndex).isLevelMax()) return false;
+        return true;
     }
 
     @Override
