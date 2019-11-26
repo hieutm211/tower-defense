@@ -1,5 +1,6 @@
 package com.ligrim.tower_defense;
 
+import com.ligrim.tower_defense.base.GameIOFile;
 import com.ligrim.tower_defense.base.Moveable;
 import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.enemy.Enemy;
@@ -7,7 +8,7 @@ import com.ligrim.tower_defense.tower.Tower;
 
 public class Bullet extends GameEntity implements Moveable {
 
-    private static final float COLLIDE_DISTANCE = 25f;
+    private static final float COLLIDE_DISTANCE = .4f * GameField.UNIT_HEIGHT;
     private final float speed;
     private final float range;
     private final int damage;

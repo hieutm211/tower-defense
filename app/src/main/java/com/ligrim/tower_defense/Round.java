@@ -49,7 +49,11 @@ public class Round {
         return roundNumber;
     }
 
-    // unchecked
+    public void reset() {
+        countEnemy = 0;
+        enemyID = 0;
+    }
+
     public boolean hasNext() {
         return enemyID < enemy.size() - 1 || (enemyID == enemy.size() - 1 && countEnemy < amount.get(amount.size() - 1));
     }

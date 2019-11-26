@@ -10,7 +10,7 @@ public class PlaneEnemy extends FlyingEnemy {
         this.maxHealth = health;
         this.speed = (100f / 60f ) / 64f * GameField.UNIT_HEIGHT;
         this.armor = 25;
-        this.prize = 30;
+        this.prize = 15;
         faded = false;
     }
 

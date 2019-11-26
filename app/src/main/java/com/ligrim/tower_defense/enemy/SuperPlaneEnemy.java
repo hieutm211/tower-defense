@@ -9,8 +9,8 @@ public class SuperPlaneEnemy extends FlyingEnemy {
         this.health = 3000;
         this.maxHealth = health;
         this.speed = (80f / 60f ) / 64f * GameField.UNIT_HEIGHT;
-        this.armor = 30;
-        this.prize = 45;
+        this.armor = 35;
+        this.prize = 20;
         faded = false;
     }
 }

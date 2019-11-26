@@ -16,23 +16,23 @@ import com.ligrim.tower_defense.tower.Tower;
 
 public class GameStage {
 
-    public static final int INITIAL_GOLD = 100;
-    public static int UNIT_WIDTH = 80;
-    public static int UNIT_HEIGHT = 80;
+    public static final int INITIAL_GOLD = 50;
+    public static int UNIT_WIDTH = 70;
+    public static int UNIT_HEIGHT = 70;
     public static int WIDTH;
     public static int HEIGHT;
-    private Map map;
     private int currentRound;
     private List<Round> roundList; // list of all rounds in the game
     private List<Route> route; // route here
+    private Map map;
 
-    public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream saveFile) {
+    public GameStage(InputStream mapFile, InputStream EnemyFile) {
         map = GameIOFile.initMapData(mapFile);
         currentRound = 0;
         this.WIDTH = map.WIDTH;
         this.HEIGHT = map.HEIGHT;
         route = map.convertToPositionListOfRoute();
-        roundList = GameIOFile.createRoundList(EnemyFile, saveFile, route);
+        roundList = GameIOFile.createRoundList(EnemyFile, route);
         setTileSize();
     }
 
@@ -40,11 +40,11 @@ public class GameStage {
         return currentRound;
     }
 
+
     public boolean hasNextEnemy() { return roundList.get(currentRound).hasNext(); }
 
     public Enemy nextEnemy() { return roundList.get(currentRound).nextEnemy(); }
 
-    // need to check if there is any enemy on the field before this function is called
     public void nextRound() {
         if (!hasNextEnemy()) ++currentRound;
     }
@@ -61,26 +61,27 @@ public class GameStage {
         return roundList.size();
     }
 
-    // unchecked
     public boolean isRoadTowerOverlap(Tower tower) {
         int topLeftX = (int)tower.getPosition().getX();
         int topLeftY = (int)tower.getPosition().getY();
         int rightMostX = topLeftX + tower.getWidth();
         int downMostY = topLeftY + tower.getHeight();
-        return (map.isOverlap( topLeftY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
-                map.isOverlap( downMostY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
-                map.isOverlap( topLeftY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH) ||
-                map.isOverlap( downMostY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH));
+        return (map.isOverlap( (topLeftY + UNIT_HEIGHT / 8)/UNIT_HEIGHT, (topLeftX + UNIT_WIDTH / 8) /UNIT_WIDTH) ||
+                map.isOverlap( (downMostY - UNIT_HEIGHT / 8) /UNIT_HEIGHT, (topLeftX + UNIT_WIDTH / 8) /UNIT_WIDTH) ||
+                map.isOverlap( (topLeftY + UNIT_HEIGHT / 8) /UNIT_HEIGHT, (rightMostX - UNIT_WIDTH / 8) /UNIT_WIDTH) ||
+                map.isOverlap( (downMostY - UNIT_HEIGHT / 8) /UNIT_HEIGHT, (rightMostX - UNIT_WIDTH / 8) /UNIT_WIDTH));
     }
 
-    // this method is for junping immediately to a specific round
-    // return true if i < total round, false otherwise
-    // set current round to ith round
-    public boolean getRound(int i) {
+    public boolean jumpToRound(int i) {
         if (i < roundList.size()) {
             currentRound = i;
         }
         return false;
+    }
+
+    public void restart() {
+        for (Round round : roundList) round.reset();
+        currentRound = 0;
     }
 
     /***************************************************************************
@@ -99,19 +100,11 @@ public class GameStage {
     }
 
     public static void main(String[] args) throws Exception {
-        GameStage game = new GameStage(new FileInputStream("app/src/main/assets/Map/map_2/sample_map2.tmx"),
-                new FileInputStream("app/src/main/assets/Map/map_2/enemy_info.txt"),
-                new FileInputStream("app/src/main/assets/Map/map_2/route_info.txt")  );
+
         List<Tower> towers = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
             towers.add(new MachineGunTower(new Position(i * 20, i * 20)));
         }
-        game.map.printMapInfo();
-        for (int i = 0; i < game.route.size(); ++i) {
-            System.out.println("route " + i);
-            for (int j = 0; j < game.route.get(i).size(); ++j) {
-                System.out.print( game.route.get(i).get(j).getX() + "," + game.route.get(i).get(j).getY() + "; ");
-            }
-        }
+        GameIOFile.saveToFile(towers, 1, 2000, 9999999, "app/src/main/assets/map/map_3/saveFile.xml");
     }
 }
