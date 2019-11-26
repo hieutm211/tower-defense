@@ -6,5 +6,6 @@ public enum EnemyType {
     NORMAL_ENEMY,
     SMALLER_ENEMY,
     BOSS_ENEMY,
-    PLANE_ENEMY;
+    PLANE_ENEMY,
+    SUPER_PLANE_ENEMY;
 }

@@ -13,7 +13,7 @@ public class NormalEnemy extends Enemy {
         this.health = 450;
         this.maxHealth = health;
         this.speed = (80f / 60f) / 64f * GameField.UNIT_HEIGHT;
-        this.armor = 30;
+        this.armor = 4;
         this.prize = 2;
         faded = false;
     }

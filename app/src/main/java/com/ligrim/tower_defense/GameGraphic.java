@@ -93,7 +93,7 @@ public class GameGraphic {
 
     public static void draw(List<? extends DrawableObject> drawableList) {
         for (DrawableObject drawable: drawableList) {
-            GameGraphic.draw(drawable);
+            if (drawable != null) GameGraphic.draw(drawable);
         }
     }
 

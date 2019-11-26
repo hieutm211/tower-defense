@@ -12,6 +12,7 @@ import android.content.Context;
 import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Timer;
 import com.ligrim.tower_defense.enemy.Enemy;
+import com.ligrim.tower_defense.enemy.FlyingEnemy;
 import com.ligrim.tower_defense.tile.GameTile;
 import com.ligrim.tower_defense.tower.MachineGunTower;
 import com.ligrim.tower_defense.tower.NormalTower;
@@ -19,6 +20,7 @@ import com.ligrim.tower_defense.tower.SniperTower;
 import com.ligrim.tower_defense.tower.Tower;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameField extends SurfaceView implements SurfaceHolder.Callback {
@@ -65,14 +67,14 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         UNIT_WIDTH = gameStage.UNIT_WIDTH;
         UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
 
-        this.enemyList = new ArrayList<>();
-        this.towerList = new ArrayList<>();
+        this.enemyList = new LinkedList<>();
+        this.towerList = new LinkedList<>();
         this.tileList = gameStage.getTileList();
-        this.bulletList = new ArrayList<>();
+        this.bulletList = new LinkedList<>();
         this.gold = gameStage.INITIAL_GOLD;
         gameTick = new Timer(dt);
         lastAddEnemyTick = -1.0;
-        this.health = 200;
+        this.health = 25;
     }
 
     @Override
@@ -207,7 +209,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             if (stage.hasNextEnemy()) {
                 Enemy enemy = stage.nextEnemy();
                 if (enemy != null) {
-                    enemyList.add(enemy);
+                    if (enemy instanceof FlyingEnemy) enemyList.add( enemy);
+                    else enemyList.add(0,enemy);
                 }
                 lastAddEnemyTick = gameTick.getTime();
             }
@@ -401,9 +404,9 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         canvas.translate(-GameGraphic.getScreenX(), -GameGraphic.getScreenY());
 
         GameGraphic.draw(tileList.get(0));
-        GameGraphic.draw(enemyList);
-        GameGraphic.draw(towerList);
         GameGraphic.draw(tileList.get(1));
+        GameGraphic.draw(towerList);
+        GameGraphic.draw(enemyList);
         GameGraphic.draw(bulletList);
 
         if (temporaryTower != null) {

@@ -7,6 +7,7 @@ import com.ligrim.tower_defense.enemy.EnemyType;
 import com.ligrim.tower_defense.enemy.NormalEnemy;
 import com.ligrim.tower_defense.enemy.PlaneEnemy;
 import com.ligrim.tower_defense.enemy.SmallerEnemy;
+import com.ligrim.tower_defense.enemy.SuperPlaneEnemy;
 import com.ligrim.tower_defense.enemy.TankerEnemy;
 
 import java.util.ArrayList;
@@ -76,6 +77,9 @@ public class Round {
 
             case PLANE_ENEMY:
                 return new PlaneEnemy();
+
+            case SUPER_PLANE_ENEMY:
+                return new SuperPlaneEnemy();
 
             default:
                 return null;

@@ -7,11 +7,11 @@ public class BossEnemy extends Enemy {
 
     public BossEnemy(Route route) {
         super("enemy_boss", route);
-        this.health = 10000;
+        this.health = 8000;
         this.maxHealth = health;
         this.speed = (40f / 60f) / 64f * GameField.UNIT_HEIGHT;
-        this.armor = 100;
-        this.prize = 50;
+        this.armor = 18;
+        this.prize = 45;
         faded = false;
     }
 }

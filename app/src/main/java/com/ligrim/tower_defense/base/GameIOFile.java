@@ -313,6 +313,9 @@ public class GameIOFile {
                             case "P":
                                 enemyTypes.add(EnemyType.PLANE_ENEMY);
                                 break;
+                            case "S":
+                                enemyTypes.add(EnemyType.SUPER_PLANE_ENEMY);
+                                break;
 
                             default:
                                 System.out.println("unsupported character in loading enemy info: " + c1);

@@ -17,8 +17,8 @@ import com.ligrim.tower_defense.tower.Tower;
 public class GameStage {
 
     public static final int INITIAL_GOLD = 100;
-    public static int UNIT_WIDTH = 100;
-    public static int UNIT_HEIGHT = 100;
+    public static int UNIT_WIDTH = 80;
+    public static int UNIT_HEIGHT = 80;
     public static int WIDTH;
     public static int HEIGHT;
     private Map map;
@@ -67,10 +67,10 @@ public class GameStage {
         int topLeftY = (int)tower.getPosition().getY();
         int rightMostX = topLeftX + tower.getWidth();
         int downMostY = topLeftY + tower.getHeight();
-        return (map.isRoad( topLeftY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
-                map.isRoad( downMostY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
-                map.isRoad( topLeftY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH) ||
-                map.isRoad( downMostY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH));
+        return (map.isOverlap( topLeftY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
+                map.isOverlap( downMostY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
+                map.isOverlap( topLeftY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH) ||
+                map.isOverlap( downMostY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH));
     }
 
     // this method is for junping immediately to a specific round
