@@ -1,13 +1,17 @@
 package com.ligrim.tower_defense;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ligrim.tower_defense.base.GameIOFile;
 import com.ligrim.tower_defense.base.Map;
+import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Route;
 import com.ligrim.tower_defense.enemy.Enemy;
 import com.ligrim.tower_defense.tile.GameTile;
+import com.ligrim.tower_defense.tower.MachineGunTower;
 import com.ligrim.tower_defense.tower.Tower;
 
 public class GameStage {
@@ -17,24 +21,25 @@ public class GameStage {
     public static int UNIT_HEIGHT = 60;
     public static int WIDTH;
     public static int HEIGHT;
-    private Map map;
     private int currentRound;
     private List<Round> roundList; // list of all rounds in the game
     private List<Route> route; // route here
+    private Map map;
 
-    public GameStage(InputStream mapFile, InputStream EnemyFile, InputStream saveFile) {
+    public GameStage(InputStream mapFile, InputStream EnemyFile) {
         map = GameIOFile.initMapData(mapFile);
         currentRound = 0;
         this.WIDTH = map.WIDTH;
         this.HEIGHT = map.HEIGHT;
         route = map.convertToPositionListOfRoute();
-        roundList = GameIOFile.createRoundList(EnemyFile, saveFile, route);
+        roundList = GameIOFile.createRoundList(EnemyFile, route);
         setTileSize();
     }
 
     public int getCurrentRound() {
         return currentRound;
     }
+
 
     public boolean hasNextEnemy() { return roundList.get(currentRound).hasNext(); }
 
@@ -67,7 +72,7 @@ public class GameStage {
                 map.isOverlap( downMostY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH));
     }
 
-    public boolean getRound(int i) {
+    public boolean jumpToRound(int i) {
         if (i < roundList.size()) {
             currentRound = i;
         }
@@ -92,5 +97,14 @@ public class GameStage {
             UNIT_WIDTH = (int) (UNIT_WIDTH * scaleFactor);
             UNIT_HEIGHT = (int) (UNIT_HEIGHT * scaleFactor);
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        List<Tower> towers = new ArrayList<>();
+        for (int i = 0; i < 10; ++i) {
+            towers.add(new MachineGunTower(new Position(i * 20, i * 20)));
+        }
+        GameIOFile.saveToFile(towers, 1, 2000, 9999999, "app/src/main/assets/map/map_3/saveFile.xml");
     }
 }

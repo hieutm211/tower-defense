@@ -10,8 +10,8 @@ public class BossEnemy extends Enemy {
         this.health = 8000;
         this.maxHealth = health;
         this.speed = (40f / 60f) / 64f * GameField.UNIT_HEIGHT;
-        this.armor = 18;
-        this.prize = 45;
+        this.armor = 40;
+        this.prize = 25;
         faded = false;
     }
 }

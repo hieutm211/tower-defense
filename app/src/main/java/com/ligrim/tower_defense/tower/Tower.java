@@ -45,7 +45,13 @@ public abstract class Tower extends GameTile implements Attacker {
         super(id, position);
         directionX = 0;
         directionY = 0;
+        currentLevel = 0;
         enemyTarget = new LinkedList<>();
+    }
+
+    public Tower jumpToLevel(int level) {
+        while (currentLevel < level) this.upgrade();
+        return this;
     }
 
     public Timer getTimer() {
@@ -63,14 +69,6 @@ public abstract class Tower extends GameTile implements Attacker {
     public int getDamage() {
         return damage;
     }
-
-    /*//public double getTickOfLastShot() {
-        return lastShotTick;
-    }
-
-    public void setTickOfLastShot(double shotTime) {
-        lastShotTick = shotTime;
-    }*/
 
     public boolean collision(GameEntity other) {
         if (other instanceof Tower) {
@@ -177,7 +175,7 @@ public abstract class Tower extends GameTile implements Attacker {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setTextSize(20f);
-        canvas.drawText("Lvl." + Integer.toString(getLevel()), getCenterX()-20, getCenterY()+10, paint);
+        canvas.drawText("Lvl." + Integer.toString(getLevel()), getCenterX()-20, getCenterY()+5, paint);
     }
 
     public void upgrade() {

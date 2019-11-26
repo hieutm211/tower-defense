@@ -10,7 +10,7 @@ public class TankerEnemy extends Enemy {
         this.health = 3000;
         this.maxHealth = health;
         this.speed = (60f / 60f) / 64f * GameField.UNIT_HEIGHT;
-        this.armor = 10;
+        this.armor = 20;
         this.prize = 10;
         faded = false;
     }

@@ -9,8 +9,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.content.Context;
 
+import com.ligrim.tower_defense.base.GameIOFile;
 import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Timer;
+import com.ligrim.tower_defense.base.bufferedSavedGame;
 import com.ligrim.tower_defense.enemy.Enemy;
 import com.ligrim.tower_defense.enemy.FlyingEnemy;
 import com.ligrim.tower_defense.tile.GameTile;
@@ -19,6 +21,7 @@ import com.ligrim.tower_defense.tower.NormalTower;
 import com.ligrim.tower_defense.tower.SniperTower;
 import com.ligrim.tower_defense.tower.Tower;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -50,7 +53,7 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     private final double timeToAddEnemy = .25;
     /*private final double shootTime = 0.5;*/
 
-    public GameField(Context context, GameStage gameStage) {
+    public GameField(Context context, GameStage gameStage, InputStream saveFile) {
         //android code here
         super(context);
         getHolder().addCallback(this);
@@ -67,14 +70,24 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         UNIT_WIDTH = gameStage.UNIT_WIDTH;
         UNIT_HEIGHT = gameStage.UNIT_HEIGHT;
 
+        bufferedSavedGame savedGame = GameIOFile.readSaveFile(saveFile);
+        if (savedGame.hasSavedGame()) {
+            stage.jumpToRound(savedGame.getCurrentRound());
+            this.towerList = savedGame.getTowerList();
+            this.gold = savedGame.getGold();
+            this.health = savedGame.getHealth();
+        }
+        else {
+            this.towerList = new LinkedList<>();
+            this.gold = gameStage.INITIAL_GOLD;
+            this.health = 25;
+        }
+
         this.enemyList = new LinkedList<>();
-        this.towerList = new LinkedList<>();
+        lastAddEnemyTick = -1.0;
+        gameTick = new Timer(dt);
         this.tileList = gameStage.getTileList();
         this.bulletList = new LinkedList<>();
-        this.gold = gameStage.INITIAL_GOLD;
-        gameTick = new Timer(dt);
-        lastAddEnemyTick = -1.0;
-        this.health = 25;
     }
 
     @Override

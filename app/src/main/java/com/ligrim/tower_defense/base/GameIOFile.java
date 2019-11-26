@@ -37,7 +37,7 @@ public class GameIOFile {
 
     private GameIOFile() {}
 
-    public static final void saveToFile(List<Tower> towerList, int currentRound, String toFile) {
+    public static final void saveToFile(List<Tower> towerList, int currentRound, int health, int gold, String toFile) {
         String xmlFilePath = toFile;
         try {
 
@@ -53,6 +53,14 @@ public class GameIOFile {
             Attr roundId = document.createAttribute("id");
             roundId.setValue(Integer.toString(currentRound));
             root.setAttributeNode(roundId);
+
+            Attr healthAtr = document.createAttribute("health");
+            healthAtr.setValue(Integer.toString(health));
+            root.setAttributeNode(healthAtr);
+
+            Attr goldAtr = document.createAttribute("gold");
+            goldAtr.setValue(Integer.toString(gold));
+            root.setAttributeNode(goldAtr);
 
             // tower element
             for (int i = 0; i < towerList.size(); ++i) {
@@ -194,8 +202,8 @@ public class GameIOFile {
         return map;
     }
 
-    public static List<Tower> readSaveFile(InputStream in) {
-        List<Tower> list = new ArrayList<>();
+    public static bufferedSavedGame readSaveFile(InputStream in) {
+        bufferedSavedGame buffer = new bufferedSavedGame();
         try
         {
             //an instance of factory that gives a document builder
@@ -207,38 +215,49 @@ public class GameIOFile {
 
             NodeList round = doc.getElementsByTagName("round");
             Node roundNode = round.item(0);
-            //currentRound = Integer.parseInt( ((Element)roundNode).getAttribute("id") );
+
+
+            buffer.currentRound = Integer.parseInt( ((Element)roundNode).getAttribute("id") );
+            buffer.gold = Integer.parseInt( ((Element)roundNode).getAttribute("gold") );
+            buffer.health = Integer.parseInt( ((Element)roundNode).getAttribute("health") );
 
             NodeList nodeList = doc.getElementsByTagName("tower");
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++)
             {
                 Node node = nodeList.item(itr);
-                System.out.println("\nNode Name :" + node.getNodeName());
+                // System.out.println("\nNode Name :" + node.getNodeName());
                 if (node.getNodeType() == Node.ELEMENT_NODE)
                 {
                     Element eElement = (Element) node;
                     String type = eElement.getAttribute("type");
                     String posX = eElement.getAttribute("PosX");
                     String posY = eElement.getAttribute("PosY");
+                    String level = eElement.getAttribute("level");
 
-                    System.out.println("tower id: "+ eElement.getAttribute("id"));
+                    /*System.out.println("tower id: "+ eElement.getAttribute("id"));
                     System.out.println("tower type: "+ type);
                     System.out.println("tower posX: "+ posX);
                     System.out.println("tower posY: "+ posY);
+                    System.out.println("tower level: "+ level);*/
 
                     Position pos = new Position(Float.parseFloat(posX), Float.parseFloat(posY));
 
                     switch (type) {
-                        case "normal":
-                            list.add(new NormalTower(pos) );
+                        case "tower_normal":
+                            buffer.towerList.add( new NormalTower(pos).jumpToLevel(Integer.parseInt(level)) );
                             break;
-                        case "sniper":
-                            list.add(new SniperTower(pos));
+
+                        case "tower_sniper":
+                            buffer.towerList.add( new SniperTower(pos).jumpToLevel(Integer.parseInt(level)) );
                             break;
-                        case "machine_gun":
-                            list.add(new MachineGunTower(pos));
+
+                        case "tower_machine_gun":
+                            buffer.towerList.add( new MachineGunTower(pos).jumpToLevel(Integer.parseInt(level)) );
                             break;
+
+                        default:
+                            System.out.println("unknown tower type: " + type);
                     }
                 }
             }
@@ -247,12 +266,12 @@ public class GameIOFile {
         {
             System.out.println("no saved file!");
         }
-        return list;
+        return buffer;
     }
 
     // read enemy Information, i.e the order enemy appear
     // initial all rounds in the game
-    public static List<Round> createRoundList(InputStream Enemy_info, InputStream saveFile, List<Route> route) {
+    public static List<Round> createRoundList(InputStream Enemy_info, List<Route> route) {
 
         List<Round> roundList = new ArrayList<>();
 
@@ -260,8 +279,6 @@ public class GameIOFile {
             // declare file directory here
             InputStream EnemyFile = Enemy_info;
             BufferedReader Enemy = new BufferedReader(new InputStreamReader(EnemyFile, "UTF-8"));
-            InputStream RouteFile = saveFile;
-            BufferedReader Route = new BufferedReader(new InputStreamReader(RouteFile, "UTF-8"));
 
             String st;
 
