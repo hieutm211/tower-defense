@@ -17,8 +17,8 @@ import com.ligrim.tower_defense.tower.Tower;
 public class GameStage {
 
     public static final int INITIAL_GOLD = 50;
-    public static int UNIT_WIDTH = 60;
-    public static int UNIT_HEIGHT = 60;
+    public static int UNIT_WIDTH = 70;
+    public static int UNIT_HEIGHT = 70;
     public static int WIDTH;
     public static int HEIGHT;
     private int currentRound;
@@ -66,10 +66,10 @@ public class GameStage {
         int topLeftY = (int)tower.getPosition().getY();
         int rightMostX = topLeftX + tower.getWidth();
         int downMostY = topLeftY + tower.getHeight();
-        return (map.isOverlap( topLeftY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
-                map.isOverlap( downMostY/UNIT_HEIGHT, topLeftX/UNIT_WIDTH) ||
-                map.isOverlap( topLeftY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH) ||
-                map.isOverlap( downMostY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH));
+        return (map.isOverlap( (topLeftY + UNIT_HEIGHT / 8)/UNIT_HEIGHT, (topLeftX + UNIT_WIDTH / 8) /UNIT_WIDTH) ||
+                map.isOverlap( (downMostY - UNIT_HEIGHT / 8) /UNIT_HEIGHT, (topLeftX + UNIT_WIDTH / 8) /UNIT_WIDTH) ||
+                map.isOverlap( (topLeftY + UNIT_HEIGHT / 8) /UNIT_HEIGHT, (rightMostX - UNIT_WIDTH / 8) /UNIT_WIDTH) ||
+                map.isOverlap( (downMostY - UNIT_HEIGHT / 8) /UNIT_HEIGHT, (rightMostX - UNIT_WIDTH / 8) /UNIT_WIDTH));
     }
 
     public boolean jumpToRound(int i) {

@@ -10,34 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0db1449-5413-4106-956c-e5b4edf4010c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/bufferedSavedGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_1/saveFile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/map/map_1/saveFile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_2/route_info.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_2/saveFile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/map/map_2/saveFile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/map/map_3/saveFile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/map/map_3/saveFile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/GameIOFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/GameIOFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/BossEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/NormalEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/NormalEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/SuperPlaneEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/SuperPlaneEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/TankerEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/TankerEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/MachineGunTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/NormalTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/NormalTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/SniperTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/SniperTower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/Tower.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,23 +45,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="278">
+              <caret line="315" column="47" selection-start-line="315" selection-start-column="38" selection-end-line="315" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5381#5382#0" expanded="true" />
-                <element signature="e#5587#5588#0" expanded="true" />
-                <element signature="e#5667#5668#0" expanded="true" />
-                <element signature="e#5743#5744#0" expanded="true" />
-                <element signature="e#5798#5799#0" expanded="true" />
-                <element signature="e#5873#5874#0" expanded="true" />
-                <element signature="e#5932#5933#0" expanded="true" />
-                <element signature="e#6043#6044#0" expanded="true" />
-                <element signature="e#8773#8774#0" expanded="true" />
-                <element signature="e#11023#11024#0" expanded="true" />
-                <element signature="e#11099#11100#0" expanded="true" />
-                <element signature="e#11170#11171#0" expanded="true" />
-                <element signature="e#11244#11245#0" expanded="true" />
+                <element signature="e#5373#5374#0" expanded="true" />
+                <element signature="e#5579#5580#0" expanded="true" />
+                <element signature="e#5659#5660#0" expanded="true" />
+                <element signature="e#5735#5736#0" expanded="true" />
+                <element signature="e#5790#5791#0" expanded="true" />
+                <element signature="e#5865#5866#0" expanded="true" />
+                <element signature="e#5924#5925#0" expanded="true" />
+                <element signature="e#6035#6036#0" expanded="true" />
+                <element signature="e#8765#8766#0" expanded="true" />
+                <element signature="e#11015#11016#0" expanded="true" />
+                <element signature="e#11091#11092#0" expanded="true" />
+                <element signature="e#11162#11163#0" expanded="true" />
+                <element signature="e#11236#11237#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Bullet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="107" column="86" selection-start-line="107" selection-start-column="86" selection-end-line="107" selection-end-column="86" />
+            <state relative-caret-position="324">
+              <caret line="71" column="103" selection-start-line="71" selection-start-column="103" selection-end-line="71" selection-end-column="103" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/bufferedSavedGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+            <state relative-caret-position="425">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,7 +124,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/GameIOFile.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="447">
@@ -166,15 +159,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/NormalEnemy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -253,7 +237,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Moveable.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Vulnerable.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Attacker.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Bullet.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tile/GameTile.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Timer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/Destroyable.java" />
@@ -293,11 +276,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/NormalEnemy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/SuperPlaneEnemy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/enemy/PlaneEnemy.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/tower/Tower.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/bufferedSavedGame.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/GameIOFile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Bullet.java" />
       </list>
     </option>
   </component>
@@ -583,7 +567,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28944564" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28944564" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -595,7 +579,7 @@
       <window_info id="Resources Explorer" order="9" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.34669557" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5555556" visible="true" weight="0.20693392" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5555556" visible="true" weight="0.20693392" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.44853738" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -695,16 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Bullet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -989,53 +963,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/GameIOFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="447">
+          <caret line="259" column="76" selection-start-line="259" selection-start-column="76" selection-end-line="259" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/bufferedSavedGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5381#5382#0" expanded="true" />
-            <element signature="e#5587#5588#0" expanded="true" />
-            <element signature="e#5667#5668#0" expanded="true" />
-            <element signature="e#5743#5744#0" expanded="true" />
-            <element signature="e#5798#5799#0" expanded="true" />
-            <element signature="e#5873#5874#0" expanded="true" />
-            <element signature="e#5932#5933#0" expanded="true" />
-            <element signature="e#6043#6044#0" expanded="true" />
-            <element signature="e#8773#8774#0" expanded="true" />
-            <element signature="e#11023#11024#0" expanded="true" />
-            <element signature="e#11099#11100#0" expanded="true" />
-            <element signature="e#11170#11171#0" expanded="true" />
-            <element signature="e#11244#11245#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameStage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="107" column="86" selection-start-line="107" selection-start-column="86" selection-end-line="107" selection-end-column="86" />
+        <state relative-caret-position="324">
+          <caret line="71" column="103" selection-start-line="71" selection-start-column="103" selection-end-line="71" selection-end-column="103" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/bufferedSavedGame.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/GameField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+        <state relative-caret-position="278">
+          <caret line="315" column="47" selection-start-line="315" selection-start-column="38" selection-end-line="315" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5373#5374#0" expanded="true" />
+            <element signature="e#5579#5580#0" expanded="true" />
+            <element signature="e#5659#5660#0" expanded="true" />
+            <element signature="e#5735#5736#0" expanded="true" />
+            <element signature="e#5790#5791#0" expanded="true" />
+            <element signature="e#5865#5866#0" expanded="true" />
+            <element signature="e#5924#5925#0" expanded="true" />
+            <element signature="e#6035#6036#0" expanded="true" />
+            <element signature="e#8765#8766#0" expanded="true" />
+            <element signature="e#11015#11016#0" expanded="true" />
+            <element signature="e#11091#11092#0" expanded="true" />
+            <element signature="e#11162#11163#0" expanded="true" />
+            <element signature="e#11236#11237#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/base/GameIOFile.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ligrim/tower_defense/Bullet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="259" column="76" selection-start-line="259" selection-start-column="76" selection-end-line="259" selection-end-column="76" />
+        <state relative-caret-position="153">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
