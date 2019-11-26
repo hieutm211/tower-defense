@@ -192,7 +192,8 @@ public class TouchEventListener implements View.OnTouchListener {
                 int towerIndex = Integer.parseInt(currentId);
 
                 if (tempId != null) {
-                    if (tempId.equals("upgrade")) {
+                    if (tempId.equals("upgrade") && gameField.canUpgradeTower(towerIndex)) {
+                        gameField.setGold(gameField.getGold() - gameField.getTower(towerIndex).getUpgradePrice());
                         gameField.getTower(towerIndex).upgrade();
                     } else if (tempId.equals("sell")) {
                         gameField.requestSellTower(towerIndex);
