@@ -1,24 +1,20 @@
 package com.ligrim.tower_defense;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ligrim.tower_defense.base.GameIOFile;
 import com.ligrim.tower_defense.base.Map;
-import com.ligrim.tower_defense.base.Position;
 import com.ligrim.tower_defense.base.Route;
 import com.ligrim.tower_defense.enemy.Enemy;
 import com.ligrim.tower_defense.tile.GameTile;
-import com.ligrim.tower_defense.tower.MachineGunTower;
 import com.ligrim.tower_defense.tower.Tower;
 
 public class GameStage {
 
-    public static final int INITIAL_GOLD = 100;
-    public static int UNIT_WIDTH = 80;
-    public static int UNIT_HEIGHT = 80;
+    public static final int INITIAL_GOLD = 50;
+    public static int UNIT_WIDTH = 60;
+    public static int UNIT_HEIGHT = 60;
     public static int WIDTH;
     public static int HEIGHT;
     private Map map;
@@ -44,7 +40,6 @@ public class GameStage {
 
     public Enemy nextEnemy() { return roundList.get(currentRound).nextEnemy(); }
 
-    // need to check if there is any enemy on the field before this function is called
     public void nextRound() {
         if (!hasNextEnemy()) ++currentRound;
     }
@@ -61,7 +56,6 @@ public class GameStage {
         return roundList.size();
     }
 
-    // unchecked
     public boolean isRoadTowerOverlap(Tower tower) {
         int topLeftX = (int)tower.getPosition().getX();
         int topLeftY = (int)tower.getPosition().getY();
@@ -73,14 +67,16 @@ public class GameStage {
                 map.isOverlap( downMostY/UNIT_HEIGHT, rightMostX/UNIT_WIDTH));
     }
 
-    // this method is for junping immediately to a specific round
-    // return true if i < total round, false otherwise
-    // set current round to ith round
     public boolean getRound(int i) {
         if (i < roundList.size()) {
             currentRound = i;
         }
         return false;
+    }
+
+    public void restart() {
+        for (Round round : roundList) round.reset();
+        currentRound = 0;
     }
 
     /***************************************************************************
@@ -95,23 +91,6 @@ public class GameStage {
             float scaleFactor = Math.max(fitUnitWidth / UNIT_WIDTH, fitUnitHeight / UNIT_HEIGHT);
             UNIT_WIDTH = (int) (UNIT_WIDTH * scaleFactor);
             UNIT_HEIGHT = (int) (UNIT_HEIGHT * scaleFactor);
-        }
-    }
-
-    public static void main(String[] args) throws Exception {
-        GameStage game = new GameStage(new FileInputStream("app/src/main/assets/Map/map_2/sample_map2.tmx"),
-                new FileInputStream("app/src/main/assets/Map/map_2/enemy_info.txt"),
-                new FileInputStream("app/src/main/assets/Map/map_2/route_info.txt")  );
-        List<Tower> towers = new ArrayList<>();
-        for (int i = 0; i < 10; ++i) {
-            towers.add(new MachineGunTower(new Position(i * 20, i * 20)));
-        }
-        game.map.printMapInfo();
-        for (int i = 0; i < game.route.size(); ++i) {
-            System.out.println("route " + i);
-            for (int j = 0; j < game.route.get(i).size(); ++j) {
-                System.out.print( game.route.get(i).get(j).getX() + "," + game.route.get(i).get(j).getY() + "; ");
-            }
         }
     }
 }

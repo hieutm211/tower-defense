@@ -15,6 +15,6 @@ public class MachineGunTower extends Tower {
         bulletSpeed = 15f / 64 * GameField.UNIT_HEIGHT;
         price = 20;
         currentLevel = 0;
-        MAX_LEVEL = 3;
+        MAX_LEVEL = 6;
     }
 }

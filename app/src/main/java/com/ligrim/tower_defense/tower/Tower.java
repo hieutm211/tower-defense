@@ -177,7 +177,7 @@ public abstract class Tower extends GameTile implements Attacker {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setTextSize(20f);
-        canvas.drawText(Integer.toString(getLevel()), getCenterX()-5, getCenterY()+10, paint);
+        canvas.drawText("Lvl." + Integer.toString(getLevel()), getCenterX()-20, getCenterY()+10, paint);
     }
 
     public void upgrade() {

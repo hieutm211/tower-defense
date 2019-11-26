@@ -363,6 +363,13 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
 
     public void requestRestart() {
         //TODO: reset this round
+        this.enemyList.clear();
+        this.towerList.clear();
+        this.bulletList.clear();
+        this.stage.restart();
+        lastAddEnemyTick = -1.0;
+        this.health = 25;
+        this.gold = stage.INITIAL_GOLD;
     }
 
     public void requestExit() {

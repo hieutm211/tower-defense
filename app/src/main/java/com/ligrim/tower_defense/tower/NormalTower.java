@@ -15,6 +15,6 @@ public class NormalTower extends Tower {
         bulletSpeed = 14f / 64 * GameField.UNIT_HEIGHT;
         price = 25;
         currentLevel = 0;
-        MAX_LEVEL = 3;
+        MAX_LEVEL = 6;
     }
 }
