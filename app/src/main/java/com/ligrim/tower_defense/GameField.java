@@ -164,7 +164,10 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         updatePrize();
         updateListEnemy();
 
-        if (isDead()) return;
+        if (isDead()) {
+            requestExit();
+            return;
+        }
         else if (!stage.hasNextEnemy() && enemyList.isEmpty()) {
             if (!stage.hasNextRound()) return;
             else {
