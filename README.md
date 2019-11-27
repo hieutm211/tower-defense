@@ -31,5 +31,6 @@ b) Xây dựng đầy đủ các tương tác giữa các đối tượng mà đ
 - Thuật toán va chạm giữa các Enemy (những Enemy cùng loại sẽ tránh nhau trên đường đi).
 - Enemy đi theo đường cong khi chuyển hướng.
 - Có chức năng *Pause, Mute/Unmute, Restart* Game.
+- Sử dụng android canvas để draw objects
 - Các thao tác với màn hình (User Interface) như kéo, thả, chạm, di chuyển màn hình được tự code hoàn toàn (không sử dụng thư viện ngoài).
 
