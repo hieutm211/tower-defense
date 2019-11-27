@@ -81,8 +81,7 @@ public class GameSound {
 
 
         //load sounds.
-        soundMap.put("home", soundPool.load(context, R.raw.home, 1));
-        soundMap.put("ingame", soundPool.load(context, R.raw.ingame, 1));
+        soundMap.put("tap", soundPool.load(context, R.raw.tap, 1));
         soundMap.put("tower_machine_gun", soundPool.load(context, R.raw.tower_machine_gun, 1));
         soundMap.put("tower_normal", soundPool.load(context, R.raw.tower_normal,1));
         soundMap.put("tower_sniper", soundPool.load(context, R.raw.tower_sniper,1));

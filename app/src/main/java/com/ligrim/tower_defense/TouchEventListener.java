@@ -40,6 +40,7 @@ public class TouchEventListener implements View.OnTouchListener {
                 return towerDragEvent(v, event);
 
             case STATUS_BUTTON_CLICK:
+                GameSound.play("tap");
                 return clickEvent(v, event);
 
             case STATUS_NONE:
