@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 public class GameSound {
 
+    private static final float DEFAULT_VOLUME = 0.5f;
+
     private static Context context;
 
     private static SoundPool soundPool;
@@ -24,7 +26,7 @@ public class GameSound {
     // Stream type.
     private static final int streamType = AudioManager.STREAM_MUSIC;
 
-    private static float volume = 0.8f;
+    private static float volume = DEFAULT_VOLUME;
 
     private static boolean loaded = true;
 
@@ -89,10 +91,10 @@ public class GameSound {
 
     public static void play(String id) {
         if (loaded) {
-            float leftVolume = volume;
-            float rightVolume = volume;
+            float leftVolume = Math.min(0.08f, volume - 0.5f);
+            float rightVolume = Math.min(0.08f, volume - 0.5f);
 
-            streamMap.put(id, soundPool.play(soundMap.get(id), leftVolume, rightVolume, 1, 0, 1f));
+            streamMap.put(id, soundPool.play(soundMap.get(id), leftVolume, rightVolume, 2, 0, 1f));
         }
     }
 
@@ -112,14 +114,15 @@ public class GameSound {
             case "home":
                 mediaPlayer = MediaPlayer.create(context, R.raw.home);
                 mediaPlayer.setVolume(volume, volume);
-                mediaPlayer.start();
                 break;
             case "ingame":
                 mediaPlayer = MediaPlayer.create(context, R.raw.ingame);
                 mediaPlayer.setVolume(volume, volume);
-                mediaPlayer.start();
                 break;
         }
+
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
     }
 
     public static void toggleMute() {
@@ -130,7 +133,7 @@ public class GameSound {
                 mediaPlayer.setVolume(volume, volume);
             }
         } else {
-            volume = 0.8f;
+            volume = DEFAULT_VOLUME;
             if (mediaPlayer != null) {
                 mediaPlayer.setVolume(volume, volume);
             }
