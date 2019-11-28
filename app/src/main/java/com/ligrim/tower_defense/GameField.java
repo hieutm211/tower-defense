@@ -76,12 +76,14 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
             stage.jumpToRound(savedGame.getCurrentRound());
             this.towerList = savedGame.getTowerList();
             this.gold = savedGame.getGold();
-            this.health = savedGame.getHealth();
+            //this.health = savedGame.getHealth();
+            this.health = 1;
         }
         else {
             this.towerList = new LinkedList<>();
             this.gold = gameStage.INITIAL_GOLD;
-            this.health = 25;
+            //this.health = 25;
+            this.health = 1;
         }
 
         this.enemyList = new LinkedList<>();
@@ -386,15 +388,16 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
         this.bulletList.clear();
         this.stage.restart();
         lastAddEnemyTick = -1.0;
-        this.health = 25;
+        //this.health = 25;
+        this.health = 1;
         this.gold = stage.INITIAL_GOLD;
 
         GameSound.playMediaPlayer("ingame");
     }
 
     public void requestExit() {
+        ((Activity) this.getContext()).setContentView(R.layout.activity_main);
         exitGame();
-        ((Activity) getContext()).setContentView(R.layout.activity_main);
     }
 
     public void exitGame() {
