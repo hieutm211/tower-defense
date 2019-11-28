@@ -1,6 +1,9 @@
 package com.ligrim.tower_defense;
 
+import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.view.SurfaceHolder;
 import android.graphics.Canvas;
 
@@ -45,6 +48,19 @@ public class MainThread extends Thread {
                     canvas.drawColor(Color.rgb(255, 193, 0));
 
                     this.gameField.draw(canvas);
+
+                    if (pause && !SettingPane.isActive()) {
+                        Rect rect = new Rect(0, 0, GameGraphic.getScreenWidthPixels(), GameGraphic.getScreenHeightPixels());
+                        Paint paint = new Paint();
+                        paint.setColor(Color.GRAY);
+                        paint.setAlpha(100);
+                        canvas.drawRect(rect, paint);
+
+                        paint.reset();
+                        paint.setColor(Color.WHITE);
+                        paint.setTextSize(40f);
+                        canvas.drawText("Paused", GameGraphic.getCenterScreenX()-25, GameGraphic.getCenterScreenY()-25, paint);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -75,7 +91,6 @@ public class MainThread extends Thread {
                 totalTime = 0;
             }
         }
-
     }
 
     public void setRunning(boolean isRunning) {

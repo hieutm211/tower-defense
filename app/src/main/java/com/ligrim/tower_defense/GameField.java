@@ -393,8 +393,8 @@ public class GameField extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void requestExit() {
+        ((Activity) this.getContext()).setContentView(R.layout.activity_main);
         exitGame();
-        ((Activity) getContext()).setContentView(R.layout.activity_main);
     }
 
     public void exitGame() {
